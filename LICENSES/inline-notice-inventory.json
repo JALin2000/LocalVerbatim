@@ -1,0 +1,74 @@
+[
+  {
+    "component": "cpython-3.13.15",
+    "archive": "cpython-3.13.15.tar.gz",
+    "sha256": "1e66a7945a48390ee4c2a4268a0e4185884059a13c4aab6d148aa208deea4a76",
+    "notice_file": "LICENSES/inline-notices/cpython-3.13.15.txt",
+    "notice_sha256": "b60dca22d76473c6a390c25010319016d03df3983e046f83d54b9a32f1bed1e9",
+    "unique_blocks": 103
+  },
+  {
+    "component": "mlx-0.32.4",
+    "archive": "mlx-v0.32.4.tar.gz",
+    "sha256": "0276db8d7bf1af8db6d4ae25c7c550abea4d5b3b6a16207610a5d4a0c19fe1a0",
+    "notice_file": "LICENSES/inline-notices/mlx-0.32.4.txt",
+    "notice_sha256": "9e35071ee8c962252a644535928887b5ae701870df461549f8a0c5ffb5359e59",
+    "unique_blocks": 18
+  },
+  {
+    "component": "miniaudio-1.73",
+    "archive": "miniaudio-1.73.tar.gz",
+    "sha256": "6652da7e60fabde24d4f3b56c062d4be5f3bfb626818c5a2877f2c782d6e2c4f",
+    "notice_file": "LICENSES/inline-notices/miniaudio-1.73.txt",
+    "notice_sha256": "f9e9d1385c3cb5506a49248ef69fdef44bc4063705ba1b36e4ba0394af30d5a4",
+    "unique_blocks": 2
+  },
+  {
+    "component": "sentencepiece-0.2.3",
+    "archive": "sentencepiece-0.2.3.tar.gz",
+    "sha256": "21618ad31f0453a1ebf5ec58defed99758d54af0b670546ecac639ddd8b86fbd",
+    "notice_file": "LICENSES/inline-notices/sentencepiece-0.2.3.txt",
+    "notice_sha256": "9007410f76623cae91981f15cfa0393e537de54d8ac9fff8a7eb9d063b795317",
+    "unique_blocks": 7
+  },
+  {
+    "component": "numpy-2.5.4",
+    "archive": "numpy-2.5.4.tar.gz",
+    "sha256": "9a94cf751c9ad8ebaa835bcd3d40dacf8534ad086b88c38029b65123c7999d2a",
+    "notice_file": "LICENSES/inline-notices/numpy-2.5.4.txt",
+    "notice_sha256": "b849cb6ed0b23906de0bca883a3690decfb885ff631b672dfdf84cd812915e6e",
+    "unique_blocks": 66
+  },
+  {
+    "component": "cffi-2.1.1",
+    "archive": "cffi-2.1.1.tar.gz",
+    "sha256": "dd31f52ea1086513bb9df30f8fcee9b8918323ae067a3d5b78bc826a000712be",
+    "notice_file": "LICENSES/inline-notices/cffi-2.1.1.txt",
+    "notice_sha256": "c597d23a61528a06a420d2d4893b3bd5b1bc63788ebd25a92b1b96253bcf2da4",
+    "unique_blocks": 9
+  },
+  {
+    "component": "psutil-7.2.2",
+    "archive": "psutil-7.2.2.tar.gz",
+    "sha256": "0746f5f8d406af344fd547f1c8daa5f5c33dbc293bb8d6a16d80b4bb88f59372",
+    "notice_file": "LICENSES/inline-notices/psutil-7.2.2.txt",
+    "notice_sha256": "00d6d1b65d088a72e4be9cf9eed95caf0cc4caa121b4577bd1ace0ca1a465778",
+    "unique_blocks": 20
+  },
+  {
+    "component": "regex-2026.11.9",
+    "archive": "regex-2026.11.9.tar.gz",
+    "sha256": "316a70fbd70e999c9664681cb0eb5b4982b2cc0f623c7c86a8a112e1bd4c6277",
+    "notice_file": "LICENSES/inline-notices/regex-2026.11.9.txt",
+    "notice_sha256": "c6efd0e0fa63a91182c5b5c1116524352acb935c213c17d95c622e8612ad770d",
+    "unique_blocks": 2
+  },
+  {
+    "component": "pyyaml-6.0.3",
+    "archive": "pyyaml-6.0.3.tar.gz",
+    "sha256": "d76623373421df22fb4cf8817020cbb7ef15c725b9d5e45f17e189bfc384190f",
+    "notice_file": "LICENSES/inline-notices/pyyaml-6.0.3.txt",
+    "notice_sha256": "2f37ca1cc28e6915945e355ab82170d22eabefac42584fe4c321d52f216a5b42",
+    "unique_blocks": 0
+  }
+]

@@ -8,11 +8,11 @@ Use an Apple Silicon Mac with macOS 15 or later. A 16 GB machine is recommended;
 
 Allow at least 6 GB for the app and the approximately 4.08 GB model, with additional space for download work files and recordings. A packaged app contains its own Python runtime. No developer tools or account are needed to use that package.
 
-The [GitHub repository](https://github.com/JALin2000/LocalVerbatim) provides the experimental v0.4.7 source release. There is no public installer yet; use the [developer guide](DEVELOPMENT.md) to build from source. The DMG instructions below apply only to a trial package supplied separately by the maintainer. Those packages are ad-hoc signed and not notarized. A checksum identifies a particular file; it does not establish who produced it.
+Download the v0.4.8 preview DMG and `SHA256SUMS.txt` from the [GitHub release](https://github.com/JALin2000/LocalVerbatim/releases/tag/v0.4.8-preview.1). It is **ad-hoc signed and not notarized by Apple**. A checksum identifies a particular file; it does not establish an Apple-verified publisher. Managed Macs may prohibit opening this preview. Use the [developer guide](DEVELOPMENT.md) to build from source instead.
 
-## Install a supplied DMG
+## Install the preview DMG
 
-1. Obtain the DMG and its SHA-256 checksum from the maintainer through the same trusted release channel.
+1. Obtain the DMG and `SHA256SUMS.txt` from the release page linked above.
 2. Check the file in Terminal, substituting the path to your download:
 
    ```sh
@@ -20,7 +20,7 @@ The [GitHub repository](https://github.com/JALin2000/LocalVerbatim) provides the
    ```
 
 3. Open the DMG and drag **LocalVerbatim** to **Applications**. Eject the DMG and start the app from Applications.
-4. If macOS blocks an unnotarized trial, first confirm its source and checksum. Consult [Apple's instructions for opening apps safely](https://support.apple.com/en-gb/102445); the supported per-app flow is in System Settings → Privacy & Security after an attempted launch. Do not disable Gatekeeper or remove quarantine attributes as an installation step. A damaged/malware warning should be investigated, not dismissed as an expected permission prompt.
+4. If macOS blocks this unnotarized preview, first confirm its source and checksum. Consult [Apple's instructions for opening apps safely](https://support.apple.com/en-gb/102445); after an attempted launch, the supported per-app flow is **System Settings → Privacy & Security → Open Anyway**. Do not disable Gatekeeper or remove quarantine attributes as an installation step. A damaged/malware warning should be investigated, not dismissed as an expected permission prompt.
 
 To build instead, follow the [developer guide](DEVELOPMENT.md). The development app must stay alongside its runtime/engine; it is not the standalone Applications package.
 

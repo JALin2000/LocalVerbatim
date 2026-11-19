@@ -1,0 +1,4 @@
+Verbatim copyright/license comment blocks from pyyaml-6.0.3.tar.gz.
+Archive SHA256: d76623373421df22fb4cf8817020cbb7ef15c725b9d5e45f17e189bfc384190f
+File names below identify original archive members; duplicate comment text is listed once.
+This is a conservative source-notice supplement and can include optional native implementations.

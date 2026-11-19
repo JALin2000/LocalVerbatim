@@ -1,0 +1,715 @@
+Verbatim copyright/license comment blocks from mlx-v0.32.4.tar.gz.
+Archive SHA256: 0276db8d7bf1af8db6d4ae25c7c550abea4d5b3b6a16207610a5d4a0c19fe1a0
+File names below identify original archive members; duplicate comment text is listed once.
+This is a conservative source-notice supplement and can include optional native implementations.
+
+========================================================================
+Source member(s):
+mlx-0.32.4/mlx/3rdparty/pocketfft.h
+
+/*
+This file is part of pocketfft.
+
+Copyright (C) 2010-2022 Max-Planck-Society
+Copyright (C) 2019-2020 Peter Bell
+
+For the odd-sized DCT-IV transforms:
+  Copyright (C) 2003, 2007-14 Matteo Frigo
+  Copyright (C) 2003, 2007-14 Massachusetts Institute of Technology
+
+Authors: Martin Reinecke, Peter Bell
+
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the above copyright notice, this
+  list of conditions and the following disclaimer in the documentation and/or
+  other materials provided with the distribution.
+* Neither the name of the copyright holder nor the names of its contributors may
+  be used to endorse or promote products derived from this software without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+========================================================================
+Source member(s):
+mlx-0.32.4/mlx/allocator.h
+mlx-0.32.4/mlx/array.h
+mlx-0.32.4/mlx/backend/common/binary.h
+mlx-0.32.4/mlx/backend/common/load.cpp
+mlx-0.32.4/mlx/backend/common/reduce.h
+mlx-0.32.4/mlx/backend/common/ternary.h
+mlx-0.32.4/mlx/backend/cpu/arange.h
+mlx-0.32.4/mlx/backend/cpu/arg_reduce.cpp
+mlx-0.32.4/mlx/backend/cpu/binary.cpp
+mlx-0.32.4/mlx/backend/cpu/binary.h
+mlx-0.32.4/mlx/backend/cpu/binary_two.h
+mlx-0.32.4/mlx/backend/cpu/fft.cpp
+mlx-0.32.4/mlx/backend/cpu/indexing.cpp
+mlx-0.32.4/mlx/backend/cpu/reduce.cpp
+mlx-0.32.4/mlx/backend/cpu/scan.cpp
+mlx-0.32.4/mlx/backend/cpu/select.cpp
+mlx-0.32.4/mlx/backend/cpu/sort.cpp
+mlx-0.32.4/mlx/backend/cpu/ternary.h
+mlx-0.32.4/mlx/backend/cpu/threefry.cpp
+mlx-0.32.4/mlx/backend/cpu/threefry.h
+mlx-0.32.4/mlx/backend/cpu/unary.h
+mlx-0.32.4/mlx/backend/cuda/load.cpp
+mlx-0.32.4/mlx/backend/metal/kernels/arg_reduce.metal
+mlx-0.32.4/mlx/backend/metal/kernels/atomic.h
+mlx-0.32.4/mlx/backend/metal/kernels/bf16.h
+mlx-0.32.4/mlx/backend/metal/kernels/bf16_math.h
+mlx-0.32.4/mlx/backend/metal/kernels/complex.h
+mlx-0.32.4/mlx/backend/metal/kernels/defines.h
+mlx-0.32.4/mlx/backend/metal/kernels/erf.h
+mlx-0.32.4/mlx/backend/metal/kernels/expm1f.h
+mlx-0.32.4/mlx/backend/metal/kernels/random.metal
+mlx-0.32.4/mlx/backend/metal/matmul.h
+mlx-0.32.4/mlx/backend/metal/scan.cpp
+mlx-0.32.4/mlx/fft.cpp
+mlx-0.32.4/mlx/fft.h
+mlx-0.32.4/mlx/graph_utils.cpp
+mlx-0.32.4/mlx/graph_utils.h
+mlx-0.32.4/mlx/io/load.h
+mlx-0.32.4/mlx/io/safetensors.cpp
+mlx-0.32.4/mlx/linalg.cpp
+mlx-0.32.4/mlx/linalg.h
+mlx-0.32.4/mlx/mlx.h
+mlx-0.32.4/mlx/random.h
+mlx-0.32.4/mlx/scheduler.h
+mlx-0.32.4/mlx/stream.h
+mlx-0.32.4/mlx/types/bf16.h
+mlx-0.32.4/mlx/types/complex.h
+mlx-0.32.4/mlx/types/fp16.h
+mlx-0.32.4/mlx/types/half_types.h
+mlx-0.32.4/mlx/utils.cpp
+
+// Copyright © 2023 Apple Inc.
+
+
+========================================================================
+Source member(s):
+mlx-0.32.4/mlx/api.h
+mlx-0.32.4/mlx/backend/common/broadcasting.cpp
+mlx-0.32.4/mlx/backend/common/broadcasting.h
+mlx-0.32.4/mlx/backend/common/common.cpp
+mlx-0.32.4/mlx/backend/common/hadamard.h
+mlx-0.32.4/mlx/backend/common/metal_kernel.cpp
+mlx-0.32.4/mlx/backend/common/reduce.cpp
+mlx-0.32.4/mlx/backend/common/slicing.cpp
+mlx-0.32.4/mlx/backend/common/slicing.h
+mlx-0.32.4/mlx/backend/cpu/distributed.cpp
+mlx-0.32.4/mlx/backend/cpu/hadamard.cpp
+mlx-0.32.4/mlx/backend/cpu/luf.cpp
+mlx-0.32.4/mlx/backend/cpu/masked_mm.cpp
+mlx-0.32.4/mlx/backend/cpu/simd/math.h
+mlx-0.32.4/mlx/backend/cpu/slicing.h
+mlx-0.32.4/mlx/backend/cpu/svd.cpp
+mlx-0.32.4/mlx/backend/cpu/unary.cpp
+mlx-0.32.4/mlx/backend/cpu/unary_ops.h
+mlx-0.32.4/mlx/backend/gpu/slicing.h
+mlx-0.32.4/mlx/backend/metal/binary.cpp
+mlx-0.32.4/mlx/backend/metal/binary.h
+mlx-0.32.4/mlx/backend/metal/custom_kernel.cpp
+mlx-0.32.4/mlx/backend/metal/distributed.cpp
+mlx-0.32.4/mlx/backend/metal/event.cpp
+mlx-0.32.4/mlx/backend/metal/fence.cpp
+mlx-0.32.4/mlx/backend/metal/fft.cpp
+mlx-0.32.4/mlx/backend/metal/hadamard.cpp
+mlx-0.32.4/mlx/backend/metal/jit_kernels.cpp
+mlx-0.32.4/mlx/backend/metal/kernels.h
+mlx-0.32.4/mlx/backend/metal/kernels/binary.h
+mlx-0.32.4/mlx/backend/metal/kernels/binary.metal
+mlx-0.32.4/mlx/backend/metal/kernels/binary_two.h
+mlx-0.32.4/mlx/backend/metal/kernels/binary_two.metal
+mlx-0.32.4/mlx/backend/metal/kernels/copy.h
+mlx-0.32.4/mlx/backend/metal/kernels/copy.metal
+mlx-0.32.4/mlx/backend/metal/kernels/fence.metal
+mlx-0.32.4/mlx/backend/metal/kernels/fft.h
+mlx-0.32.4/mlx/backend/metal/kernels/fft.metal
+mlx-0.32.4/mlx/backend/metal/kernels/fft/radix.h
+mlx-0.32.4/mlx/backend/metal/kernels/fft/readwrite.h
+mlx-0.32.4/mlx/backend/metal/kernels/gated_delta_update_vjp.h
+mlx-0.32.4/mlx/backend/metal/kernels/hadamard.h
+mlx-0.32.4/mlx/backend/metal/kernels/indexing/gather.h
+mlx-0.32.4/mlx/backend/metal/kernels/indexing/scatter.h
+mlx-0.32.4/mlx/backend/metal/kernels/layer_norm.metal
+mlx-0.32.4/mlx/backend/metal/kernels/reduce.metal
+mlx-0.32.4/mlx/backend/metal/kernels/reduce_utils.h
+mlx-0.32.4/mlx/backend/metal/kernels/rms_norm.metal
+mlx-0.32.4/mlx/backend/metal/kernels/sdpa_vector.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/attn/attn.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/attn/loader.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/attn/mma.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/attn/params.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/attn/transforms.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/conv/conv.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/conv/kernels/steel_conv.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/conv/kernels/steel_conv.metal
+mlx-0.32.4/mlx/backend/metal/kernels/steel/conv/kernels/steel_conv_3d.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/conv/kernels/steel_conv_3d.metal
+mlx-0.32.4/mlx/backend/metal/kernels/steel/conv/kernels/steel_conv_general.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/conv/kernels/steel_conv_general.metal
+mlx-0.32.4/mlx/backend/metal/kernels/steel/conv/loader.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/conv/loaders/loader_channel_l.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/conv/loaders/loader_channel_n.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/conv/loaders/loader_general.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/conv/params.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/defines.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/gemm/gemm.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/gemm/kernels/steel_gemm_fused.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/gemm/kernels/steel_gemm_fused.metal
+mlx-0.32.4/mlx/backend/metal/kernels/steel/gemm/kernels/steel_gemm_gather.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/gemm/kernels/steel_gemm_gather.metal
+mlx-0.32.4/mlx/backend/metal/kernels/steel/gemm/kernels/steel_gemm_gather_nax.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/gemm/kernels/steel_gemm_gather_nax.metal
+mlx-0.32.4/mlx/backend/metal/kernels/steel/gemm/kernels/steel_gemm_masked.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/gemm/kernels/steel_gemm_masked.metal
+mlx-0.32.4/mlx/backend/metal/kernels/steel/gemm/kernels/steel_gemm_segmented.metal
+mlx-0.32.4/mlx/backend/metal/kernels/steel/gemm/kernels/steel_gemm_splitk.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/gemm/kernels/steel_gemm_splitk.metal
+mlx-0.32.4/mlx/backend/metal/kernels/steel/gemm/loader.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/gemm/mma.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/gemm/params.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/gemm/transforms.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/utils.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/utils/integral_constant.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/utils/type_traits.h
+mlx-0.32.4/mlx/backend/metal/kernels/ternary.h
+mlx-0.32.4/mlx/backend/metal/kernels/ternary.metal
+mlx-0.32.4/mlx/backend/metal/kernels/unary.h
+mlx-0.32.4/mlx/backend/metal/kernels/unary.metal
+mlx-0.32.4/mlx/backend/metal/nojit_kernels.cpp
+mlx-0.32.4/mlx/backend/metal/normalization.cpp
+mlx-0.32.4/mlx/backend/metal/slicing.cpp
+mlx-0.32.4/mlx/backend/metal/ternary.cpp
+mlx-0.32.4/mlx/backend/metal/ternary.h
+mlx-0.32.4/mlx/backend/metal/unary.cpp
+mlx-0.32.4/mlx/backend/metal/unary.h
+mlx-0.32.4/mlx/backend/no_cpu/primitives.cpp
+mlx-0.32.4/mlx/backend/no_gpu/event.cpp
+mlx-0.32.4/mlx/backend/no_gpu/fence.cpp
+mlx-0.32.4/mlx/distributed/distributed.cpp
+mlx-0.32.4/mlx/distributed/distributed.h
+mlx-0.32.4/mlx/distributed/distributed_impl.h
+mlx-0.32.4/mlx/distributed/mpi/mpi.cpp
+mlx-0.32.4/mlx/distributed/mpi/mpi.h
+mlx-0.32.4/mlx/distributed/mpi/mpi_declarations.h
+mlx-0.32.4/mlx/distributed/mpi/no_mpi.cpp
+mlx-0.32.4/mlx/distributed/nccl/nccl.h
+mlx-0.32.4/mlx/distributed/nccl/no_nccl.cpp
+mlx-0.32.4/mlx/distributed/ops.cpp
+mlx-0.32.4/mlx/distributed/ops.h
+mlx-0.32.4/mlx/distributed/primitives.cpp
+mlx-0.32.4/mlx/distributed/primitives.h
+mlx-0.32.4/mlx/distributed/ring/no_ring.cpp
+mlx-0.32.4/mlx/distributed/ring/ring.cpp
+mlx-0.32.4/mlx/distributed/ring/ring.h
+mlx-0.32.4/mlx/einsum.cpp
+mlx-0.32.4/mlx/einsum.h
+mlx-0.32.4/mlx/event.h
+mlx-0.32.4/mlx/export.cpp
+mlx-0.32.4/mlx/export.h
+mlx-0.32.4/mlx/export_impl.h
+mlx-0.32.4/mlx/fence.h
+mlx-0.32.4/mlx/types/limits.h
+mlx-0.32.4/python/src/buffer.h
+mlx-0.32.4/python/src/convert.cpp
+mlx-0.32.4/python/src/convert.h
+mlx-0.32.4/python/src/export.cpp
+mlx-0.32.4/python/src/utils.cpp
+
+// Copyright © 2024 Apple Inc.
+
+
+========================================================================
+Source member(s):
+mlx-0.32.4/mlx/array.cpp
+mlx-0.32.4/mlx/backend/common/compiled.cpp
+mlx-0.32.4/mlx/backend/common/compiled.h
+mlx-0.32.4/mlx/backend/common/copy.h
+mlx-0.32.4/mlx/backend/common/utils.cpp
+mlx-0.32.4/mlx/backend/common/utils.h
+mlx-0.32.4/mlx/backend/cpu/binary_ops.h
+mlx-0.32.4/mlx/backend/cpu/cholesky.cpp
+mlx-0.32.4/mlx/backend/cpu/compiled.cpp
+mlx-0.32.4/mlx/backend/cpu/conv.cpp
+mlx-0.32.4/mlx/backend/cpu/copy.cpp
+mlx-0.32.4/mlx/backend/cpu/copy.h
+mlx-0.32.4/mlx/backend/cpu/eigh.cpp
+mlx-0.32.4/mlx/backend/cpu/gemms/bnns.cpp
+mlx-0.32.4/mlx/backend/cpu/inverse.cpp
+mlx-0.32.4/mlx/backend/cpu/lapack.h
+mlx-0.32.4/mlx/backend/cpu/logsumexp.cpp
+mlx-0.32.4/mlx/backend/cpu/matmul.cpp
+mlx-0.32.4/mlx/backend/cpu/primitives.cpp
+mlx-0.32.4/mlx/backend/cpu/qrf.cpp
+mlx-0.32.4/mlx/backend/cpu/softmax.cpp
+mlx-0.32.4/mlx/backend/gpu/copy.cpp
+mlx-0.32.4/mlx/backend/gpu/copy.h
+mlx-0.32.4/mlx/backend/gpu/eval.h
+mlx-0.32.4/mlx/backend/metal/allocator.cpp
+mlx-0.32.4/mlx/backend/metal/allocator.h
+mlx-0.32.4/mlx/backend/metal/compiled.cpp
+mlx-0.32.4/mlx/backend/metal/conv.cpp
+mlx-0.32.4/mlx/backend/metal/copy.cpp
+mlx-0.32.4/mlx/backend/metal/device.cpp
+mlx-0.32.4/mlx/backend/metal/device.h
+mlx-0.32.4/mlx/backend/metal/eval.cpp
+mlx-0.32.4/mlx/backend/metal/indexing.cpp
+mlx-0.32.4/mlx/backend/metal/jit/includes.h
+mlx-0.32.4/mlx/backend/metal/jit/indexing.h
+mlx-0.32.4/mlx/backend/metal/kernels/arange.h
+mlx-0.32.4/mlx/backend/metal/kernels/arange.metal
+mlx-0.32.4/mlx/backend/metal/kernels/binary_ops.h
+mlx-0.32.4/mlx/backend/metal/kernels/conv.metal
+mlx-0.32.4/mlx/backend/metal/kernels/gemv.h
+mlx-0.32.4/mlx/backend/metal/kernels/gemv.metal
+mlx-0.32.4/mlx/backend/metal/kernels/gemv_masked.h
+mlx-0.32.4/mlx/backend/metal/kernels/gemv_masked.metal
+mlx-0.32.4/mlx/backend/metal/kernels/indexing/indexing.h
+mlx-0.32.4/mlx/backend/metal/kernels/logsumexp.metal
+mlx-0.32.4/mlx/backend/metal/kernels/quantized.h
+mlx-0.32.4/mlx/backend/metal/kernels/quantized.metal
+mlx-0.32.4/mlx/backend/metal/kernels/quantized_nax.h
+mlx-0.32.4/mlx/backend/metal/kernels/quantized_nax.metal
+mlx-0.32.4/mlx/backend/metal/kernels/quantized_utils.h
+mlx-0.32.4/mlx/backend/metal/kernels/reduction/ops.h
+mlx-0.32.4/mlx/backend/metal/kernels/reduction/reduce_all.h
+mlx-0.32.4/mlx/backend/metal/kernels/reduction/reduce_col.h
+mlx-0.32.4/mlx/backend/metal/kernels/reduction/reduce_init.h
+mlx-0.32.4/mlx/backend/metal/kernels/reduction/reduce_row.h
+mlx-0.32.4/mlx/backend/metal/kernels/rope.metal
+mlx-0.32.4/mlx/backend/metal/kernels/scan.h
+mlx-0.32.4/mlx/backend/metal/kernels/scan.metal
+mlx-0.32.4/mlx/backend/metal/kernels/softmax.h
+mlx-0.32.4/mlx/backend/metal/kernels/softmax.metal
+mlx-0.32.4/mlx/backend/metal/kernels/sort.h
+mlx-0.32.4/mlx/backend/metal/kernels/sort.metal
+mlx-0.32.4/mlx/backend/metal/kernels/ternary_ops.h
+mlx-0.32.4/mlx/backend/metal/kernels/unary_ops.h
+mlx-0.32.4/mlx/backend/metal/kernels/utils.h
+mlx-0.32.4/mlx/backend/metal/logsumexp.cpp
+mlx-0.32.4/mlx/backend/metal/matmul.cpp
+mlx-0.32.4/mlx/backend/metal/metal.cpp
+mlx-0.32.4/mlx/backend/metal/metal.h
+mlx-0.32.4/mlx/backend/metal/primitives.cpp
+mlx-0.32.4/mlx/backend/metal/reduce.cpp
+mlx-0.32.4/mlx/backend/metal/rope.cpp
+mlx-0.32.4/mlx/backend/metal/softmax.cpp
+mlx-0.32.4/mlx/backend/metal/sort.cpp
+mlx-0.32.4/mlx/backend/metal/utils.cpp
+mlx-0.32.4/mlx/backend/metal/utils.h
+mlx-0.32.4/mlx/compile.cpp
+mlx-0.32.4/mlx/compile.h
+mlx-0.32.4/mlx/compile_impl.h
+mlx-0.32.4/mlx/dtype.cpp
+mlx-0.32.4/mlx/dtype.h
+mlx-0.32.4/mlx/fast.h
+mlx-0.32.4/mlx/io.h
+mlx-0.32.4/mlx/io/gguf.cpp
+mlx-0.32.4/mlx/io/gguf.h
+mlx-0.32.4/mlx/io/gguf_quants.cpp
+mlx-0.32.4/mlx/io/no_gguf.cpp
+mlx-0.32.4/mlx/io/no_safetensors.cpp
+mlx-0.32.4/mlx/ops.h
+mlx-0.32.4/mlx/primitives.cpp
+mlx-0.32.4/mlx/primitives.h
+mlx-0.32.4/mlx/random.cpp
+mlx-0.32.4/mlx/transforms.cpp
+mlx-0.32.4/mlx/transforms.h
+mlx-0.32.4/mlx/transforms_impl.h
+mlx-0.32.4/mlx/utils.h
+mlx-0.32.4/python/src/array.cpp
+mlx-0.32.4/python/src/constants.cpp
+mlx-0.32.4/python/src/fast.cpp
+mlx-0.32.4/python/src/fft.cpp
+mlx-0.32.4/python/src/indexing.cpp
+mlx-0.32.4/python/src/indexing.h
+mlx-0.32.4/python/src/linalg.cpp
+mlx-0.32.4/python/src/load.cpp
+mlx-0.32.4/python/src/load.h
+mlx-0.32.4/python/src/metal.cpp
+mlx-0.32.4/python/src/mlx.cpp
+mlx-0.32.4/python/src/ops.cpp
+mlx-0.32.4/python/src/random.cpp
+mlx-0.32.4/python/src/stream.cpp
+mlx-0.32.4/python/src/transforms.cpp
+mlx-0.32.4/python/src/trees.cpp
+mlx-0.32.4/python/src/trees.h
+mlx-0.32.4/python/src/utils.h
+
+// Copyright © 2023-2024 Apple Inc.
+
+
+========================================================================
+Source member(s):
+mlx-0.32.4/mlx/backend/common/buffer_cache.h
+mlx-0.32.4/mlx/backend/common/matmul.h
+mlx-0.32.4/mlx/backend/common/unary.h
+mlx-0.32.4/mlx/backend/cpu/eig.cpp
+mlx-0.32.4/mlx/backend/cpu/encoder.cpp
+mlx-0.32.4/mlx/backend/cpu/encoder.h
+mlx-0.32.4/mlx/backend/cpu/eval.cpp
+mlx-0.32.4/mlx/backend/cpu/eval.h
+mlx-0.32.4/mlx/backend/cpu/gemm.h
+mlx-0.32.4/mlx/backend/cpu/gemms/cblas.cpp
+mlx-0.32.4/mlx/backend/cpu/gemms/simd_bf16.cpp
+mlx-0.32.4/mlx/backend/cpu/gemms/simd_fp16.cpp
+mlx-0.32.4/mlx/backend/cpu/gemms/simd_gemm.h
+mlx-0.32.4/mlx/backend/cuda/allocator.h
+mlx-0.32.4/mlx/backend/cuda/compiled.cpp
+mlx-0.32.4/mlx/backend/cuda/conv.cpp
+mlx-0.32.4/mlx/backend/cuda/conv/conv.h
+mlx-0.32.4/mlx/backend/cuda/cublas_utils.cpp
+mlx-0.32.4/mlx/backend/cuda/cublas_utils.h
+mlx-0.32.4/mlx/backend/cuda/cuda.h
+mlx-0.32.4/mlx/backend/cuda/cuda_utils.h
+mlx-0.32.4/mlx/backend/cuda/cudnn_utils.cpp
+mlx-0.32.4/mlx/backend/cuda/cudnn_utils.h
+mlx-0.32.4/mlx/backend/cuda/custom_kernel.cpp
+mlx-0.32.4/mlx/backend/cuda/device.cpp
+mlx-0.32.4/mlx/backend/cuda/device.h
+mlx-0.32.4/mlx/backend/cuda/device/config.h
+mlx-0.32.4/mlx/backend/cuda/eval.cpp
+mlx-0.32.4/mlx/backend/cuda/event.h
+mlx-0.32.4/mlx/backend/cuda/fence.cpp
+mlx-0.32.4/mlx/backend/cuda/gemms/cublas_gemm.cpp
+mlx-0.32.4/mlx/backend/cuda/gemms/cublas_gemm.h
+mlx-0.32.4/mlx/backend/cuda/gemms/cublas_gemm_batched_12_0.cpp
+mlx-0.32.4/mlx/backend/cuda/gemms/gemv.h
+mlx-0.32.4/mlx/backend/cuda/gemms/grouped_gemm.h
+mlx-0.32.4/mlx/backend/cuda/indexing.cpp
+mlx-0.32.4/mlx/backend/cuda/jit_module.cpp
+mlx-0.32.4/mlx/backend/cuda/jit_module.h
+mlx-0.32.4/mlx/backend/cuda/lru_cache.h
+mlx-0.32.4/mlx/backend/cuda/matmul.cpp
+mlx-0.32.4/mlx/backend/cuda/no_cuda.cpp
+mlx-0.32.4/mlx/backend/cuda/primitives.cpp
+mlx-0.32.4/mlx/backend/cuda/quantized/cublas_qqmm.cpp
+mlx-0.32.4/mlx/backend/cuda/quantized/cublas_qqmm.h
+mlx-0.32.4/mlx/backend/cuda/quantized/qqmm.cpp
+mlx-0.32.4/mlx/backend/cuda/quantized/qqmm_impl.h
+mlx-0.32.4/mlx/backend/cuda/quantized/qqmm_utils.h
+mlx-0.32.4/mlx/backend/cuda/quantized/quantized.h
+mlx-0.32.4/mlx/backend/cuda/slicing.cpp
+mlx-0.32.4/mlx/backend/cuda/utils.cpp
+mlx-0.32.4/mlx/backend/cuda/utils.h
+mlx-0.32.4/mlx/backend/cuda/worker.cpp
+mlx-0.32.4/mlx/backend/cuda/worker.h
+mlx-0.32.4/mlx/backend/gpu/primitives.cpp
+mlx-0.32.4/mlx/backend/gpu/slicing.cpp
+mlx-0.32.4/mlx/backend/metal/kernels/indexing/gather_axis.h
+mlx-0.32.4/mlx/backend/metal/kernels/indexing/gather_front.h
+mlx-0.32.4/mlx/backend/metal/kernels/indexing/masked_scatter.h
+mlx-0.32.4/mlx/backend/metal/kernels/indexing/scatter_axis.h
+mlx-0.32.4/mlx/backend/metal/kernels/logging.h
+mlx-0.32.4/mlx/backend/metal/kernels/logsumexp.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/attn/nax.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/gemm/gemm_nax.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/gemm/kernels/steel_gemm_fused_nax.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/gemm/kernels/steel_gemm_fused_nax.metal
+mlx-0.32.4/mlx/backend/metal/kernels/steel/gemm/kernels/steel_gemm_segmented.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/gemm/nax.h
+mlx-0.32.4/mlx/backend/metal/no_metal.cpp
+mlx-0.32.4/mlx/backend/no_gpu/apple_memory.h
+mlx-0.32.4/mlx/backend/no_gpu/eval.cpp
+mlx-0.32.4/mlx/backend/no_gpu/linux_memory.h
+mlx-0.32.4/mlx/distributed/jaccl/jaccl.cpp
+mlx-0.32.4/mlx/distributed/jaccl/jaccl.h
+mlx-0.32.4/mlx/distributed/jaccl/lib/jaccl/group.h
+mlx-0.32.4/mlx/distributed/jaccl/lib/jaccl/jaccl.cpp
+mlx-0.32.4/mlx/distributed/jaccl/lib/jaccl/jaccl.h
+mlx-0.32.4/mlx/distributed/jaccl/lib/jaccl/rdma.cpp
+mlx-0.32.4/mlx/distributed/jaccl/lib/jaccl/rdma.h
+mlx-0.32.4/mlx/distributed/jaccl/lib/jaccl/reduction_ops.h
+mlx-0.32.4/mlx/distributed/jaccl/lib/jaccl/tcp.cpp
+mlx-0.32.4/mlx/distributed/jaccl/lib/jaccl/tcp.h
+mlx-0.32.4/mlx/distributed/jaccl/lib/jaccl/types.h
+mlx-0.32.4/mlx/distributed/jaccl/no_jaccl.cpp
+mlx-0.32.4/mlx/distributed/reduction_ops.h
+mlx-0.32.4/mlx/distributed/utils.cpp
+mlx-0.32.4/mlx/distributed/utils.h
+mlx-0.32.4/mlx/dtype_utils.cpp
+mlx-0.32.4/mlx/dtype_utils.h
+mlx-0.32.4/mlx/version.cpp
+mlx-0.32.4/mlx/version.h
+mlx-0.32.4/python/src/mlx_func.cpp
+mlx-0.32.4/python/src/mlx_func.h
+mlx-0.32.4/python/src/small_vector.h
+
+// Copyright © 2025 Apple Inc.
+
+
+========================================================================
+Source member(s):
+mlx-0.32.4/mlx/backend/common/metal_kernel.h
+mlx-0.32.4/mlx/backend/common/quantized.h
+mlx-0.32.4/mlx/backend/cpu/device_info.cpp
+mlx-0.32.4/mlx/backend/cpu/device_info.h
+mlx-0.32.4/mlx/backend/cuda/cusolver_utils.cpp
+mlx-0.32.4/mlx/backend/cuda/cusolver_utils.h
+mlx-0.32.4/mlx/backend/cuda/delayload.cpp
+mlx-0.32.4/mlx/backend/cuda/device_info.cpp
+mlx-0.32.4/mlx/backend/cuda/dirs.cpp
+mlx-0.32.4/mlx/backend/cuda/gemms/block_mask.h
+mlx-0.32.4/mlx/backend/cuda/gemms/gather_gemm.h
+mlx-0.32.4/mlx/backend/cuda/quantized/no_qqmm_impl.cpp
+mlx-0.32.4/mlx/backend/cuda/quantized/qmm/qmm.h
+mlx-0.32.4/mlx/backend/cuda/quantized/qmm/qmm_utils.h
+mlx-0.32.4/mlx/backend/cuda/quantized/qqmm_impl.cpp
+mlx-0.32.4/mlx/backend/cuda/quantized/quantized_utils.h
+mlx-0.32.4/mlx/backend/cuda/wddm.cpp
+mlx-0.32.4/mlx/backend/cuda/wddm.h
+mlx-0.32.4/mlx/backend/gpu/device_info.h
+mlx-0.32.4/mlx/backend/metal/cross_entropy.cpp
+mlx-0.32.4/mlx/backend/metal/device_info.cpp
+mlx-0.32.4/mlx/backend/metal/event.h
+mlx-0.32.4/mlx/backend/metal/gated_delta_update.cpp
+mlx-0.32.4/mlx/backend/metal/kernels/cross_entropy.h
+mlx-0.32.4/mlx/backend/metal/kernels/cross_entropy.metal
+mlx-0.32.4/mlx/backend/metal/kernels/gated_delta_nax_ops.h
+mlx-0.32.4/mlx/backend/metal/kernels/gated_delta_update_nax.h
+mlx-0.32.4/mlx/backend/metal/kernels/gated_delta_update_nax_vjp.h
+mlx-0.32.4/mlx/backend/metal/kernels/gather_mm_offsets.metal
+mlx-0.32.4/mlx/backend/metal/kernels/scaled_dot_product_attention_vjp.metal
+mlx-0.32.4/mlx/backend/metal/kernels/sdpa_blocked.h
+mlx-0.32.4/mlx/backend/metal/kernels/searchsorted.h
+mlx-0.32.4/mlx/backend/metal/kernels/searchsorted.metal
+mlx-0.32.4/mlx/backend/metal/kernels/steel/gemm/kernels/steel_gemm_segmented_nax.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/gemm/kernels/steel_gemm_segmented_nax.metal
+mlx-0.32.4/mlx/backend/metal/kernels/steel/gemm/kernels/steel_gemm_splitk_nax.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/gemm/kernels/steel_gemm_splitk_nax.metal
+mlx-0.32.4/mlx/backend/metal/kernels/steel/gemm/kernels/steel_gemm_thin_nax.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/gemm/kernels/steel_gemm_thin_nax.metal
+mlx-0.32.4/mlx/backend/no_cpu/device_info.cpp
+mlx-0.32.4/mlx/backend/no_gpu/device_info.cpp
+mlx-0.32.4/mlx/distributed/jaccl/lib/jaccl/mesh.cpp
+mlx-0.32.4/mlx/distributed/jaccl/lib/jaccl/mesh.h
+mlx-0.32.4/mlx/distributed/jaccl/lib/jaccl/mesh_impl.h
+mlx-0.32.4/mlx/distributed/jaccl/lib/jaccl/ring.cpp
+mlx-0.32.4/mlx/distributed/jaccl/lib/jaccl/ring.h
+mlx-0.32.4/mlx/distributed/jaccl/lib/jaccl/ring_impl.h
+mlx-0.32.4/mlx/error.h
+mlx-0.32.4/mlx/memory.cpp
+mlx-0.32.4/mlx/stream.cpp
+mlx-0.32.4/python/src/random.h
+
+// Copyright © 2026 Apple Inc.
+
+
+========================================================================
+Source member(s):
+mlx-0.32.4/mlx/backend/cpu/compiled_preamble.h
+
+// Copyright © 2023-24 Apple Inc.
+
+
+========================================================================
+Source member(s):
+mlx-0.32.4/mlx/backend/cpu/jit_compiler.cpp
+mlx-0.32.4/mlx/backend/cpu/jit_compiler.h
+mlx-0.32.4/mlx/backend/metal/resident.cpp
+mlx-0.32.4/mlx/backend/metal/resident.h
+mlx-0.32.4/mlx/fast_primitives.h
+
+// Copyright © 2024-2026 Apple Inc.
+
+
+========================================================================
+Source member(s):
+mlx-0.32.4/mlx/backend/cpu/quantized.cpp
+mlx-0.32.4/mlx/backend/metal/quantized.cpp
+mlx-0.32.4/mlx/backend/no_cpu/compiled.cpp
+mlx-0.32.4/mlx/backend/no_gpu/allocator.cpp
+mlx-0.32.4/mlx/backend/no_gpu/primitives.cpp
+mlx-0.32.4/mlx/device.cpp
+mlx-0.32.4/mlx/fast.cpp
+mlx-0.32.4/mlx/io/load.cpp
+mlx-0.32.4/mlx/ops.cpp
+mlx-0.32.4/mlx/scheduler.cpp
+
+// Copyright © 2023-2026 Apple Inc.
+
+
+========================================================================
+Source member(s):
+mlx-0.32.4/mlx/backend/cuda/allocator.cpp
+mlx-0.32.4/mlx/backend/cuda/quantized/quantized.cpp
+mlx-0.32.4/mlx/backend/cuda/scaled_dot_product_attention.cpp
+mlx-0.32.4/mlx/backend/metal/kernels/fp_quantized.h
+mlx-0.32.4/mlx/backend/metal/kernels/fp_quantized.metal
+mlx-0.32.4/mlx/backend/metal/kernels/fp_quantized_nax.h
+mlx-0.32.4/mlx/backend/metal/kernels/fp_quantized_nax.metal
+mlx-0.32.4/mlx/memory.h
+mlx-0.32.4/python/src/memory.cpp
+
+// Copyright © 2025-2026 Apple Inc.
+
+
+========================================================================
+Source member(s):
+mlx-0.32.4/mlx/backend/metal/kernels/cexpf.h
+
+// Copyright © 2025 Apple Inc.
+// Copyright © 2008-2013 NVIDIA Corporation
+// Copyright © 2013 Filipe RNC Maia
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// Forked from
+// https://github.com/NVIDIA/cccl/blob/main/thrust/thrust/detail/complex/cexpf.h
+
+
+========================================================================
+Source member(s):
+mlx-0.32.4/mlx/backend/metal/kernels/expm1f.h
+
+// Original license copied below:
+//  Copyright (c) 2015-2023 Norbert Juffa
+//  All rights reserved.
+//
+//  Redistribution and use in source and binary forms, with or without
+//  modification, are permitted provided that the following conditions
+//  are met:
+//
+//  1. Redistributions of source code must retain the above copyright
+//     notice, this list of conditions and the following disclaimer.
+//
+//  2. Redistributions in binary form must reproduce the above copyright
+//     notice, this list of conditions and the following disclaimer in the
+//     documentation and/or other materials provided with the distribution.
+//
+//  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+//  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+//  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+//  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+//  HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+//  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+//  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+//  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+//  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+//  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+//  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+========================================================================
+Source member(s):
+mlx-0.32.4/mlx/backend/metal/kernels/steel/attn/kernels/steel_attention.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/attn/kernels/steel_attention.metal
+mlx-0.32.4/mlx/backend/metal/kernels/steel/attn/kernels/steel_attention_nax.h
+mlx-0.32.4/mlx/backend/metal/kernels/steel/attn/kernels/steel_attention_nax.metal
+mlx-0.32.4/mlx/backend/metal/scaled_dot_product_attention.cpp
+
+// Copyright © 2024-26 Apple Inc.
+
+
+========================================================================
+Source member(s):
+mlx-0.32.4/mlx/backend/metal/reduce.h
+
+// Copyright @ 2023 - 2024 Apple Inc.
+
+
+========================================================================
+Source member(s):
+mlx-0.32.4/mlx/device.h
+mlx-0.32.4/python/src/cuda.cpp
+mlx-0.32.4/python/src/device.cpp
+
+// Copyright © 2023-2025 Apple Inc.
+
+
+========================================================================
+Source member(s):
+mlx-0.32.4/mlx/distributed/jaccl/lib/jaccl/threadpool.h
+mlx-0.32.4/mlx/threadpool.h
+
+// This code was modified from https://github.com/progschj/ThreadPool
+// The original License is copied below:
+//
+// Copyright (c) 2012 Jakob Progsch, Václav Zeman
+// This software is provided 'as-is', without any express or implied
+// warranty. In no event will the authors be held liable for any damages
+// arising from the use of this software.
+//
+// Permission is granted to anyone to use this software for any purpose,
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
+//
+//    1. The origin of this software must not be misrepresented; you must not
+//    claim that you wrote the original software. If you use this software
+//    in a product, an acknowledgment in the product documentation would be
+//    appreciated but is not required.
+//
+//    2. Altered source versions must be plainly marked as such, and must not be
+//    misrepresented as being the original software.
+//
+//    3. This notice may not be removed or altered from any source
+//    distribution.
+
+
+========================================================================
+Source member(s):
+mlx-0.32.4/mlx/small_vector.h
+
+// Copyright © 2025 Apple Inc.
+// Copyright © 2018 the V8 project authors.
+//
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions are
+// met:
+//
+//     * Redistributions of source code must retain the above copyright
+//       notice, this list of conditions and the following disclaimer.
+//     * Redistributions in binary form must reproduce the above
+//       copyright notice, this list of conditions and the following
+//       disclaimer in the documentation and/or other materials provided
+//       with the distribution.
+//     * Neither the name of Google Inc. nor the names of its
+//       contributors may be used to endorse or promote products derived
+//       from this software without specific prior written permission.
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+========================================================================
+Source member(s):
+mlx-0.32.4/python/src/distributed.cpp
+
+// Copyright  © 2024 Apple Inc.
+

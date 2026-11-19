@@ -1,5 +1,5 @@
 {
-  "basis": "Dependency metadata and license files from the tested v0.4.3 runtime; packages and binaries are not included in this source tree. Native embedded libraries require a separate distribution review.",
+  "basis": "Exact pruned application runtime, inspected without importing packages. Wheel source hashes are recorded in scripts/runtime-artifacts.json. Optional/development dependencies may be absent; this is not a full MLX Audio SDK environment.",
   "python_version": "3.13.15",
   "packages": [
     {
@@ -8,6 +8,12 @@
       "declared_license": "MIT",
       "preserved_license_files": [
         "LICENSES/dependencies/annotated_doc-0.0.6.dist-info/licenses/LICENSE"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/annotated_doc-0.0.6.dist-info/licenses/LICENSE",
+          "sha256": "fff170779a6acbf65abdb405c087f1cee1786691e4a96a4034517e4a504a0cdf"
+        }
       ]
     },
     {
@@ -16,6 +22,12 @@
       "declared_license": "MIT",
       "preserved_license_files": [
         "LICENSES/dependencies/annotated_types-0.8.0.dist-info/licenses/LICENSE"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/annotated_types-0.8.0.dist-info/licenses/LICENSE",
+          "sha256": "fe1049884b1a0d9342901e88e07f32925d24b3121d9972b6a6805fb9824b095d"
+        }
       ]
     },
     {
@@ -24,6 +36,12 @@
       "declared_license": "MIT",
       "preserved_license_files": [
         "LICENSES/dependencies/anyio-4.16.0.dist-info/licenses/LICENSE"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/anyio-4.16.0.dist-info/licenses/LICENSE",
+          "sha256": "5361ac9dc58f2ef5fd2e9b09c68297c17f04950909bbc8023bdb82eacf22c2b0"
+        }
       ]
     },
     {
@@ -32,6 +50,12 @@
       "declared_license": "MIT-0",
       "preserved_license_files": [
         "LICENSES/dependencies/cffi-2.1.1.dist-info/licenses/LICENSE"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/cffi-2.1.1.dist-info/licenses/LICENSE",
+          "sha256": "5ba24ddc57067f9249add644c3afc41a5d6dc37e23433ef759d95df370b0af63"
+        }
       ]
     },
     {
@@ -40,6 +64,12 @@
       "declared_license": "BSD-3-Clause",
       "preserved_license_files": [
         "LICENSES/dependencies/click-8.5.1.dist-info/licenses/LICENSE.txt"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/click-8.5.1.dist-info/licenses/LICENSE.txt",
+          "sha256": "9a8ad106a394e853bfe21f42f4e72d592819a22805d991b5f3275029292b658d"
+        }
       ]
     },
     {
@@ -48,6 +78,12 @@
       "declared_license": "MIT",
       "preserved_license_files": [
         "LICENSES/dependencies/filelock-4.2.10.dist-info/licenses/LICENSE"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/filelock-4.2.10.dist-info/licenses/LICENSE",
+          "sha256": "608c89d5060ae9921adccf3236695bc654a9946e12323ef6c021dfa04e294d48"
+        }
       ]
     },
     {
@@ -56,6 +92,12 @@
       "declared_license": "BSD-3-Clause",
       "preserved_license_files": [
         "LICENSES/dependencies/fsspec-2026.9.0.dist-info/licenses/LICENSE"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/fsspec-2026.9.0.dist-info/licenses/LICENSE",
+          "sha256": "2dc35496ce53a7307915c008a844aad53e772b49b34cdd00445067691407ec94"
+        }
       ]
     },
     {
@@ -64,6 +106,12 @@
       "declared_license": "MIT",
       "preserved_license_files": [
         "LICENSES/dependencies/h11-0.16.0.dist-info/licenses/LICENSE.txt"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/h11-0.16.0.dist-info/licenses/LICENSE.txt",
+          "sha256": "37db5bb85926db28a427a25867f10b1232003aea1be69ccb851138adb8e6f361"
+        }
       ]
     },
     {
@@ -72,6 +120,12 @@
       "declared_license": "Apache-2.0",
       "preserved_license_files": [
         "LICENSES/dependencies/hf_xet-1.8.0.dist-info/licenses/LICENSE"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/hf_xet-1.8.0.dist-info/licenses/LICENSE",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        }
       ]
     },
     {
@@ -80,6 +134,12 @@
       "declared_license": "BSD-3-Clause",
       "preserved_license_files": [
         "LICENSES/dependencies/httpcore2-2.16.0.dist-info/licenses/LICENSE.md"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/httpcore2-2.16.0.dist-info/licenses/LICENSE.md",
+          "sha256": "c4df125c807b0613501e943a5c92496dd11d2c16604ce396097a8dde396304d9"
+        }
       ]
     },
     {
@@ -88,6 +148,12 @@
       "declared_license": "BSD-3-Clause",
       "preserved_license_files": [
         "LICENSES/dependencies/httpx2-2.16.0.dist-info/licenses/LICENSE.md"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/httpx2-2.16.0.dist-info/licenses/LICENSE.md",
+          "sha256": "7e7d6dbaf7fe160d39fd6e84fd02c33cab96bcbea34d36998d545bceb4a19c30"
+        }
       ]
     },
     {
@@ -96,6 +162,12 @@
       "declared_license": "Apache-2.0",
       "preserved_license_files": [
         "LICENSES/dependencies/huggingface_hub-2.4.0.dist-info/licenses/LICENSE"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/huggingface_hub-2.4.0.dist-info/licenses/LICENSE",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        }
       ]
     },
     {
@@ -104,6 +176,12 @@
       "declared_license": "BSD-3-Clause",
       "preserved_license_files": [
         "LICENSES/dependencies/idna-3.20.dist-info/licenses/LICENSE.md"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/idna-3.20.dist-info/licenses/LICENSE.md",
+          "sha256": "1a9a4f0e3d479a27240ddd59a9137a66ab4a0f9dfdc8ca6188cc0bfd85187f04"
+        }
       ]
     },
     {
@@ -112,6 +190,12 @@
       "declared_license": "License :: OSI Approved :: BSD License",
       "preserved_license_files": [
         "LICENSES/dependencies/jinja2-3.1.6.dist-info/licenses/LICENSE.txt"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/jinja2-3.1.6.dist-info/licenses/LICENSE.txt",
+          "sha256": "3b49dcee4105eb37bac10faf1be260408fe85d252b8e9df2e0979fc1e094437b"
+        }
       ]
     },
     {
@@ -121,6 +205,16 @@
       "preserved_license_files": [
         "LICENSES/dependencies/markdown_it_py-4.3.0.dist-info/licenses/LICENSE",
         "LICENSES/dependencies/markdown_it_py-4.3.0.dist-info/licenses/LICENSE.markdown-it"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/markdown_it_py-4.3.0.dist-info/licenses/LICENSE",
+          "sha256": "4a2260d6e2cd0f5a151a1e86dbfe7d3ed552b1e2beabf9941c1ba5c49cbce484"
+        },
+        {
+          "path": "LICENSES/dependencies/markdown_it_py-4.3.0.dist-info/licenses/LICENSE.markdown-it",
+          "sha256": "792c48c5a849a15fdf9e37e8bcf9e6d1dd13b32b46c642a748a0a46a9919d473"
+        }
       ]
     },
     {
@@ -129,6 +223,12 @@
       "declared_license": "BSD-3-Clause",
       "preserved_license_files": [
         "LICENSES/dependencies/markupsafe-3.0.4.dist-info/licenses/LICENSE.txt"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/markupsafe-3.0.4.dist-info/licenses/LICENSE.txt",
+          "sha256": "489a8e1108509ed98a37bb983e11e0f7e1d31f0bd8f99a79c8448e7ff37d07ea"
+        }
       ]
     },
     {
@@ -137,6 +237,12 @@
       "declared_license": "License :: OSI Approved :: MIT License",
       "preserved_license_files": [
         "LICENSES/dependencies/mdurl-0.1.2.dist-info/LICENSE"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/mdurl-0.1.2.dist-info/LICENSE",
+          "sha256": "7c605df6e28667a9603118e98274f64a49ce3eed0d26fccce9534a345e0ef955"
+        }
       ]
     },
     {
@@ -145,6 +251,12 @@
       "declared_license": "MIT",
       "preserved_license_files": [
         "LICENSES/dependencies/miniaudio-1.73.dist-info/licenses/LICENSE"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/miniaudio-1.73.dist-info/licenses/LICENSE",
+          "sha256": "3e793d703da08a12a501ff6e7d5767d0af9adaa423154755300af2fcdbab7677"
+        }
       ]
     },
     {
@@ -153,6 +265,12 @@
       "declared_license": "MIT",
       "preserved_license_files": [
         "LICENSES/dependencies/mlx-0.32.4.dist-info/licenses/LICENSE"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/mlx-0.32.4.dist-info/licenses/LICENSE",
+          "sha256": "ccfab7ccb2ea306f71531c8ca77bb55507606cd90768b1e32b8b52ab5b48cf01"
+        }
       ]
     },
     {
@@ -161,6 +279,12 @@
       "declared_license": "MIT",
       "preserved_license_files": [
         "LICENSES/dependencies/mlx_audio-0.6.5.dist-info/licenses/LICENSE"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/mlx_audio-0.6.5.dist-info/licenses/LICENSE",
+          "sha256": "11d27e0259dec3a323fa6c04c330621d0950ab96c6760d5aac3e2e97229e6f22"
+        }
       ]
     },
     {
@@ -168,7 +292,18 @@
       "version": "0.32.4",
       "declared_license": "MIT",
       "preserved_license_files": [
+        "LICENSES/dependencies/mlx/include/metal_cpp/LICENSE.txt",
         "LICENSES/dependencies/mlx_metal-0.32.4.dist-info/licenses/LICENSE"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/mlx/include/metal_cpp/LICENSE.txt",
+          "sha256": "f4e92c7fe2aa066e294c0da9d08683dc9fb741ee6e6debbfad99a0c96e07c1f2"
+        },
+        {
+          "path": "LICENSES/dependencies/mlx_metal-0.32.4.dist-info/licenses/LICENSE",
+          "sha256": "ccfab7ccb2ea306f71531c8ca77bb55507606cd90768b1e32b8b52ab5b48cf01"
+        }
       ]
     },
     {
@@ -177,22 +312,102 @@
       "declared_license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
       "preserved_license_files": [
         "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/LICENSE.txt",
+        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/_core/include/numpy/libdivide/LICENSE.txt",
+        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/_core/src/common/pythoncapi-compat/COPYING",
+        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/_core/src/highway/LICENSE",
+        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/_core/src/npysort/x86-simd-sort/LICENSE.md",
+        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/_core/src/umath/svml/LICENSE",
+        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/fft/pocketfft/LICENSE.md",
+        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/linalg/lapack_lite/LICENSE.txt",
         "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/ma/LICENSE",
         "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/random/LICENSE.md",
+        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/random/src/distributions/LICENSE.md",
         "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/random/src/mt19937/LICENSE.md",
-        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/random/src/sfc64/LICENSE.md",
         "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/random/src/pcg64/LICENSE.md",
         "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/random/src/philox/LICENSE.md",
+        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/random/src/sfc64/LICENSE.md",
         "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/random/src/splitmix64/LICENSE.md",
-        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/random/src/distributions/LICENSE.md",
-        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/fft/pocketfft/LICENSE.md",
-        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/_core/src/highway/LICENSE",
-        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/_core/src/multiarray/dragon4_LICENSE.txt",
-        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/_core/src/umath/svml/LICENSE",
-        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/_core/src/common/pythoncapi-compat/COPYING",
-        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/_core/src/npysort/x86-simd-sort/LICENSE.md",
-        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/_core/include/numpy/libdivide/LICENSE.txt",
-        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/linalg/lapack_lite/LICENSE.txt"
+        "LICENSES/dependencies/numpy/_core/include/numpy/random/LICENSE.txt",
+        "LICENSES/dependencies/numpy/ma/LICENSE",
+        "LICENSES/dependencies/numpy/random/LICENSE.md"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/LICENSE.txt",
+          "sha256": "649a589ab31076e79e9ce62ba24eae9959598124176640dbc95f87bd10f34fcf"
+        },
+        {
+          "path": "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/_core/include/numpy/libdivide/LICENSE.txt",
+          "sha256": "fbc539f47d0cf83bc61378080fb873d5c14630126cacbfe754035c3926daa5ec"
+        },
+        {
+          "path": "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/_core/src/common/pythoncapi-compat/COPYING",
+          "sha256": "3f2c1ffa76383a55ae0aac01c9737cd70050dff63e1f026694fbe9d662573c98"
+        },
+        {
+          "path": "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/_core/src/highway/LICENSE",
+          "sha256": "e340270d4f64384569a91d546acb5b094d69ce47f0c015db77abb74dc6f815af"
+        },
+        {
+          "path": "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/_core/src/npysort/x86-simd-sort/LICENSE.md",
+          "sha256": "211e7d737d6179a08f791ebb0a99897ce7cd2457410c542876d125576edfe910"
+        },
+        {
+          "path": "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/_core/src/umath/svml/LICENSE",
+          "sha256": "c17011467b4fe6e20fbfbeda4df09e58c2bca5480a063e55735a4000a379aad9"
+        },
+        {
+          "path": "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/fft/pocketfft/LICENSE.md",
+          "sha256": "a85ca13fdf90160b64a0698215868c13b74d835ad0a4e2ba44713b8c5058a056"
+        },
+        {
+          "path": "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/linalg/lapack_lite/LICENSE.txt",
+          "sha256": "a14cc25e10d40a3aa705b7de2fb764a6535d8ee9b2db4e1724900585457dfd55"
+        },
+        {
+          "path": "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/ma/LICENSE",
+          "sha256": "05f3b88351988ecfad10abe92c0c50e5875c6452d5009a0084cc291551ffcca6"
+        },
+        {
+          "path": "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/random/LICENSE.md",
+          "sha256": "103166b62b80443afb9eb3488e052ea06be0cff566b908f199e561fde49af19f"
+        },
+        {
+          "path": "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/random/src/distributions/LICENSE.md",
+          "sha256": "469778be8f33d54e1bcaab28c281cc472916d2d273f835e55bc487d30503face"
+        },
+        {
+          "path": "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/random/src/mt19937/LICENSE.md",
+          "sha256": "0e111337b25494a773106695f0e799f642b8567aaacca4f116a74a8177179156"
+        },
+        {
+          "path": "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/random/src/pcg64/LICENSE.md",
+          "sha256": "e7d4f4fb20358f314210a892ae17351e04993813646f697ec387385ca2a36918"
+        },
+        {
+          "path": "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/random/src/philox/LICENSE.md",
+          "sha256": "6f5828a57223d4cc7f8ea505a2623e7b978b242752c1515e355f46ba2cec1800"
+        },
+        {
+          "path": "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/random/src/sfc64/LICENSE.md",
+          "sha256": "9d4098846018319cd68e228ee6220361787f73bccbf00237a85e4fc9621b998f"
+        },
+        {
+          "path": "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/random/src/splitmix64/LICENSE.md",
+          "sha256": "268b0ca06759d31ea3ca68dd35f20e877916e927b1c2a835e4592a3c4354b1f9"
+        },
+        {
+          "path": "LICENSES/dependencies/numpy/_core/include/numpy/random/LICENSE.txt",
+          "sha256": "fbc539f47d0cf83bc61378080fb873d5c14630126cacbfe754035c3926daa5ec"
+        },
+        {
+          "path": "LICENSES/dependencies/numpy/ma/LICENSE",
+          "sha256": "05f3b88351988ecfad10abe92c0c50e5875c6452d5009a0084cc291551ffcca6"
+        },
+        {
+          "path": "LICENSES/dependencies/numpy/random/LICENSE.md",
+          "sha256": "103166b62b80443afb9eb3488e052ea06be0cff566b908f199e561fde49af19f"
+        }
       ]
     },
     {
@@ -203,34 +418,20 @@
         "LICENSES/dependencies/packaging-26.3.dist-info/licenses/LICENSE",
         "LICENSES/dependencies/packaging-26.3.dist-info/licenses/LICENSE.APACHE",
         "LICENSES/dependencies/packaging-26.3.dist-info/licenses/LICENSE.BSD"
-      ]
-    },
-    {
-      "name": "pip",
-      "version": "26.2.1",
-      "declared_license": "MIT",
-      "preserved_license_files": [
-        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/LICENSE.txt",
-        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/packaging/LICENSE",
-        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/packaging/LICENSE.APACHE",
-        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/packaging/LICENSE.BSD",
-        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/truststore/LICENSE",
-        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/msgpack/COPYING",
-        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/pygments/LICENSE",
-        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/distlib/LICENSE.txt",
-        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/distro/LICENSE",
-        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/cachecontrol/LICENSE.txt",
-        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/idna/LICENSE.md",
-        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/requests/LICENSE",
-        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/tomli/LICENSE",
-        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/certifi/LICENSE",
-        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/pyproject_hooks/LICENSE",
-        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/rich/LICENSE",
-        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/tomli_w/LICENSE",
-        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/urllib3/LICENSE.txt",
-        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/pkg_resources/LICENSE",
-        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/resolvelib/LICENSE",
-        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/platformdirs/LICENSE"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/packaging-26.3.dist-info/licenses/LICENSE",
+          "sha256": "cad1ef5bd340d73e074ba614d26f7deaca5c7940c3d8c34852e65c4909686c48"
+        },
+        {
+          "path": "LICENSES/dependencies/packaging-26.3.dist-info/licenses/LICENSE.APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+        },
+        {
+          "path": "LICENSES/dependencies/packaging-26.3.dist-info/licenses/LICENSE.BSD",
+          "sha256": "b70e7e9b742f1cc6f948b34c16aa39ffece94196364bc88ff0d2180f0028fac5"
+        }
       ]
     },
     {
@@ -239,6 +440,12 @@
       "declared_license": "BSD-3-Clause",
       "preserved_license_files": [
         "LICENSES/dependencies/psutil-7.2.2.dist-info/LICENSE"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/psutil-7.2.2.dist-info/LICENSE",
+          "sha256": "b89c063b3786e28e0c0a38f1931db61fed35e69dd2a2966fbecffee0f46c8d10"
+        }
       ]
     },
     {
@@ -247,6 +454,12 @@
       "declared_license": "BSD-3-Clause",
       "preserved_license_files": [
         "LICENSES/dependencies/pycparser-3.12.dist-info/licenses/LICENSE"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/pycparser-3.12.dist-info/licenses/LICENSE",
+          "sha256": "0a9e78156ae8b96caf1b4f11ac2df424b83de29736f9e757630548a6272fdf90"
+        }
       ]
     },
     {
@@ -255,6 +468,12 @@
       "declared_license": "MIT",
       "preserved_license_files": [
         "LICENSES/dependencies/pydantic-2.14.3.dist-info/licenses/LICENSE"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/pydantic-2.14.3.dist-info/licenses/LICENSE",
+          "sha256": "a9e186f3ca16b5eef84318e7a701721351a00cb7b8ae3a4394b67b49e3529ef3"
+        }
       ]
     },
     {
@@ -263,6 +482,12 @@
       "declared_license": "MIT",
       "preserved_license_files": [
         "LICENSES/dependencies/pydantic_core-2.50.4.dist-info/licenses/LICENSE"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/pydantic_core-2.50.4.dist-info/licenses/LICENSE",
+          "sha256": "2afdd30d54b4d62b6f488a6bcc1546e84ec5061f13f4209c03d012348783795a"
+        }
       ]
     },
     {
@@ -271,6 +496,12 @@
       "declared_license": "BSD-2-Clause",
       "preserved_license_files": [
         "LICENSES/dependencies/pygments-2.21.0.dist-info/licenses/LICENSE"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/pygments-2.21.0.dist-info/licenses/LICENSE",
+          "sha256": "a9d66f1d526df02e29dce73436d34e56e8632f46c275bbdffc70569e882f9f17"
+        }
       ]
     },
     {
@@ -279,6 +510,12 @@
       "declared_license": "MIT",
       "preserved_license_files": [
         "LICENSES/dependencies/pyyaml-6.0.3.dist-info/licenses/LICENSE"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/pyyaml-6.0.3.dist-info/licenses/LICENSE",
+          "sha256": "8d3928f9dc4490fd635707cb88eb26bd764102a7282954307d3e5167a577e8a4"
+        }
       ]
     },
     {
@@ -287,6 +524,12 @@
       "declared_license": "Apache-2.0 AND CNRI-Python",
       "preserved_license_files": [
         "LICENSES/dependencies/regex-2026.11.9.dist-info/licenses/LICENSE.txt"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/regex-2026.11.9.dist-info/licenses/LICENSE.txt",
+          "sha256": "bff55ef4cdcc8c14ce259f8e8ab60e264418440d6335f4dc138273fbd506144d"
+        }
       ]
     },
     {
@@ -295,6 +538,12 @@
       "declared_license": "MIT",
       "preserved_license_files": [
         "LICENSES/dependencies/rich-15.0.0.dist-info/licenses/LICENSE"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/rich-15.0.0.dist-info/licenses/LICENSE",
+          "sha256": "deed7c17a4318158190a3ea239cc879a5a50271cebb98ae7025f48fbe58dca15"
+        }
       ]
     },
     {
@@ -303,21 +552,40 @@
       "declared_license": "License :: OSI Approved :: Apache Software License",
       "preserved_license_files": [
         "LICENSES/dependencies/safetensors-0.8.0.dist-info/licenses/LICENSE"
-      ]
-    },
-    {
-      "name": "scipy",
-      "version": "1.18.1",
-      "declared_license": "See preserved upstream license text (contains component-specific terms).",
-      "preserved_license_files": [
-        "LICENSES/dependencies/scipy-1.18.1.dist-info/LICENSE.txt"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/safetensors-0.8.0.dist-info/licenses/LICENSE",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        }
       ]
     },
     {
       "name": "sentencepiece",
       "version": "0.2.3",
       "declared_license": "Apache-2.0",
-      "preserved_license_files": []
+      "preserved_license_files": [
+        "LICENSES/source-notices/sentencepiece-0.2.3/sentencepiece/LICENSE",
+        "LICENSES/source-notices/sentencepiece-0.2.3/sentencepiece/third_party/darts_clone/LICENSE",
+        "LICENSES/source-notices/sentencepiece-0.2.3/sentencepiece/third_party/libsais/LICENSE"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/source-notices/sentencepiece-0.2.3/sentencepiece/LICENSE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "basis": "Matching exact-version source archive; wheel omits license file"
+        },
+        {
+          "path": "LICENSES/source-notices/sentencepiece-0.2.3/sentencepiece/third_party/darts_clone/LICENSE",
+          "sha256": "155f59997298ee336602c49f9c1110f268ac394ca2197eb02647a3555935ad52",
+          "basis": "Matching exact-version source archive; wheel omits license file"
+        },
+        {
+          "path": "LICENSES/source-notices/sentencepiece-0.2.3/sentencepiece/third_party/libsais/LICENSE",
+          "sha256": "e38f5960984c2350dba530a89395789c0ea6039a1b551511b478b94dec1d5dfa",
+          "basis": "Matching exact-version source archive; wheel omits license file"
+        }
+      ]
     },
     {
       "name": "shellingham",
@@ -325,6 +593,12 @@
       "declared_license": "ISC License",
       "preserved_license_files": [
         "LICENSES/dependencies/shellingham-1.5.4.dist-info/LICENSE"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/shellingham-1.5.4.dist-info/LICENSE",
+          "sha256": "f388fd38cad13112c1dc0f669bbe80e7f84541edbafb72f3030d2ca7642c3c9d"
+        }
       ]
     },
     {
@@ -333,13 +607,28 @@
       "declared_license": "MIT",
       "preserved_license_files": [
         "LICENSES/dependencies/sounddevice-0.5.6.dist-info/licenses/LICENSE"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/sounddevice-0.5.6.dist-info/licenses/LICENSE",
+          "sha256": "b6eea21bbafbaf7a2177e492f1be6b5efc6f4e708b1980773de51cdaa52f8211"
+        }
       ]
     },
     {
       "name": "tokenizers",
       "version": "0.23.3",
       "declared_license": "License :: OSI Approved :: Apache Software License",
-      "preserved_license_files": []
+      "preserved_license_files": [
+        "LICENSES/source-notices/tokenizers-0.23.3/tokenizers/LICENSE"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/source-notices/tokenizers-0.23.3/tokenizers/LICENSE",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "basis": "Matching exact-version source archive; wheel omits license file"
+        }
+      ]
     },
     {
       "name": "tqdm",
@@ -347,6 +636,12 @@
       "declared_license": "MPL-2.0 AND MIT",
       "preserved_license_files": [
         "LICENSES/dependencies/tqdm-4.70.1.dist-info/licenses/LICENCE"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/tqdm-4.70.1.dist-info/licenses/LICENCE",
+          "sha256": "fcff87c3a47ce8028a8512aa182d4fcf0ad1c90544ee75cf9b343684cac194de"
+        }
       ]
     },
     {
@@ -355,6 +650,12 @@
       "declared_license": "Apache 2.0 License",
       "preserved_license_files": [
         "LICENSES/dependencies/transformers-5.22.2.dist-info/licenses/LICENSE"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/transformers-5.22.2.dist-info/licenses/LICENSE",
+          "sha256": "77fd4710def9ec3c0f6225800e0235f15a425abd4a8b03559127fcd782612049"
+        }
       ]
     },
     {
@@ -363,6 +664,12 @@
       "declared_license": "MIT",
       "preserved_license_files": [
         "LICENSES/dependencies/truststore-0.10.5.dist-info/licenses/LICENSE"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/truststore-0.10.5.dist-info/licenses/LICENSE",
+          "sha256": "33be7b7e8fa4fd19b1760e1a8ed8a668bdab852c91b692dd41424bcb725a9fca"
+        }
       ]
     },
     {
@@ -370,15 +677,18 @@
       "version": "0.29.1",
       "declared_license": "MIT",
       "preserved_license_files": [
-        "LICENSES/dependencies/typer-0.29.1.dist-info/licenses/LICENSE"
-      ]
-    },
-    {
-      "name": "typing_extensions",
-      "version": "4.16.0",
-      "declared_license": "PSF-2.0",
-      "preserved_license_files": [
-        "LICENSES/dependencies/typing_extensions-4.16.0.dist-info/licenses/LICENSE"
+        "LICENSES/dependencies/typer-0.29.1.dist-info/licenses/LICENSE",
+        "LICENSES/dependencies/typer/_click/LICENSE.txt"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/typer-0.29.1.dist-info/licenses/LICENSE",
+          "sha256": "58992cebcf8dfb6e40c4e2112ed12126c243666dca3912a3d78b7ecac4859d49"
+        },
+        {
+          "path": "LICENSES/dependencies/typer/_click/LICENSE.txt",
+          "sha256": "9a8ad106a394e853bfe21f42f4e72d592819a22805d991b5f3275029292b658d"
+        }
       ]
     },
     {
@@ -387,6 +697,26 @@
       "declared_license": "MIT",
       "preserved_license_files": [
         "LICENSES/dependencies/typing_inspection-0.4.5.dist-info/licenses/LICENSE"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/typing_inspection-0.4.5.dist-info/licenses/LICENSE",
+          "sha256": "804b59b25f2c31bd278f9202a19ae49a3945aa2664387e2d0a128c7cacc61ec3"
+        }
+      ]
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0",
+      "declared_license": "PSF-2.0",
+      "preserved_license_files": [
+        "LICENSES/dependencies/typing_extensions-4.16.0.dist-info/licenses/LICENSE"
+      ],
+      "license_file_hashes": [
+        {
+          "path": "LICENSES/dependencies/typing_extensions-4.16.0.dist-info/licenses/LICENSE",
+          "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf"
+        }
       ]
     }
   ]

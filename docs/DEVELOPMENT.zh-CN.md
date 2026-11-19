@@ -17,7 +17,7 @@ git clone https://github.com/JALin2000/LocalVerbatim.git
 cd LocalVerbatim
 ```
 
-以下命令均在此目录执行，其中包含 `Package.swift` 和 `setup.command`。v0.4.7 为实验性源码版，目前没有公开安装包。提交修改前请阅读[参与贡献](../CONTRIBUTING.md)。
+以下命令均在此目录执行，其中包含 `Package.swift` 和 `setup.command`。v0.4.8 提供明确标注未经公证的预览安装包，见[安装说明](INSTALL.zh-CN.md)。提交修改前请阅读[参与贡献](../CONTRIBUTING.md)。
 
 ## 开发版应用
 
@@ -66,11 +66,13 @@ bash tests/run_disfluency_tests.sh
 使用新的输出路径；打包脚本拒绝覆盖已有产物。独立运行时不能使用开发版虚拟环境代替。
 
 ```sh
-bash scripts/prepare_runtime.sh "$PWD/.runtime-stage"
-mkdir -p dist
-bash scripts/package_app.sh "$PWD/.runtime-stage/runtime" "$PWD/dist/LocalVerbatim.app" --download-model
-bash scripts/package_dmg.sh "$PWD/dist/LocalVerbatim.app" "$PWD/dist/LocalVerbatim-0.4.7-mac-arm64.dmg" --download-model
-shasum -a 256 dist/LocalVerbatim-0.4.7-mac-arm64.dmg
+release_work="$(mktemp -d /tmp/localverbatim-release.XXXXXX)"
+bash scripts/prepare_runtime.sh "$release_work/runtime-build"
+LOCALVERBATIM_BUILD_CACHE="$release_work/swift-cache" bash scripts/package_app.sh \
+  "$release_work/runtime-build/runtime" "$release_work/LocalVerbatim.app" --download-model
+bash scripts/package_dmg.sh "$release_work/LocalVerbatim.app" \
+  "$release_work/LocalVerbatim-0.4.8-preview-mac-arm64.dmg" --preview
+shasum -a 256 "$release_work/LocalVerbatim-0.4.8-preview-mac-arm64.dmg"
 ```
 
 `--download-model` 生成不带权重、首次使用时下载或导入模型的应用。运行时、识别引擎、原创图标、项目许可证和已整理的第三方许可会复制进应用；许可文件位于 `Contents/Resources/Legal/`，DMG 也包含中英文安装说明。
@@ -93,6 +95,8 @@ python3 scripts/check_source_release.py .
 
 SwiftUI/AppKit 负责桌面界面，ScreenCaptureKit 和 AVFoundation 采集音频。独立 Python 进程通过 MLX 推理，使用 JSON 行协议通信。独立安装版将设置和会议保存在应用包之外；一份模型串行处理两条音轨的有限长度片段。
 
-`requirements.lock.txt` 固定包版本，模型清单固定版本、文件大小和哈希。Python 依赖安装文件**尚未逐一固定哈希**，uv 所选 Python 构建及所有内嵌原生库仍需在正式发行时核查来源。构建通过不等于产物逐字节可复现，也不等于已通过全新 Mac 安装验证。
+开发环境的 `requirements.lock.txt` 固定完整依赖版本。独立安装包另外使用 [`scripts/runtime-artifacts.json`](../scripts/runtime-artifacts.json)，固定 CPython 的官方来源与 SHA-256，以及具体 macOS arm64 wheel 的官方来源、大小和 SHA-256；准备脚本校验后离线安装。独立包只提供本应用的 Qwen3-ASR、16 kHz 单声道数组识别流程，会移除未使用的 SciPy、测试数据和打包工具。它不是完整 MLX Audio SDK：上游元数据保留了 SciPy 依赖声明，应用验证器明确核对这一个已知差异；开发环境仍安装完整依赖。
+
+模型清单另行固定模型版本、文件大小和哈希。构建通过不等于产物逐字节可复现，也不等于已完成全新 Mac 首装测试。预览版与 Developer ID 签名、公证的具体步骤见 [macOS 发行打包](MAC_RELEASE.md)。
 
 v0.4.4 将应用、可执行文件、Swift target 和源码路径统一为 LocalVerbatim，中文显示名为本地逐字稿，识别行为不变。为了兼容现有安装，历史应用标识 `local.localscribe.meeting-recorder` 和默认数据根目录 `LocalScribe` 有意保留。开发／测试路径覆盖使用 `LOCALVERBATIM_ROOT`，旧的 `LOCALSCRIBE_ROOT` 仍作为备用兼容入口；构建缓存也兼容旧环境变量。正式 Developer ID 签名身份仍待配置。

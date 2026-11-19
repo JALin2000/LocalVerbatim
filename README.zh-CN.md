@@ -8,7 +8,9 @@
 
 分别录下麦克风和电脑声音，在本机转成逐字稿，保留完整录音，并在同一页面阅读逐字稿、记录笔记。
 
-**当前状态：** **LocalVerbatim／本地逐字稿** v0.4.7 实验性源码版。[GitHub 仓库](https://github.com/JALin2000/LocalVerbatim)仅提供源码，目前没有公开安装包。现有试用安装包采用临时签名，正式 Developer ID 签名、公证及全新 Mac 安装验证仍待完成。
+**[下载 Mac 预览版 DMG](https://github.com/JALin2000/LocalVerbatim/releases/download/v0.4.8-preview.1/LocalVerbatim-0.4.8-preview-mac-arm64.dmg)** · Apple Silicon · macOS 15+ · 约 117 MB。[发行说明与校验和](https://github.com/JALin2000/LocalVerbatim/releases/tag/v0.4.8-preview.1)。
+
+**当前状态：** **LocalVerbatim／本地逐字稿** v0.4.8 预览版。安装包采用**临时签名，未经过 Apple 公证**。首次尝试打开后，可能需要到“系统设置 → 隐私与安全性 → 仍要打开”手动允许；受管理的 Mac 可能禁止此例外，详见[安装说明](docs/INSTALL.zh-CN.md)。全新 Mac 首装及更广泛的系统／硬件验证仍待完成。
 
 从 LocalScribe 升级会继续使用现有会议库、模型、设置和术语模板，历史数据目录与应用标识保持稳定。无需搬动或重命名录音，详见[升级说明](docs/INSTALL.zh-CN.md#升级备份与卸载)。
 
@@ -42,9 +44,9 @@
 
 ## 开始使用
 
-构建此实验性源码版请阅读[开发说明](docs/DEVELOPMENT.zh-CN.md)。Python 依赖和模型权重会在初始化或首次使用时另行下载。
+下载 [Mac 预览版](https://github.com/JALin2000/LocalVerbatim/releases/download/v0.4.8-preview.1/LocalVerbatim-0.4.8-preview-mac-arm64.dmg)并按[安装说明](docs/INSTALL.zh-CN.md)操作。包内包含 Python 和识别依赖，模型在首次启动时下载或导入。从源码构建请阅读[开发说明](docs/DEVELOPMENT.zh-CN.md)。
 
-如果已获得维护者提供的试用 DMG，请按[安装说明](docs/INSTALL.zh-CN.md)操作。使用独立安装包不需要安装 Python、Homebrew 或 Xcode。模型就绪后，运行**设置 → 录音 → 10 秒收音测试**；重要会议前，确认两路均收到音频。
+使用独立安装包不需要安装 Python、Homebrew 或 Xcode。模型就绪后，运行**设置 → 录音 → 10 秒收音测试**；重要会议前，确认两路均收到音频。
 
 | 文档 | 简体中文 | English |
 |---|---|---|

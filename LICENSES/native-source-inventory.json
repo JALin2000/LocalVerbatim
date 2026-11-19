@@ -1,0 +1,159 @@
+[
+  {
+    "component": "cpython-3.13.15",
+    "url": "https://www.python.org/ftp/python/3.13.15/Python-3.13.15.tar.xz",
+    "basis": "Exact version/source selected by parent release build recipe; hash records downloaded upstream artifact.",
+    "notices": [
+      {
+        "path": "LICENSES/native-sources/cpython-3.13.15/Doc/copyright.rst",
+        "sha256": "2f455e3bd119869bf01369ab852d87d11c9e67e5351a7ebc64ab2c0af344aff6",
+        "source_member": "Python-3.13.15/Doc/copyright.rst"
+      },
+      {
+        "path": "LICENSES/native-sources/cpython-3.13.15/Doc/license.rst",
+        "sha256": "952ac05720d7f1dcb63589b35eb0931b1442eb250230a4ad31198eddf0ad6abc",
+        "source_member": "Python-3.13.15/Doc/license.rst"
+      },
+      {
+        "path": "LICENSES/native-sources/cpython-3.13.15/LICENSE",
+        "sha256": "78b12c3a81360b357002334f0e70ea0e92eebf7a9b358805c03c48484945f3bb",
+        "source_member": "Python-3.13.15/LICENSE"
+      },
+      {
+        "path": "LICENSES/native-sources/cpython-3.13.15/Mac/BuildScript/resources/License.rtf",
+        "sha256": "ab6df6040a4e24babad38f98454eb3263722fa6a1c441bfaa271798efbe55f27",
+        "source_member": "Python-3.13.15/Mac/BuildScript/resources/License.rtf"
+      },
+      {
+        "path": "LICENSES/native-sources/cpython-3.13.15/Modules/expat/COPYING",
+        "sha256": "31b15de82aa19a845156169a17a5488bf597e561b2c318d159ed583139b25e87",
+        "source_member": "Python-3.13.15/Modules/expat/COPYING"
+      },
+      {
+        "path": "LICENSES/native-sources/cpython-3.13.15/Tools/msi/bundle/bootstrap/LICENSE.txt",
+        "sha256": "cb95daf98edda8e08a242e1060691b6941f0911692bf468a3f9c5e4b58c09b8f",
+        "source_member": "Python-3.13.15/Tools/msi/bundle/bootstrap/LICENSE.txt"
+      }
+    ],
+    "sha256": "1e66a7945a48390ee4c2a4268a0e4185884059a13c4aab6d148aa208deea4a76",
+    "status": "preserved"
+  },
+  {
+    "component": "portaudio-19.7.0",
+    "url": "https://codeload.github.com/PortAudio/portaudio/tar.gz/refs/tags/v19.7.0",
+    "basis": "Exact version/source selected by parent release build recipe; hash records downloaded upstream artifact.",
+    "notices": [
+      {
+        "path": "LICENSES/native-sources/portaudio-19.7.0/LICENSE.txt",
+        "sha256": "ec52a1952d701f94e5135719a47376da4ee0b4a0201f1cafb49f61db6480ac3d",
+        "source_member": "portaudio-19.7.0/LICENSE.txt"
+      },
+      {
+        "path": "LICENSES/native-sources/portaudio-19.7.0/bindings/cpp/AUTHORS",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "source_member": "portaudio-19.7.0/bindings/cpp/AUTHORS"
+      },
+      {
+        "path": "LICENSES/native-sources/portaudio-19.7.0/bindings/cpp/COPYING",
+        "sha256": "3ec8d97acf149e39aa440f39eb1126a6ec5089e2864cbecdf2d2952bc0a5ed83",
+        "source_member": "portaudio-19.7.0/bindings/cpp/COPYING"
+      },
+      {
+        "path": "LICENSES/native-sources/portaudio-19.7.0/doc/src/license.dox",
+        "sha256": "712b59060e2d982fa5701a10a73c190b45f66a3b5057d1afff0ed3181e5611b0",
+        "source_member": "portaudio-19.7.0/doc/src/license.dox"
+      }
+    ],
+    "sha256": "5af29ba58bbdbb7bbcefaaecc77ec8fc413f0db6f4c4e286c40c3e1b83174fa0",
+    "status": "preserved"
+  },
+  {
+    "component": "mlx-nanobind-3.1.0",
+    "url": "https://codeload.github.com/wjakob/nanobind/tar.gz/refs/tags/v3.1.0",
+    "basis": "Exact version/source selected by parent release build recipe; hash records downloaded upstream artifact.",
+    "notices": [
+      {
+        "path": "LICENSES/native-sources/mlx-nanobind-3.1.0/LICENSE",
+        "sha256": "f305091a4e57805870b217a28ea4b1f16610eece8457d2370f822a9696b75836",
+        "source_member": "nanobind-3.1.0/LICENSE"
+      }
+    ],
+    "sha256": "39659890a112e84e7263e4a263c71dd2621f866f7a4386ce95ef410e6c0e5c2f",
+    "status": "preserved"
+  },
+  {
+    "component": "mlx-fmt-12.1.0",
+    "url": "https://codeload.github.com/fmtlib/fmt/tar.gz/refs/tags/12.1.0",
+    "basis": "Exact version/source selected by parent release build recipe; hash records downloaded upstream artifact.",
+    "notices": [
+      {
+        "path": "LICENSES/native-sources/mlx-fmt-12.1.0/LICENSE",
+        "sha256": "07580f2a3b35709ce703d523f447b242f6dfec7582a8c0df102c7fa2849375f8",
+        "source_member": "fmt-12.1.0/LICENSE"
+      }
+    ],
+    "sha256": "ea7de4299689e12b6dddd392f9896f08fb0777ac7168897a244a6d6085043fea",
+    "status": "preserved"
+  },
+  {
+    "component": "mlx-json-3.11.3",
+    "url": "https://codeload.github.com/nlohmann/json/tar.gz/refs/tags/v3.11.3",
+    "basis": "Exact version/source selected by parent release build recipe; hash records downloaded upstream artifact.",
+    "notices": [
+      {
+        "path": "LICENSES/native-sources/mlx-json-3.11.3/LICENSE.MIT",
+        "sha256": "86b998c792894ccb911a1cb7994f7a9652894e7a094c0b5e45be2f553f45cf14",
+        "source_member": "json-3.11.3/LICENSE.MIT"
+      },
+      {
+        "path": "LICENSES/native-sources/mlx-json-3.11.3/docs/mkdocs/docs/home/license.md",
+        "sha256": "08c345dca1019879171c2c465410f7bee984bbfbdb177afd2d95bf9ff6267602",
+        "source_member": "json-3.11.3/docs/mkdocs/docs/home/license.md"
+      }
+    ],
+    "sha256": "0d8ef5af7f9794e3263480193c491549b2ba6cc74bb018906202ada498a79406",
+    "status": "preserved"
+  },
+  {
+    "component": "mlx-gguf-8fa6eb6",
+    "url": "https://codeload.github.com/antirez/gguf-tools/tar.gz/8fa6eb65236618e28fd7710a0fba565f7faa1848",
+    "basis": "Exact version/source selected by parent release build recipe; hash records downloaded upstream artifact.",
+    "notices": [
+      {
+        "path": "LICENSES/native-sources/mlx-gguf-8fa6eb6/LICENSE",
+        "sha256": "7cce16d2bf2e2ce6a7d70b5ecd5fb43c6409a97aa0750ff75c11823e6e8c9d05",
+        "source_member": "gguf-tools-8fa6eb65236618e28fd7710a0fba565f7faa1848/LICENSE"
+      }
+    ],
+    "sha256": "9e30bc1eb82cc2231150d39ce37dcdd6f844d6994fba18da83fc537a487ba86f",
+    "status": "preserved"
+  },
+  {
+    "component": "mlx-metal-cpp-26",
+    "url": "https://developer.apple.com/metal/cpp/files/metal-cpp_26.zip",
+    "basis": "Exact version/source selected by parent release build recipe; hash records downloaded upstream artifact.",
+    "notices": [
+      {
+        "path": "LICENSES/native-sources/mlx-metal-cpp-26/LICENSE.txt",
+        "sha256": "f4e92c7fe2aa066e294c0da9d08683dc9fb741ee6e6debbfad99a0c96e07c1f2",
+        "source_member": "metal-cpp/LICENSE.txt"
+      }
+    ],
+    "sha256": "4df3c078b9aadcb516212e9cb03004cbc5ce9a3e9c068fa3144d021db585a3a4",
+    "status": "preserved"
+  },
+  {
+    "component": "libyaml-0.2.5",
+    "url": "https://codeload.github.com/yaml/libyaml/tar.gz/refs/tags/0.2.5",
+    "basis": "Exact version/source selected by parent release build recipe; hash records downloaded upstream artifact.",
+    "notices": [
+      {
+        "path": "LICENSES/native-sources/libyaml-0.2.5/License",
+        "sha256": "c40112449f254b9753045925248313e9270efa36d226b22d82d4cc6c43c57f29",
+        "source_member": "libyaml-0.2.5/License"
+      }
+    ],
+    "sha256": "fa240dbf262be053f3898006d502d514936c818e422afdcf33921c63bed9bf2e",
+    "status": "preserved"
+  }
+]

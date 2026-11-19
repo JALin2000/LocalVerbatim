@@ -17,7 +17,7 @@ git clone https://github.com/JALin2000/LocalVerbatim.git
 cd LocalVerbatim
 ```
 
-Run the commands below from this directory, which contains `Package.swift` and `setup.command`. v0.4.7 is an experimental source release; no public installer is available yet. See [Contributing](../CONTRIBUTING.md) before submitting changes.
+Run the commands below from this directory, which contains `Package.swift` and `setup.command`. v0.4.8 has an explicitly unnotarized preview installer; see the [installation guide](INSTALL.md). See [Contributing](../CONTRIBUTING.md) before submitting changes.
 
 ## Development app
 
@@ -66,11 +66,13 @@ Manual microphone/system audio, global shortcut and first-run permission tests r
 Use fresh output paths; packaging refuses to overwrite existing products. The standalone runtime must not be the development virtual environment.
 
 ```sh
-bash scripts/prepare_runtime.sh "$PWD/.runtime-stage"
-mkdir -p dist
-bash scripts/package_app.sh "$PWD/.runtime-stage/runtime" "$PWD/dist/LocalVerbatim.app" --download-model
-bash scripts/package_dmg.sh "$PWD/dist/LocalVerbatim.app" "$PWD/dist/LocalVerbatim-0.4.7-mac-arm64.dmg" --download-model
-shasum -a 256 dist/LocalVerbatim-0.4.7-mac-arm64.dmg
+release_work="$(mktemp -d /tmp/localverbatim-release.XXXXXX)"
+bash scripts/prepare_runtime.sh "$release_work/runtime-build"
+LOCALVERBATIM_BUILD_CACHE="$release_work/swift-cache" bash scripts/package_app.sh \
+  "$release_work/runtime-build/runtime" "$release_work/LocalVerbatim.app" --download-model
+bash scripts/package_dmg.sh "$release_work/LocalVerbatim.app" \
+  "$release_work/LocalVerbatim-0.4.8-preview-mac-arm64.dmg" --preview
+shasum -a 256 "$release_work/LocalVerbatim-0.4.8-preview-mac-arm64.dmg"
 ```
 
 `--download-model` produces an app without weights, ready for the first-run download/import guide. The runtime, engine, original icon, root license and collected third-party notices are copied into the app. Legal materials are in `Contents/Resources/Legal/`; the DMG also includes English/Chinese installation notes.
@@ -93,6 +95,8 @@ Include only the approved source/documentation/license files when preparing an a
 
 SwiftUI/AppKit own the desktop UI; ScreenCaptureKit and AVFoundation receive audio. A separate Python process runs MLX inference and communicates through JSON lines. Settings and user recordings live outside a standalone app bundle. One model processes bounded audio windows from both tracks serially.
 
-`requirements.lock.txt` pins package versions, and the model manifest pins its revision, sizes and hashes. Python package artifacts are **not yet hash-locked**; uv's managed Python build and all transitive native libraries still need final release provenance review. A successful build is not a claim of byte-for-byte reproducibility or clean-Mac installation coverage.
+The development `requirements.lock.txt` pins the full dependency versions. Standalone packages additionally use [`scripts/runtime-artifacts.json`](../scripts/runtime-artifacts.json), pinning official CPython by URL/SHA-256 and specific macOS arm64 wheels by URL/size/SHA-256. Preparation verifies the downloads and installs offline. The standalone app supports its Qwen3-ASR/16 kHz mono-array recognition path; it removes unused SciPy, test data and build tools. It is not the full MLX Audio SDK: upstream metadata retains its broader SciPy requirement, and the app verifier checks this one documented gap. Development still installs the complete dependency set.
+
+The model manifest separately pins its revision, sizes and hashes. A successful build does not establish byte-for-byte reproducibility or clean-Mac first-install coverage. See [macOS release packaging](MAC_RELEASE.md) for preview builds and Developer ID signing/notarization.
 
 Version 0.4.4 updates the app, executable, Swift target and source paths to LocalVerbatim, with 本地逐字稿 as its Chinese display name. Recognition behavior is unchanged. The historical bundle identifier `local.localscribe.meeting-recorder` and default data root `LocalScribe` are retained intentionally for existing installations. `LOCALVERBATIM_ROOT` is the current development/test override; the older `LOCALSCRIBE_ROOT` remains accepted as a fallback. Build caches likewise accept the older environment variable. A public Developer ID signing identity remains pending.

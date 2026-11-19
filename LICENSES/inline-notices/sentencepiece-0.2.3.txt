@@ -1,0 +1,247 @@
+Verbatim copyright/license comment blocks from sentencepiece-0.2.3.tar.gz.
+Archive SHA256: 21618ad31f0453a1ebf5ec58defed99758d54af0b670546ecac639ddd8b86fbd
+File names below identify original archive members; duplicate comment text is listed once.
+This is a conservative source-notice supplement and can include optional native implementations.
+
+========================================================================
+Source member(s):
+sentencepiece-0.2.3/sentencepiece/lite/cached_sentencepiece_lite.cc
+sentencepiece-0.2.3/sentencepiece/lite/cached_sentencepiece_lite.h
+sentencepiece-0.2.3/sentencepiece/lite/cached_sentencepiece_lite_test.cc
+sentencepiece-0.2.3/sentencepiece/lite/sentencepiece_lite.cc
+sentencepiece-0.2.3/sentencepiece/lite/sentencepiece_lite.h
+sentencepiece-0.2.3/sentencepiece/lite/sentencepiece_lite_canonical_test.cc
+sentencepiece-0.2.3/sentencepiece/lite/sentencepiece_lite_test.cc
+sentencepiece-0.2.3/sentencepiece/lite/sentencepiece_model_converters.cc
+sentencepiece-0.2.3/sentencepiece/lite/sentencepiece_model_converters.h
+sentencepiece-0.2.3/sentencepiece/lite/spm_lite_main.cc
+sentencepiece-0.2.3/sentencepiece/lite/spm_to_fb_main.cc
+
+// Copyright 2026 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+========================================================================
+Source member(s):
+sentencepiece-0.2.3/sentencepiece/lite/sentencepiece_lite_benchmark.cc
+sentencepiece-0.2.3/sentencepiece/src/invalid_model_test.cc
+
+// Copyright 2026 Google Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+========================================================================
+Source member(s):
+sentencepiece-0.2.3/sentencepiece/src/bpe_model.cc
+sentencepiece-0.2.3/sentencepiece/src/bpe_model.h
+sentencepiece-0.2.3/sentencepiece/src/bpe_model_test.cc
+sentencepiece-0.2.3/sentencepiece/src/bpe_model_trainer.cc
+sentencepiece-0.2.3/sentencepiece/src/bpe_model_trainer.h
+sentencepiece-0.2.3/sentencepiece/src/bpe_model_trainer_test.cc
+sentencepiece-0.2.3/sentencepiece/src/builder.cc
+sentencepiece-0.2.3/sentencepiece/src/builder.h
+sentencepiece-0.2.3/sentencepiece/src/builder_test.cc
+sentencepiece-0.2.3/sentencepiece/src/char_model.cc
+sentencepiece-0.2.3/sentencepiece/src/char_model.h
+sentencepiece-0.2.3/sentencepiece/src/char_model_test.cc
+sentencepiece-0.2.3/sentencepiece/src/char_model_trainer.cc
+sentencepiece-0.2.3/sentencepiece/src/char_model_trainer.h
+sentencepiece-0.2.3/sentencepiece/src/char_model_trainer_test.cc
+sentencepiece-0.2.3/sentencepiece/src/compile_charsmap_main.cc
+sentencepiece-0.2.3/sentencepiece/src/filesystem.cc
+sentencepiece-0.2.3/sentencepiece/src/filesystem.h
+sentencepiece-0.2.3/sentencepiece/src/filesystem_test.cc
+sentencepiece-0.2.3/sentencepiece/src/gtest_prod.h
+sentencepiece-0.2.3/sentencepiece/src/init.cc
+sentencepiece-0.2.3/sentencepiece/src/init.h
+sentencepiece-0.2.3/sentencepiece/src/model_factory.cc
+sentencepiece-0.2.3/sentencepiece/src/model_factory.h
+sentencepiece-0.2.3/sentencepiece/src/model_factory_test.cc
+sentencepiece-0.2.3/sentencepiece/src/model_interface.cc
+sentencepiece-0.2.3/sentencepiece/src/model_interface.h
+sentencepiece-0.2.3/sentencepiece/src/model_interface_test.cc
+sentencepiece-0.2.3/sentencepiece/src/normalizer.cc
+sentencepiece-0.2.3/sentencepiece/src/normalizer.h
+sentencepiece-0.2.3/sentencepiece/src/normalizer_test.cc
+sentencepiece-0.2.3/sentencepiece/src/ret_check.h
+sentencepiece-0.2.3/sentencepiece/src/sentencepiece_processor.cc
+sentencepiece-0.2.3/sentencepiece/src/sentencepiece_processor.h
+sentencepiece-0.2.3/sentencepiece/src/sentencepiece_processor_benchmarks_test.cc
+sentencepiece-0.2.3/sentencepiece/src/sentencepiece_processor_parallel_test.cc
+sentencepiece-0.2.3/sentencepiece/src/sentencepiece_processor_test.cc
+sentencepiece-0.2.3/sentencepiece/src/spm_decode_main.cc
+sentencepiece-0.2.3/sentencepiece/src/spm_encode_main.cc
+sentencepiece-0.2.3/sentencepiece/src/spm_export_vocab_main.cc
+sentencepiece-0.2.3/sentencepiece/src/spm_normalize_main.cc
+sentencepiece-0.2.3/sentencepiece/src/spm_train_main.cc
+sentencepiece-0.2.3/sentencepiece/src/test_main.cc
+sentencepiece-0.2.3/sentencepiece/src/trainer_factory.cc
+sentencepiece-0.2.3/sentencepiece/src/trainer_factory.h
+sentencepiece-0.2.3/sentencepiece/src/trainer_factory_test.cc
+sentencepiece-0.2.3/sentencepiece/src/trainer_interface.cc
+sentencepiece-0.2.3/sentencepiece/src/trainer_interface.h
+sentencepiece-0.2.3/sentencepiece/src/trainer_interface_test.cc
+sentencepiece-0.2.3/sentencepiece/src/unicode_script.cc
+sentencepiece-0.2.3/sentencepiece/src/unicode_script.h
+sentencepiece-0.2.3/sentencepiece/src/unicode_script_map.h
+sentencepiece-0.2.3/sentencepiece/src/unicode_script_test.cc
+sentencepiece-0.2.3/sentencepiece/src/unigram_model.cc
+sentencepiece-0.2.3/sentencepiece/src/unigram_model.h
+sentencepiece-0.2.3/sentencepiece/src/unigram_model_test.cc
+sentencepiece-0.2.3/sentencepiece/src/unigram_model_trainer.cc
+sentencepiece-0.2.3/sentencepiece/src/unigram_model_trainer.h
+sentencepiece-0.2.3/sentencepiece/src/unigram_model_trainer_test.cc
+sentencepiece-0.2.3/sentencepiece/src/util.cc
+sentencepiece-0.2.3/sentencepiece/src/util.h
+sentencepiece-0.2.3/sentencepiece/src/util_test.cc
+sentencepiece-0.2.3/sentencepiece/src/word_model.cc
+sentencepiece-0.2.3/sentencepiece/src/word_model.h
+sentencepiece-0.2.3/sentencepiece/src/word_model_test.cc
+sentencepiece-0.2.3/sentencepiece/src/word_model_trainer.cc
+sentencepiece-0.2.3/sentencepiece/src/word_model_trainer.h
+sentencepiece-0.2.3/sentencepiece/src/word_model_trainer_test.cc
+
+// Copyright 2016 Google Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.!
+
+
+========================================================================
+Source member(s):
+sentencepiece-0.2.3/sentencepiece/src/freelist.h
+sentencepiece-0.2.3/sentencepiece/src/sentencepiece_trainer.cc
+sentencepiece-0.2.3/sentencepiece/src/sentencepiece_trainer.h
+sentencepiece-0.2.3/sentencepiece/src/sentencepiece_trainer_test.cc
+
+// Copyright 2018 Google Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.!
+
+
+========================================================================
+Source member(s):
+sentencepiece-0.2.3/sentencepiece/src/spec_parser.h
+
+// Copyright 2016 Google LLC.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.!
+
+
+========================================================================
+Source member(s):
+sentencepiece-0.2.3/sentencepiece/third_party/libsais/libsais.c
+sentencepiece-0.2.3/sentencepiece/third_party/libsais/libsais.h
+
+/*--
+
+This file is a part of libsais, a library for linear time suffix array,
+longest common prefix array and burrows wheeler transform construction.
+
+   Copyright (c) 2021-2025 Ilya Grebnov <ilya.grebnov@gmail.com>
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+Please see the file LICENSE for full copyright information.
+
+--*/
+
+========================================================================
+Source member(s):
+sentencepiece-0.2.3/sentencepiece/third_party/rapidhash/rapidhash.h
+
+/*
+ * rapidhash - Very fast, high quality, platform independant hashing algorithm.
+ * Copyright (C) 2024 Nicolas De Carli
+ *
+ * Based on 'wyhash', by Wang Yi <godspeed_china@yeah.net>
+ *
+ * BSD 2-Clause License (https://www.opensource.org/licenses/bsd-license.php)
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are
+ * met:
+ *
+ *    * Redistributions of source code must retain the above copyright
+ *      notice, this list of conditions and the following disclaimer.
+ *    * Redistributions in binary form must reproduce the above
+ *      copyright notice, this list of conditions and the following disclaimer
+ *      in the documentation and/or other materials provided with the
+ *      distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * You can contact the author at:
+ *   - rapidhash source repository: https://github.com/Nicoshev/rapidhash
+ */

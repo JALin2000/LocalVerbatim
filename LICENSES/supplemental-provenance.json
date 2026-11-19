@@ -1,0 +1,17 @@
+[
+  {
+    "path": "LICENSES/native-sources/mlx-robin-map-4ec1bf1/LICENSE",
+    "url": "https://raw.githubusercontent.com/Tessil/robin-map/4ec1bf19c6a96125ea22062f38c2cf5b958e448e/LICENSE",
+    "sha256": "11f2c685ba565a31aef1219f63a7a8845602c97bff70016b9e3278dfe51a2ec5"
+  },
+  {
+    "path": "LICENSES/rust-crates/symbolic-common-12.17.3/upstream-LICENSE",
+    "url": "https://raw.githubusercontent.com/getsentry/symbolic/12.17.3/LICENSE",
+    "sha256": "989aeccdc0127d426c2509116eff70f21b4552f08ebe9f468acc539cd121a692"
+  },
+  {
+    "path": "LICENSES/MPL-2.0.txt",
+    "url": "https://www.mozilla.org/media/MPL/2.0/index.f75d2927d3c1.txt",
+    "sha256": "3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04"
+  }
+]

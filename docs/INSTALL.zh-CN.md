@@ -8,11 +8,11 @@
 
 应用和约 4.08 GB 模型合计建议预留至少 6 GB，另留下载工作文件和录音所需空间。独立安装包内含 Python 运行时，使用时不需要开发工具或账号。
 
-[GitHub 仓库](https://github.com/JALin2000/LocalVerbatim)提供 v0.4.7 实验性源码版，目前没有公开安装包；从源码构建请阅读[开发说明](DEVELOPMENT.zh-CN.md)。下方 DMG 安装步骤仅适用于维护者另行提供的试用包。这些包采用临时签名，尚未公证。校验和可以确认文件内容一致，但不能单独证明发布者身份。
+从 [GitHub Release](https://github.com/JALin2000/LocalVerbatim/releases/tag/v0.4.8-preview.1) 下载 v0.4.8 预览版 DMG 和 `SHA256SUMS.txt`。此包**采用临时签名，未经过 Apple 公证**。校验和可以确认文件内容一致，但不能证明 Apple 已验证发布者身份；受管理的 Mac 可能禁止运行。从源码构建请阅读[开发说明](DEVELOPMENT.zh-CN.md)。
 
-## 安装已获得的 DMG
+## 安装预览版 DMG
 
-1. 从维护者的同一可信发行渠道获得 DMG 及其 SHA-256 校验和。
+1. 从上方 Release 页面获得 DMG 和 `SHA256SUMS.txt`。
 2. 在终端检查文件，将示例路径替换为实际下载路径：
 
    ```sh
@@ -20,7 +20,7 @@
    ```
 
 3. 打开 DMG，将 **LocalVerbatim／本地逐字稿** 拖入 **Applications／应用程序**。应用文件为 `LocalVerbatim.app`；推出镜像，从应用程序中启动。
-4. 若 macOS 阻止未公证试用版，请先确认来源和校验和，再参考 [Apple 官方安全打开应用说明](https://support.apple.com/en-gb/102445)。系统支持在尝试启动后，通过“系统设置 → 隐私与安全性”处理单个应用的打开请求。安装不需要关闭 Gatekeeper 或用命令移除隔离属性。“已损坏／恶意软件”提示应调查原因，不应一律视作普通权限提示。
+4. 若 macOS 阻止此未公证预览版，请先确认来源和校验和，再参考 [Apple 官方安全打开应用说明](https://support.apple.com/en-gb/102445)。系统支持在尝试启动后，通过“系统设置 → 隐私与安全性 → 仍要打开”处理单个应用的打开请求。安装不需要关闭 Gatekeeper 或用命令移除隔离属性。“已损坏／恶意软件”提示应调查原因，不应一律视作普通权限提示。
 
 从源码构建请阅读[开发说明](DEVELOPMENT.zh-CN.md)。开发版需要与其 runtime/engine 同目录，不能当作独立安装包直接移入 Applications。
 

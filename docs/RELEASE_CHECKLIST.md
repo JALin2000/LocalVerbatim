@@ -1,6 +1,6 @@
 # Release preparation / 发行准备
 
-This checklist separates the experimental v0.4.7 [source release](https://github.com/JALin2000/LocalVerbatim) from public installer preparation. There is no public installer yet. Open installer items do not imply that the source is unavailable.
+This checklist separates the [0.4.8 unnotarized preview installer](https://github.com/JALin2000/LocalVerbatim/releases/tag/v0.4.8-preview.1) from Developer ID/notarized distribution. Open signing and wider-device checks are disclosed preview limitations.
 
 ## Source preparation
 
@@ -18,18 +18,20 @@ This checklist separates the experimental v0.4.7 [source release](https://github
 
 Contribution guidance, issue templates and CI improve maintenance; they are separate from the original source's Apache-2.0 license and the installer checks below.
 
-## Public installer
+## Installer preparation
 
-- [ ] Complete exact-version native dependency/license review; collect remaining notices/source references as applicable.
-- [ ] Lock Python package artifacts/hashes and review the managed Python build provenance.
-- [ ] Verify every bundled native binary's architecture and minimum macOS version, then test the packaged app on a clean macOS 15 Mac. Runtime preparation selects macOS 15 arm64 wheels; wheel selection and local import checks do not prove minimum-version compatibility.
+- [x] Review the exact 42-package Qwen application runtime and native/static dependencies; ship notices, inventories and MPL-covered source. SciPy/GCC libraries are excluded.
+- [x] Pin the CPython archive by official source/SHA-256 and preparation wheels by source/size/SHA-256; install verified artifacts offline.
+- [x] Verify all 37 retained native files contain arm64 and require macOS 15 or earlier; run local native imports and synthetic English/Mandarin Qwen recognition.
+- [ ] Test the packaged app on a clean macOS 15 Mac. Binary inspection and local tests do not prove first-install or all-device compatibility.
 - [x] Preserve the historical bundle identifier and data paths across the rename.
-- [ ] Configure a Developer ID signing identity for public binaries.
-- [ ] Sign nested executables/native libraries, enable appropriate Hardened Runtime settings, notarize and staple.
+- [ ] Configure a Developer ID signing identity for notarized distribution. The current preview path is explicitly ad-hoc signed and unnotarized.
+- [x] Implement and test inside-out signing and preview DMG round-trip integrity checks.
+- [ ] Exercise Developer ID signing, Hardened Runtime and notarization/stapling with a real certificate. Scripts and minimal entitlements are prepared; no signing identity is currently configured.
 - [ ] Test a fresh Mac user account with no existing permissions, runtime or model cache.
 - [ ] Test supported macOS versions and representative M-series hardware, offline use, interrupted downloads, denied permissions, updates and external storage.
-- [ ] Publish checksums, release notes and only sanitized screenshots/examples after explicit release authorization.
+- [x] Prepare privacy-checked preview DMG, checksums and bilingual release notes under explicit preview-release authorization. No real meeting screenshots are included.
 
 The local build and packaging scripts do not publish to GitHub, enroll certificates or upload artifacts.
 
-v0.4.7 为实验性源码版，目前没有公开安装包。已整理原创部分 Apache-2.0 许可、集体署名、第三方许可、双语文档和参与贡献／安全报告说明；GitHub 私密漏洞报告功能仍需确认已开启。完整二进制许可核查、安装文件哈希、正式签名公证、CI 和多机首装仍待完成。源码公开与安装包准备分别记录。
+v0.4.7 源码已经公开；0.4.8 提供未公证预览安装包。已固定解释器及依赖文件哈希、核查精简后的实际运行时许可，并补充必要源码与隐私检查。未公证预览版必须明确标注安装限制；它不等于正式签名、公证或全新 Mac 验证已完成。正式 Developer ID 路径需要维护者配置会员、证书和本机公证凭据。源码公开、预览包准备与公证发行分别记录。

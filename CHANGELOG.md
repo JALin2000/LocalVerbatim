@@ -1,6 +1,6 @@
 # Changelog
 
-Version 0.4.7 is the first public source snapshot. Earlier entries describe local development versions; no public binary installer has been released.
+Version 0.4.7 is the first public source snapshot; 0.4.8 adds the first unnotarized Mac installer preview. Earlier entries describe local development versions.
 
 ## Source publication
 
@@ -8,6 +8,14 @@ Version 0.4.7 is the first public source snapshot. Earlier entries describe loca
 - Use invented regression fixtures and exclude recordings, transcripts, runtime, model weights, diagnostics and local development history.
 - Disable Hugging Face telemetry and implicit token use in the command-line model installer as well as the app.
 - Correct the SwiftPM macOS deployment declaration for Swift tools 5.10.
+
+## 0.4.8 — installer preview
+
+- Prepare a self-contained Apple Silicon DMG with first-run model download and explicit unnotarized-preview labeling.
+- Pin the CPython archive by official URL/SHA-256 and preparation wheels by URL/size/SHA-256; install offline after verification.
+- Bundle the tested Qwen3-ASR application runtime without unused SciPy/GCC libraries, packaging tools, test data or bytecode. Keep full development dependencies separate.
+- Include exact runtime/native dependency inventories, embedded-component notices and required MPL source files.
+- Add inside-out native signing, optional Developer ID/notarization tooling, DMG round-trip signature checks and a private-data release checker.
 
 ## 0.4.7
 

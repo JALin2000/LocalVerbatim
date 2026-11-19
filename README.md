@@ -8,7 +8,9 @@ Local meeting recording and English/Mandarin transcription for Apple Silicon Mac
 
 Record your microphone and the audio playing on your computer as separate tracks. Transcribe both on your Mac, keep the original recording, and review the transcript alongside your notes.
 
-**Status:** v0.4.7 experimental source release of **LocalVerbatim / 本地逐字稿**. The [GitHub repository](https://github.com/JALin2000/LocalVerbatim) contains source code only; there is no public installer yet. Current trial installers are ad-hoc signed; Developer ID signing, notarization and clean-Mac distribution testing remain pending.
+**[Download the Mac preview DMG](https://github.com/JALin2000/LocalVerbatim/releases/download/v0.4.8-preview.1/LocalVerbatim-0.4.8-preview-mac-arm64.dmg)** · Apple Silicon · macOS 15+ · approximately 117 MB. [Release notes and checksums](https://github.com/JALin2000/LocalVerbatim/releases/tag/v0.4.8-preview.1).
+
+**Status:** v0.4.8 preview of **LocalVerbatim / 本地逐字稿**. This installer is **ad-hoc signed and not notarized by Apple**. First launch may require **System Settings → Privacy & Security → Open Anyway** after an attempted opening; managed Macs may prohibit it. See [installation instructions](docs/INSTALL.md). Clean-Mac first-install and wider hardware/OS testing remain pending.
 
 Upgrading from LocalScribe preserves the existing library, model, settings and templates. The historical data directory and bundle identifier intentionally remain stable; see [upgrade details](docs/INSTALL.md#upgrade-backup-and-uninstall).
 
@@ -42,9 +44,9 @@ Meetings are stored in `date · meeting title [ID]/`: the two full WAV tracks ar
 
 ## Get started
 
-To build this experimental source release, follow the [developer guide](docs/DEVELOPMENT.md). Python dependencies and model weights are downloaded separately during setup or first use.
+Download the [Mac preview](https://github.com/JALin2000/LocalVerbatim/releases/download/v0.4.8-preview.1/LocalVerbatim-0.4.8-preview-mac-arm64.dmg) and follow the [installation guide](docs/INSTALL.md). The installer includes Python and inference dependencies; the model is downloaded or imported on first use. To build from source, follow the [developer guide](docs/DEVELOPMENT.md).
 
-If the maintainer supplies a trial DMG, follow the [installation guide](docs/INSTALL.md). Installing a packaged app does not require Python, Homebrew or Xcode. After model setup, run **Settings → Recording → Run 10-second audio test** and confirm that both sources receive audio before an important meeting.
+Installing the packaged app does not require Python, Homebrew or Xcode. After model setup, run **Settings → Recording → Run 10-second audio test** and confirm that both sources receive audio before an important meeting.
 
 | Guide | English | 简体中文 |
 |---|---|---|

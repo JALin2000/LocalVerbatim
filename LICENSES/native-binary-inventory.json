@@ -1,0 +1,440 @@
+{
+  "basis": "Native Mach-O files and load commands in the pruned application runtime. Code signing can change byte hashes; final package integrity is verified separately. System framework/library paths describe platform dependencies, not redistributed files. Static components are described in the reviewed native-source inventory and README.",
+  "files": [
+    {
+      "path": "bin/python3.13",
+      "sha256_before_packaging": "4e1dfb03f82c5f7f253bbc3c04a79bb9f09a5cd0528829c32d6984ef309ebb2f",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+        "/System/Library/Frameworks/SystemConfiguration.framework/Versions/A/SystemConfiguration",
+        "/usr/lib/libSystem.B.dylib",
+        "/usr/lib/libedit.3.dylib",
+        "/usr/lib/libncurses.5.4.dylib",
+        "/usr/lib/libpanel.5.4.dylib",
+        "/usr/lib/libz.1.dylib"
+      ]
+    },
+    {
+      "path": "lib/libpython3.13.dylib",
+      "sha256_before_packaging": "45fd439f6c287f045a4efcd63dbaeb813bc55ba88f430520e71cfaddee05a94e",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+        "/System/Library/Frameworks/SystemConfiguration.framework/Versions/A/SystemConfiguration",
+        "/usr/lib/libSystem.B.dylib",
+        "/usr/lib/libedit.3.dylib",
+        "/usr/lib/libncurses.5.4.dylib",
+        "/usr/lib/libpanel.5.4.dylib",
+        "/usr/lib/libz.1.dylib",
+        "@rpath/libpython3.13.dylib"
+      ]
+    },
+    {
+      "path": "lib/python3.13/lib-dynload/_dbm.cpython-313-darwin.so",
+      "sha256_before_packaging": "ac3904588d41472522b85d8d780849b791fdada4094f2e58afac8dfbf24971da",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/usr/lib/libSystem.B.dylib"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/_cffi_backend.cpython-313-darwin.so",
+      "sha256_before_packaging": "b6b7aa5e3398c28734995dc96e7128030d7f020cb80dcc9cb836f745ddc42c34",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/usr/lib/libSystem.B.dylib",
+        "/usr/lib/libffi.dylib"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/_miniaudio.abi3.so",
+      "sha256_before_packaging": "316e4d613d31aa77c1604f5136d039a01a362775bdf7a55fc8b1790783ff3c2e",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox",
+        "/usr/lib/libSystem.B.dylib"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/_sounddevice_data/portaudio-binaries/libportaudio.dylib",
+      "sha256_before_packaging": "f48bedb7f4f79c0ca050776afe943458555db7341e0dae00511d109ccde907c0",
+      "architectures": [
+        "x86_64",
+        "arm64"
+      ],
+      "load_commands": [
+        "/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox",
+        "/System/Library/Frameworks/AudioUnit.framework/Versions/A/AudioUnit",
+        "/System/Library/Frameworks/CoreAudio.framework/Versions/A/CoreAudio",
+        "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+        "/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices",
+        "/usr/lib/libSystem.B.dylib",
+        "@rpath/libportaudio.dylib"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/hf_xet/hf_xet.abi3.so",
+      "sha256_before_packaging": "a01feb5015f26c1ce09b7656dd854911c3a46cfc81996a8cb9c9d4b5099f6a7e",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+        "/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation",
+        "/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit",
+        "/System/Library/Frameworks/OpenDirectory.framework/Versions/A/OpenDirectory",
+        "/System/Library/Frameworks/Security.framework/Versions/A/Security",
+        "/System/Library/Frameworks/SystemConfiguration.framework/Versions/A/SystemConfiguration",
+        "/usr/lib/libSystem.B.dylib",
+        "/usr/lib/libiconv.2.dylib",
+        "/usr/lib/libobjc.A.dylib",
+        "@rpath/hf_xet.abi3.so"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/markupsafe/_speedups.cpython-313-darwin.so",
+      "sha256_before_packaging": "829d288f83d84c9d50a6157108087c9325fe66910c178f8469eb95cc80a7a3f6",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/usr/lib/libSystem.B.dylib"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/mlx/core.cpython-313-darwin.so",
+      "sha256_before_packaging": "920126e942cf747a5d9182c46f99513826c38908152ab846c031013e75ebb394",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/System/Library/Frameworks/Accelerate.framework/Versions/A/Accelerate",
+        "/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation",
+        "/System/Library/Frameworks/Metal.framework/Versions/A/Metal",
+        "/System/Library/Frameworks/QuartzCore.framework/Versions/A/QuartzCore",
+        "/usr/lib/libSystem.B.dylib",
+        "/usr/lib/libc++.1.dylib",
+        "@rpath/libmlx.dylib"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/mlx/lib/libjaccl.dylib",
+      "sha256_before_packaging": "2429ba36c646aa37d148155c39d8fdbd5043588e5f5af2ac792a075181dbffb9",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/usr/lib/libSystem.B.dylib",
+        "/usr/lib/libc++.1.dylib",
+        "@rpath/libjaccl.dylib"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/mlx/lib/libmlx.dylib",
+      "sha256_before_packaging": "bbe4ee5ab0a23bb4a95c6c5ee9ddc7520abbfbdd64615ee9fbb3ad218d44786b",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/System/Library/Frameworks/Accelerate.framework/Versions/A/Accelerate",
+        "/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation",
+        "/System/Library/Frameworks/Metal.framework/Versions/A/Metal",
+        "/System/Library/Frameworks/QuartzCore.framework/Versions/A/QuartzCore",
+        "/usr/lib/libSystem.B.dylib",
+        "/usr/lib/libc++.1.dylib",
+        "/usr/lib/libobjc.A.dylib",
+        "@rpath/libmlx.dylib"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/numpy/_core/_multiarray_tests.cpython-313-darwin.so",
+      "sha256_before_packaging": "a1bc0513572fb3dee62c87ad71ba6ca4258bca349078681ff32f674a1aaa97e1",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/usr/lib/libSystem.B.dylib"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/numpy/_core/_multiarray_umath.cpython-313-darwin.so",
+      "sha256_before_packaging": "89bddd933d66a77a620788daadf70abdeda6926c1b519dc2565e911b7e128192",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/System/Library/Frameworks/Accelerate.framework/Versions/A/Accelerate",
+        "/usr/lib/libSystem.B.dylib",
+        "/usr/lib/libc++.1.dylib"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/numpy/_core/_operand_flag_tests.cpython-313-darwin.so",
+      "sha256_before_packaging": "60dbfe9e2060bb1aefe801aa22ef48b35294c541e89ef3403bde4150eae3b63e",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/usr/lib/libSystem.B.dylib"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/numpy/_core/_rational_tests.cpython-313-darwin.so",
+      "sha256_before_packaging": "d74306071921e815b10abcc1823d044ff3d0f685c43eb5c2c530adb02ffb97ae",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/usr/lib/libSystem.B.dylib"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/numpy/_core/_simd.cpython-313-darwin.so",
+      "sha256_before_packaging": "0f9901f14cfcd491486f2caa7db6bafb0e272936d9fc68e60b5da8b2dd0ff47a",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/usr/lib/libSystem.B.dylib"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/numpy/_core/_struct_ufunc_tests.cpython-313-darwin.so",
+      "sha256_before_packaging": "16d2cd0d42ef6bdee647d95f4863ff672e37abddee489c731d067780d2a1e405",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/usr/lib/libSystem.B.dylib"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/numpy/_core/_umath_tests.cpython-313-darwin.so",
+      "sha256_before_packaging": "2a21331533ab255539edecbdabbdf9a988b98ffba1518c9e33f127b7b8dd6ad7",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/usr/lib/libSystem.B.dylib"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/numpy/fft/_pocketfft_umath.cpython-313-darwin.so",
+      "sha256_before_packaging": "68b0b903cf3c88a7508c67d36d9ba4273853cf99a5ebd747c061e0316b36b69e",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/usr/lib/libSystem.B.dylib",
+        "/usr/lib/libc++.1.dylib"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/numpy/linalg/_umath_linalg.cpython-313-darwin.so",
+      "sha256_before_packaging": "1e8beaa31dc4b701e6c734f45d08c593c8d194570547ff15b1ace5767866a3ac",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/System/Library/Frameworks/Accelerate.framework/Versions/A/Accelerate",
+        "/usr/lib/libSystem.B.dylib"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/numpy/linalg/lapack_lite.cpython-313-darwin.so",
+      "sha256_before_packaging": "add1ebeb67640e301edf82d3c68bd9ecbea4b2171cca775a774e37d62c2db540",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/System/Library/Frameworks/Accelerate.framework/Versions/A/Accelerate",
+        "/usr/lib/libSystem.B.dylib"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/numpy/random/_bounded_integers.cpython-313-darwin.so",
+      "sha256_before_packaging": "e94fc9b5e6b3f88f1803c91618e371da7093dd6d2cc555389888819828222d4b",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/usr/lib/libSystem.B.dylib"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/numpy/random/_common.cpython-313-darwin.so",
+      "sha256_before_packaging": "5ad87eb4255b2ef602ddd8cda089e306f4d43a64fceff741a9995223964f0754",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/usr/lib/libSystem.B.dylib"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/numpy/random/_generator.cpython-313-darwin.so",
+      "sha256_before_packaging": "1d9a6597e3bca684dbe3365569dd295e915e6d746252dee7315ba55cc7f72288",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/usr/lib/libSystem.B.dylib"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/numpy/random/_mt19937.cpython-313-darwin.so",
+      "sha256_before_packaging": "8ca8611754e450133452610daee8ab9dc29d03d3047417f95f6bf261a9008620",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/usr/lib/libSystem.B.dylib"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/numpy/random/_pcg64.cpython-313-darwin.so",
+      "sha256_before_packaging": "acc7735aac603032d985b397aaa4aa1027cc1ac1d3b48d7f642c2124f2babed6",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/usr/lib/libSystem.B.dylib"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/numpy/random/_philox.cpython-313-darwin.so",
+      "sha256_before_packaging": "40c973df6bf8070f19f445d244cdc839b0d9a4ba02b771a3b88ac6554f758179",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/usr/lib/libSystem.B.dylib"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/numpy/random/_sfc64.cpython-313-darwin.so",
+      "sha256_before_packaging": "e61fbc5ea87432ecfebb8ecec47dd44d272da8c1b57ba36531fcf77e51b2dc38",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/usr/lib/libSystem.B.dylib"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/numpy/random/bit_generator.cpython-313-darwin.so",
+      "sha256_before_packaging": "1201034bb852961e4671785a3352b5bf60be8e878c90200ecc75d6d455b3c8e5",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/usr/lib/libSystem.B.dylib"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/numpy/random/mtrand.cpython-313-darwin.so",
+      "sha256_before_packaging": "d85e24641f219288773ab52c774017c064231a52dceba8d3503163c342f765ce",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/usr/lib/libSystem.B.dylib"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/psutil/_psutil_osx.abi3.so",
+      "sha256_before_packaging": "ff4568b9187ca7b37c5134aaf614ffb061e7fedccebd84158343afb05991b8e2",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+        "/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit",
+        "/usr/lib/libSystem.B.dylib"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/pydantic_core/_pydantic_core.cpython-313-darwin.so",
+      "sha256_before_packaging": "89fc192d095e4e1c270456ceeae47aa8fc482b502ad9d782f3fb274e754b0bff",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/usr/lib/libSystem.B.dylib",
+        "/usr/lib/libiconv.2.dylib",
+        "@rpath/pydantic_core._pydantic_core.cpython-313-darwin.so"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/regex/_regex.cpython-313-darwin.so",
+      "sha256_before_packaging": "eb884cc513a737e5cce2c59c7b863dcfb0a62cc7c0532ba2da50b4b6d5d59b5b",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/usr/lib/libSystem.B.dylib"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/safetensors/_safetensors_rust.abi3.so",
+      "sha256_before_packaging": "bc2fe2bfd2264af61c12fdea6d32b44318c4701ace0f697b4f35110cb0a1e4af",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+        "/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation",
+        "/System/Library/Frameworks/Metal.framework/Versions/A/Metal",
+        "/usr/lib/libSystem.B.dylib",
+        "/usr/lib/libiconv.2.dylib",
+        "/usr/lib/libobjc.A.dylib",
+        "@rpath/safetensors._safetensors_rust.abi3.so"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/sentencepiece/_sentencepiece.cpython-313-darwin.so",
+      "sha256_before_packaging": "62de8ae0f158c108f26fe5771f15dd6dd08b89a52f56e66fbc4b78329ea31406",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/usr/lib/libSystem.B.dylib",
+        "/usr/lib/libc++.1.dylib"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/tokenizers/tokenizers.abi3.so",
+      "sha256_before_packaging": "83c58f9ec4937f86521c76ba5222215d3e7707a25818d5ea69604e230fd4a96c",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/usr/lib/libSystem.B.dylib",
+        "/usr/lib/libc++.1.dylib",
+        "/usr/lib/libiconv.2.dylib",
+        "@rpath/tokenizers.tokenizers.abi3.so"
+      ]
+    },
+    {
+      "path": "lib/python3.13/site-packages/yaml/_yaml.cpython-313-darwin.so",
+      "sha256_before_packaging": "ba1d658938053d44a1bf09dfcaab837676ecad1b0d5d6ac35cc15d7a31d7bb33",
+      "architectures": [
+        "arm64"
+      ],
+      "load_commands": [
+        "/usr/lib/libSystem.B.dylib"
+      ]
+    }
+  ]
+}

@@ -3,3 +3,5 @@
 *.command text eol=lf
 *.png binary
 *.icns binary
+# Preserve upstream license/source bytes so recorded provenance hashes survive clones.
+LICENSES/** -text

@@ -1,0 +1,147 @@
+{
+  "python_version": "3.13.15",
+  "build": "20260807",
+  "target": "aarch64-apple-darwin",
+  "install_archive_sha256": "dbadb0ffe46f8bace50daaf8a0c5fc6903c003690776da9eb5269e33c856bb53",
+  "metadata_archive": {
+    "url": "https://github.com/astral-sh/python-build-standalone/releases/download/20260807/cpython-3.13.15%2B20260807-aarch64-apple-darwin-pgo%2Blto-full.tar.zst",
+    "sha256": "7e6d391f88b0d21cf8872761b37080a07f36d9be63187041a0aee4f5549282b0",
+    "member": "python/PYTHON.json"
+  },
+  "build_recipe": {
+    "url": "https://github.com/astral-sh/python-build-standalone/blob/20260807/pythonbuild/downloads.py",
+    "downloaded_source_archive_sha256": "7381b66fd6674fb1f2d2fe6b8240a474f1d9b4ac1135c458943657c9cc2318ae"
+  },
+  "bundled_components": [
+    {
+      "component": "bzip2",
+      "version": "1.0.8",
+      "modules": [
+        "_bz2"
+      ],
+      "linkage": "statically included in CPython",
+      "source_url": "https://astral-sh.github.io/mirror/files/bzip2-1.0.8.tar.gz",
+      "source_sha256": "ab5a03176ee106d3f0fa90e381da478ddae405918153cca248e682cd0c4a2269",
+      "licenses": [
+        "bzip2-1.0.6"
+      ],
+      "notice": "LICENSES/python-build-standalone/LICENSE.bzip2.txt"
+    },
+    {
+      "component": "libffi",
+      "version": "3.4.6",
+      "modules": [
+        "_ctypes"
+      ],
+      "linkage": "statically included in CPython",
+      "source_url": "https://github.com/libffi/libffi/releases/download/v3.4.6/libffi-3.4.6.tar.gz",
+      "source_sha256": "b0dea9df23c863a7a50e825440f3ebffabd65df1497108e5d437747843895a4e",
+      "licenses": [
+        "MIT"
+      ],
+      "notice": "LICENSES/python-build-standalone/LICENSE.libffi.txt"
+    },
+    {
+      "component": "mpdecimal",
+      "version": "4.0.0",
+      "modules": [
+        "_decimal"
+      ],
+      "linkage": "statically included in CPython",
+      "source_url": "https://astral-sh.github.io/mirror/files/mpdecimal-4.0.0.tar.gz",
+      "source_sha256": "942445c3245b22730fd41a67a7c5c231d11cb1b9936b9c0f76334fb7d0b4468c",
+      "licenses": [
+        "BSD-2-Clause"
+      ],
+      "notice": "LICENSES/python-build-standalone/LICENSE.mpdecimal.txt"
+    },
+    {
+      "component": "expat",
+      "version": "2.8.2",
+      "modules": [
+        "_elementtree",
+        "pyexpat"
+      ],
+      "linkage": "statically included in CPython",
+      "source_url": "https://github.com/libexpat/libexpat/releases/download/R_2_8_2/expat-2.8.2.tar.xz",
+      "source_sha256": "3ad89b8588e6644bd4e49981480d48b21289eebbcd4f0a1a4afb1c29f99b6ab4",
+      "licenses": [
+        "MIT"
+      ],
+      "notice": "LICENSES/python-build-standalone/LICENSE.expat.txt"
+    },
+    {
+      "component": "openssl-3.5",
+      "version": "3.5.7",
+      "modules": [
+        "_ssl",
+        "_hashlib"
+      ],
+      "linkage": "statically included in CPython",
+      "source_url": "https://github.com/openssl/openssl/releases/download/openssl-3.5.7/openssl-3.5.7.tar.gz",
+      "source_sha256": "a8c0d28a529ca480f9f36cf5792e2cd21984552a3c8e4aa11a24aa31aeac98e8",
+      "licenses": [
+        "Apache-2.0"
+      ],
+      "notice": "LICENSES/python-build-standalone/LICENSE.openssl-3.txt"
+    },
+    {
+      "component": "sqlite",
+      "version": "3.53.1.0",
+      "modules": [
+        "_sqlite3"
+      ],
+      "linkage": "statically included in CPython",
+      "source_url": "https://www.sqlite.org/2026/sqlite-autoconf-3530100.tar.gz",
+      "source_sha256": "83e6b2020a034e9a7ad4a72feea59e1ad52f162e09cbd26735a3ffb98359fc4f",
+      "licenses": [],
+      "notice": "LICENSES/python-build-standalone/LICENSE.sqlite.txt"
+    },
+    {
+      "component": "xz",
+      "version": "5.8.3",
+      "modules": [
+        "_lzma"
+      ],
+      "linkage": "statically included in CPython",
+      "source_url": "https://github.com/tukaani-project/xz/releases/download/v5.8.3/xz-5.8.3.tar.gz",
+      "source_sha256": "3d3a1b973af218114f4f889bbaa2f4c037deaae0c8e815eec381c3d546b974a0",
+      "licenses": [
+        "0BSD"
+      ],
+      "notice": "LICENSES/python-build-standalone/LICENSE.liblzma.txt"
+    },
+    {
+      "component": "uuid",
+      "version": "1.0.3",
+      "modules": [
+        "_uuid"
+      ],
+      "linkage": "statically included in CPython",
+      "source_url": "https://sourceforge.net/projects/libuuid/files/libuuid-1.0.3.tar.gz",
+      "source_sha256": "46af3275291091009ad7f1b899de3d0cea0252737550e7919d17237997db5644",
+      "licenses": [
+        "BSD-3-Clause"
+      ],
+      "notice": "LICENSES/python-build-standalone/LICENSE.libuuid.txt"
+    }
+  ],
+  "system_dependencies": [
+    "libedit (readline module; not GNU readline)",
+    "ncurses/panel",
+    "zlib",
+    "macOS frameworks and libSystem"
+  ],
+  "removed_components": [
+    "pip",
+    "ensurepip",
+    "Tcl",
+    "Tk",
+    "itcl",
+    "thread",
+    "tkinter",
+    "idlelib",
+    "turtledemo"
+  ],
+  "scope": "Version pins from matching build recipe; module link relationships from matching PYTHON.json. System dependencies are not redistributed. CPython source/standard-library notices additionally preserved under native-sources/cpython-3.13.15 and inline-notices."
+}

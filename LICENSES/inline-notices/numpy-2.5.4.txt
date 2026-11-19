@@ -1,0 +1,1399 @@
+Verbatim copyright/license comment blocks from numpy-2.5.4.tar.gz.
+Archive SHA256: 9a94cf751c9ad8ebaa835bcd3d40dacf8534ad086b88c38029b65123c7999d2a
+File names below identify original archive members; duplicate comment text is listed once.
+This is a conservative source-notice supplement and can include optional native implementations.
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/include/numpy/libdivide/libdivide.h
+
+// libdivide.h - Optimized integer division
+// https://libdivide.com
+//
+// Copyright (C) 2010 - 2019 ridiculous_fish, <libdivide@ridiculousfish.com>
+// Copyright (C) 2016 - 2019 Kim Walisch, <kim.walisch@gmail.com>
+//
+// libdivide is dual-licensed under the Boost or zlib licenses.
+// You may use libdivide under the terms of either of these.
+// See LICENSE.txt for more details.
+
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/common/array_assign.c
+
+/*
+ * This file implements some helper functions for the array assignment
+ * routines. The actual assignment routines are in array_assign_*.c
+ *
+ * Written by Mark Wiebe (mwwiebe@gmail.com)
+ * Copyright (c) 2011 by Enthought, Inc.
+ *
+ * See LICENSE.txt for the license.
+ */
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/common/dlpack/dlpack.h
+
+/*!
+ *  Copyright (c) 2017 by Contributors
+ * \file dlpack.h
+ * \brief The common header of DLPack.
+ */
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/common/mem_overlap.c
+
+/*
+  Copyright (c) 2015 Pauli Virtanen
+  All rights reserved.
+  Licensed under 3-clause BSD license, see LICENSE.txt.
+*/
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/common/npy_cpuinfo_parser.h
+
+/*
+ * Copyright (C) 2010 The Android Open Source Project
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *  * Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *  * Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in
+ *    the documentation and/or other materials provided with the
+ *    distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ * FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+ * COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+ * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+ * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS
+ * OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
+ * AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+ * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ * SUCH DAMAGE.
+ */
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/common/pythoncapi-compat/pythoncapi_compat.h
+
+// Header file providing new C API functions to old Python versions.
+//
+// File distributed under the Zero Clause BSD (0BSD) license.
+// Copyright Contributors to the pythoncapi_compat project.
+//
+// Homepage:
+// https://github.com/python/pythoncapi_compat
+//
+// Latest version:
+// https://raw.githubusercontent.com/python/pythoncapi-compat/main/pythoncapi_compat.h
+//
+// SPDX-License-Identifier: 0BSD
+
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/highway/hwy/abort.cc
+
+// Copyright 2019 Google LLC
+// Copyright 2024 Arm Limited and/or its affiliates <open-source-office@arm.com>
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-License-Identifier: BSD-3-Clause
+
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/highway/hwy/abort.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/abort_test.cc
+
+// Copyright 2024 Arm Limited and/or its affiliates <open-source-office@arm.com>
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-License-Identifier: BSD-3-Clause
+
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/highway/hwy/aligned_allocator.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/base_test.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/highway_test.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/nanobenchmark.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/nanobenchmark.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/nanobenchmark_test.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/ops/scalar-inl.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/ops/wasm_128-inl.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/ops/x86_128-inl.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/ops/x86_256-inl.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/ops/x86_512-inl.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/ops/x86_avx3-inl.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/targets.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/timer.cc
+
+// Copyright 2019 Google LLC
+// SPDX-License-Identifier: Apache-2.0
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/highway/hwy/aligned_allocator.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/aligned_allocator_test.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/base.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/cache_control.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/image/image.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/image/image.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/math/math-inl.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/math/math_hyper_test.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/math/math_tan_test.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/math/math_test.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/math/math_trig_test.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/detect_compiler_arch.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/foreach_target.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/highway.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/ops/shared-inl.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/targets.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/targets_test.cc
+
+// Copyright 2020 Google LLC
+// SPDX-License-Identifier: Apache-2.0
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/highway/hwy/auto_tune.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/auto_tune_test.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/thread_pool/spin.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/thread_pool/spin_test.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/thread_pool/thread_pool.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/profiler.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/x86_cpuid.h
+
+// Copyright 2025 Google LLC
+// SPDX-License-Identifier: Apache-2.0
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/highway/hwy/bit_set.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/bit_set_test.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/thread_pool/futex.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/thread_pool/topology.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/thread_pool/topology.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/thread_pool/topology_test.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/ops/loongarch_lsx-inl.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/perf_counters.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/perf_counters.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/perf_counters_test.cc
+
+// Copyright 2024 Google LLC
+// SPDX-License-Identifier: Apache-2.0
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/algo/copy-inl.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/algo/copy_test.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/algo/find-inl.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/algo/find_test.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/algo/transform-inl.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/algo/transform_test.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/bit_pack/bit_pack-inl.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/bit_pack/bit_pack_test.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/vqsort.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/vqsort_kv64a.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/vqsort_kv64d.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/ops/emu128-inl.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/per_target.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/per_target.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/print-inl.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/print.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/print.h
+
+// Copyright 2022 Google LLC
+// SPDX-License-Identifier: Apache-2.0
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/dot/dot-inl.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/dot/dot_test.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/algo-inl.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/bench_parallel.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/bench_sort.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/print_network.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/result-inl.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/sort_test.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/sort_unit_test.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/sorting_networks-inl.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/traits-inl.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/traits128-inl.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/vqsort.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/vqsort_128a.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/vqsort_128d.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/vqsort_f16a.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/vqsort_f16d.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/vqsort_f32a.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/vqsort_f32d.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/vqsort_f64a.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/vqsort_f64d.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/vqsort_i16a.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/vqsort_i16d.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/vqsort_i32a.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/vqsort_i32d.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/vqsort_i64a.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/vqsort_i64d.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/vqsort_kv128a.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/vqsort_kv128d.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/vqsort_u16a.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/vqsort_u16d.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/vqsort_u32a.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/vqsort_u32d.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/vqsort_u64a.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/vqsort_u64d.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/detect_targets.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/ops/rvv-inl.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/ops/wasm_256-inl.h
+
+// Copyright 2021 Google LLC
+// SPDX-License-Identifier: Apache-2.0
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/image/image_test.cc
+
+// Copyright (c) the JPEG XL Project
+// SPDX-License-Identifier: Apache-2.0
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/matvec/matvec-inl.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/matvec/matvec_test.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/order.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/thread_pool/thread_pool.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/thread_pool/thread_pool_test.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/ops/inside-inl.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/ops/ppc_vsx-inl.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/robust_statistics.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/timer-inl.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/timer.h
+
+// Copyright 2023 Google LLC
+// SPDX-License-Identifier: Apache-2.0
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/random/random-inl.h
+
+/*
+ * Original implementation written in 2019
+ * by David Blackman and Sebastiano Vigna (vigna@acm.org)
+ * Available at https://prng.di.unimi.it/ with creative commons license:
+ * To the extent possible under law, the author has dedicated all copyright
+ * and related and neighboring rights to this software to the public domain
+ * worldwide. This software is distributed without any warranty.
+ * See <http://creativecommons.org/publicdomain/zero/1.0/>.
+ *
+ * This implementation is a Vector port of the original implementation
+ * written by Marco Barbone (m.barbone19@imperial.ac.uk).
+ * I take no credit for the original implementation.
+ * The code is provided as is and the original license applies.
+ */
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/shared-inl.h
+
+// Copyright 2021 Google LLC
+// Copyright 2025 Arm Limited and/or its affiliates <open-source-office@arm.com>
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-License-Identifier: BSD-3-Clause
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/sort/vqsort-inl.h
+
+// Copyright 2021 Google LLC
+// Copyright 2024 Arm Limited and/or its affiliates <open-source-office@arm.com>
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-License-Identifier: BSD-3-Clause
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/thread_pool/thread_pool.h
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/thread_pool/thread_pool_test.cc
+
+// Modified from BSD-licensed code
+// Copyright (c) the JPEG XL Project Authors. All rights reserved.
+// See https://github.com/libjxl/libjxl/blob/main/LICENSE.
+
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/unroller/unroller-inl.h
+
+// Copyright 2023 Matthew Kolbe
+// SPDX-License-Identifier: Apache-2.0
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/highway/hwy/contrib/unroller/unroller_test.cc
+
+// Copyright Google LLC 2021
+//           Matthew Kolbe 2023
+// SPDX-License-Identifier: Apache-2.0
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/highway/hwy/ops/arm_neon-inl.h
+
+// Copyright 2019 Google LLC
+// Copyright 2024 Arm Limited and/or its affiliates <open-source-office@arm.com>
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-License-Identifier: BSD-3-Clause
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/highway/hwy/ops/arm_sve-inl.h
+
+// Copyright 2021 Google LLC
+// Copyright 2025 Arm Limited and/or its affiliates <open-source-office@arm.com>
+// SPDX-License-Identifier: Apache-2.0
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/highway/hwy/ops/generic_ops-inl.h
+
+// Copyright 2021 Google LLC
+// Copyright 2023,2024 Arm Limited and/or
+// its affiliates <open-source-office@arm.com>
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-License-Identifier: BSD-3-Clause
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/highway/hwy/ops/loongarch_lasx-inl.h
+
+// Copyright 2019 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/highway/hwy/ops/set_macros-inl.h
+
+// Copyright 2020 Google LLC
+// Copyright 2024 Arm Limited and/or its affiliates <open-source-office@arm.com>
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-License-Identifier: BSD-3-Clause
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/highway/hwy/profiler.h
+
+// Copyright 2017 Google Inc. All Rights Reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/highway/hwy/stats.cc
+numpy-2.5.4/numpy/_core/src/highway/hwy/stats.h
+
+// Copyright 2024 Google LLC
+// SPDX-License-Identifier: Apache-2.0
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/multiarray/array_assign_array.c
+
+/*
+ * This file implements assignment from an ndarray to another ndarray.
+ *
+ * Written by Mark Wiebe (mwwiebe@gmail.com)
+ * Copyright (c) 2011 by Enthought, Inc.
+ *
+ * See LICENSE.txt for the license.
+ */
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/multiarray/array_assign_scalar.c
+
+/*
+ * This file implements assignment from a scalar to an ndarray.
+ *
+ * Written by Mark Wiebe (mwwiebe@gmail.com)
+ * Copyright (c) 2011 by Enthought, Inc.
+ *
+ * See LICENSE.txt for the license.
+ */
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/multiarray/arrayobject.c
+numpy-2.5.4/numpy/_core/src/multiarray/usertypes.c
+
+/*
+  Provide multidimensional arrays as a basic object type in python.
+
+  Based on Original Numeric implementation
+  Copyright (c) 1995, 1996, 1997 Jim Hugunin, hugunin@mit.edu
+
+  with contributions from many Numeric Python developers 1995-2004
+
+  Heavily modified in 2005 with inspiration from Numarray
+
+  by
+
+  Travis Oliphant,  oliphant@ee.byu.edu
+  Brigham Young University
+
+
+maintainer email:  oliphant.travis@ieee.org
+
+  Numarray design (which provided guidance) by
+  Space Science Telescope Institute
+  (J. Todd Miller, Perry Greenfield, Rick White)
+*/
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/multiarray/datetime.c
+
+/*
+ * This file implements core functionality for NumPy datetime.
+ *
+ * Written by Mark Wiebe (mwwiebe@gmail.com)
+ * Copyright (c) 2011 by Enthought, Inc.
+ *
+ * See LICENSE.txt for the license.
+ */
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/multiarray/datetime.c
+
+/*
+ * Fills in the year, month, day in 'dts' based on the days
+ * offset from 1970.
+ *
+ * Adapted from neri_schneider.hpp::to_date (MIT license) in:
+ * https://github.com/cassioneri/eaf
+ * SPDX-FileCopyrightText: 2022 Cassio Neri <cassio.neri@gmail.com>
+ * SPDX-FileCopyrightText: 2022 Lorenz Schneider <schneider@em-lyon.com>
+ *
+ * Algorithm: Neri C, Schneider L. "Euclidean Affine Functions and their
+ * Application to Calendar Algorithms." Software: Practice and Experience.
+ * 2023;53(4):937-970. doi:10.1002/spe.3172
+ *
+ * This is the same algorithm used by C++20 std::chrono
+ * (sys_days to year_month_day). See libstdc++:
+ * gcc/libstdc++-v3/include/std/chrono (year_month_day::_M_days_since_epoch)
+ *
+ * Falls back to the classical algorithm for dates beyond ~32K years
+ * before epoch or ~2.9M years after (effectively never reached in practice).
+ */
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/multiarray/datetime_busday.c
+
+/*
+ * This file implements business day functionality for NumPy datetime.
+ *
+ * Written by Mark Wiebe (mwwiebe@gmail.com)
+ * Copyright (c) 2011 by Enthought, Inc.
+ *
+ * See LICENSE.txt for the license.
+ */
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/multiarray/datetime_busdaycal.c
+
+/*
+ * This file implements an object encapsulating a business day
+ * calendar object for accelerating NumPy datetime business day functions.
+ *
+ * Written by Mark Wiebe (mwwiebe@gmail.com)
+ * Copyright (c) 2011 by Enthought, Inc.
+ *
+ * See LICENSE.txt for the license.
+ */
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/multiarray/datetime_strings.c
+
+/*
+ * This file implements string parsing and creation for NumPy datetime.
+ *
+ * Written by Mark Wiebe (mwwiebe@gmail.com)
+ * Copyright (c) 2011 by Enthought, Inc.
+ *
+ * See LICENSE.txt for the license.
+ */
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/multiarray/dragon4.c
+numpy-2.5.4/numpy/_core/src/multiarray/dragon4.h
+
+/*
+ * Copyright (c) 2014 Ryan Juckett
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to
+ * deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+ * sell copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
+ */
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/multiarray/dtype_transfer.c
+
+/*
+ * This file contains low-level loops for data type transfers.
+ * In particular the function PyArray_GetDTypeTransferFunction is
+ * implemented here.
+ *
+ * Copyright (c) 2010 by Mark Wiebe (mwwiebe@gmail.com)
+ * The University of British Columbia
+ *
+ * See LICENSE.txt for the license.
+ *
+ */
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/multiarray/einsum.cpp
+
+/*
+ * This file contains the implementation of the 'einsum' function,
+ * which provides an einstein-summation operation.
+ *
+ * Copyright (c) 2011 by Mark Wiebe (mwwiebe@gmail.com)
+ * The University of British Columbia
+ *
+ * See LICENSE.txt for the license.
+ */
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/multiarray/einsum_debug.h
+
+/*
+ * This file provides debug macros used by the other einsum files.
+ *
+ * Copyright (c) 2011 by Mark Wiebe (mwwiebe@gmail.com)
+ * The University of British Columbia
+ *
+ * See LICENSE.txt for the license.
+ */
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/multiarray/multiarraymodule.c
+
+/*
+  Python Multiarray Module -- A useful collection of functions for creating and
+  using ndarrays
+
+  Original file
+  Copyright (c) 1995, 1996, 1997 Jim Hugunin, hugunin@mit.edu
+
+  Modified for numpy in 2005
+
+  Travis E. Oliphant
+  oliphant@ee.byu.edu
+  Brigham Young University
+*/
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/multiarray/nditer_api.c
+
+/*
+ * This file implements most of the main API functions of NumPy's nditer.
+ * This excludes functions specialized using the templating system.
+ *
+ * Copyright (c) 2010-2011 by Mark Wiebe (mwwiebe@gmail.com)
+ * The University of British Columbia
+ *
+ * Copyright (c) 2011 Enthought, Inc
+ *
+ * See LICENSE.txt for the license.
+ */
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/multiarray/nditer_constr.c
+
+/*
+ * This file implements the construction, copying, and destruction
+ * aspects of NumPy's nditer.
+ *
+ * Copyright (c) 2010-2011 by Mark Wiebe (mwwiebe@gmail.com)
+ * The University of British Columbia
+ *
+ * Copyright (c) 2011 Enthought, Inc
+ *
+ * See LICENSE.txt for the license.
+ */
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/multiarray/nditer_pywrap.c
+
+/*
+ * This file implements the CPython wrapper of NpyIter
+ *
+ * Copyright (c) 2010 by Mark Wiebe (mwwiebe@gmail.com)
+ * The University of British Columbia
+ *
+ * See LICENSE.txt for the license.
+ */
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/multiarray/stringdtype/utf8_utils.c
+
+// Everything until the closing /***/ block below is a copy of the
+// Bjoern Hoerhmann DFA UTF-8 validator
+// License: MIT
+// Copyright (c) 2008-2009 Bjoern Hoehrmann <bjoern@hoehrmann.de>
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the "Software"),
+// to deal in the Software without restriction, including without limitation
+// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+// and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/multiarray/stringdtype/utf8_utils.c
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+// DEALINGS IN THE SOFTWARE.
+//
+// See http://bjoern.hoehrmann.de/utf-8/decoder/dfa/ for details.
+//
+// in principle could use something like simdutf to accelerate this
+
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/npymath/npy_math_private.h
+
+/*
+ *
+ * ====================================================
+ * Copyright (C) 1993 by Sun Microsystems, Inc. All rights reserved.
+ *
+ * Developed at SunPro, a Sun Microsystems, Inc. business.
+ * Permission to use, copy, modify, and distribute this
+ * software is freely granted, provided that this notice
+ * is preserved.
+ * ====================================================
+ */
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/npysort/x86-simd-sort/src/avx2-32bit-half.hpp
+numpy-2.5.4/numpy/_core/src/npysort/x86-simd-sort/src/avx2-32bit-qsort.hpp
+numpy-2.5.4/numpy/_core/src/npysort/x86-simd-sort/src/avx512-16bit-common.h
+numpy-2.5.4/numpy/_core/src/npysort/x86-simd-sort/src/avx512-16bit-qsort.hpp
+numpy-2.5.4/numpy/_core/src/npysort/x86-simd-sort/src/avx512-64bit-argsort.hpp
+numpy-2.5.4/numpy/_core/src/npysort/x86-simd-sort/src/avx512-64bit-common.h
+numpy-2.5.4/numpy/_core/src/npysort/x86-simd-sort/src/avx512-64bit-qsort.hpp
+numpy-2.5.4/numpy/_core/src/npysort/x86-simd-sort/src/avx512fp16-16bit-qsort.hpp
+numpy-2.5.4/numpy/_core/src/npysort/x86-simd-sort/src/xss-common-argsort.h
+
+/*******************************************************************
+ * Copyright (C) 2022 Intel Corporation
+ * SPDX-License-Identifier: BSD-3-Clause
+ * Authors: Raghuveer Devulapalli <raghuveer.devulapalli@intel.com>
+ * ****************************************************************/
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/npysort/x86-simd-sort/src/avx2-64bit-qsort.hpp
+
+/*******************************************************************
+ * Copyright (C) 2022 Intel Corporation
+ * SPDX-License-Identifier: BSD-3-Clause
+ * Authors: Raghuveer Devulapalli <raghuveer.devulapalli@intel.com>
+ *          Matthew Sterrett <matthew.sterrett@intel.com>
+ * ****************************************************************/
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/npysort/x86-simd-sort/src/avx512-32bit-qsort.hpp
+
+/*******************************************************************
+ * Copyright (C) 2022 Intel Corporation
+ * Copyright (C) 2021 Serge Sans Paille
+ * SPDX-License-Identifier: BSD-3-Clause
+ * Authors: Raghuveer Devulapalli <raghuveer.devulapalli@intel.com>
+ *          Serge Sans Paille <serge.guelton@telecom-bretagne.eu>
+ * ****************************************************************/
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/npysort/x86-simd-sort/src/xss-common-keyvaluesort.hpp
+
+/*******************************************************************
+ * Copyright (C) 2022 Intel Corporation
+ * SPDX-License-Identifier: BSD-3-Clause
+ * Authors: Liu Zhuan <zhuan.liu@intel.com>
+ *          Tang Xi <xi.tang@intel.com>
+ * ****************************************************************/
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/npysort/x86-simd-sort/src/xss-common-qsort.h
+
+/*******************************************************************
+ * Copyright (C) 2022 Intel Corporation
+ * Copyright (C) 2021 Serge Sans Paille
+ * SPDX-License-Identifier: BSD-3-Clause
+ * Authors: Raghuveer Devulapalli <raghuveer.devulapalli@intel.com>
+ *          Serge Sans Paille <serge.guelton@telecom-bretagne.eu>
+ *          Liu Zhuan <zhuan.liu@intel.com>
+ *          Tang Xi <xi.tang@intel.com>
+ * ****************************************************************/
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/npysort/x86-simd-sort/src/xss-common-qsort.h
+
+/*
+ * Quicksort using AVX-512. The ideas and code are based on these two research
+ * papers [1] and [2]. On a high level, the idea is to vectorize quicksort
+ * partitioning using AVX-512 compressstore instructions. If the array size is
+ * < 128, then use Bitonic sorting network implemented on 512-bit registers.
+ * The precise network definitions depend on the dtype and are defined in
+ * separate files: avx512-16bit-qsort.hpp, avx512-32bit-qsort.hpp and
+ * avx512-64bit-qsort.hpp. Article [4] is a good resource for bitonic sorting
+ * network. The core implementations of the vectorized qsort functions
+ * avx512_qsort<T>(T*, arrsize_t) are modified versions of avx2 quicksort
+ * presented in the paper [2] and source code associated with that paper [3].
+ *
+ * [1] Fast and Robust Vectorized In-Place Sorting of Primitive Types
+ *     https://drops.dagstuhl.de/opus/volltexte/2021/13775/
+ *
+ * [2] A Novel Hybrid Quicksort Algorithm Vectorized using AVX-512 on Intel
+ * Skylake https://arxiv.org/pdf/1704.08579.pdf
+ *
+ * [3] https://github.com/simd-sorting/fast-and-robust: SPDX-License-Identifier: MIT
+ *
+ * [4] https://mitp-content-server.mit.edu/books/content/sectbyfn?collid=books_pres_0&fn=Chapter%2027.pdf&id=8030
+ *
+ */
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/npysort/x86-simd-sort/utils/rand_array.h
+
+/*******************************************
+ * * Copyright (C) 2022 Intel Corporation
+ * * SPDX-License-Identifier: BSD-3-Clause
+ * *******************************************/
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/umath/reduction.c
+
+/*
+ * This file implements generic methods for computing reductions on arrays.
+ *
+ * Written by Mark Wiebe (mwwiebe@gmail.com)
+ * Copyright (c) 2011 by Enthought, Inc.
+ *
+ * See LICENSE.txt for the license.
+ */
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/umath/ufunc_object.c
+
+/*
+ * Python Universal Functions Object -- Math for all types, plus fast
+ * arrays math
+ *
+ * Full description
+ *
+ * This supports mathematical (and Boolean) functions on arrays and other python
+ * objects.  Math on large arrays of basic C types is rather efficient.
+ *
+ * Travis E. Oliphant  2005, 2006 oliphant@ee.byu.edu (oliphant.travis@ieee.org)
+ * Brigham Young University
+ *
+ * based on the
+ *
+ * Original Implementation:
+ * Copyright (c) 1995, 1996, 1997 Jim Hugunin, hugunin@mit.edu
+ *
+ * with inspiration and code from
+ * Numarray
+ * Space Science Telescope Institute
+ * J. Todd Miller
+ * Perry Greenfield
+ * Rick White
+ *
+ */
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/_core/src/umath/ufunc_type_resolution.c
+
+/*
+ * NOTE: The type resolution defined in this file is considered legacy.
+ *
+ * The new mechanism separates type resolution and promotion into two
+ * distinct steps, as per NEP 43.
+ * Further, the functions in this file rely on the operands rather than
+ * only the DTypes/descriptors.  They are still called and at this point
+ * vital (NumPy ~1.21), but should hopefully become largely irrelevant very
+ * quickly.
+ *
+ * At that point, this file should be deletable in its entirety.
+ *
+ *
+ * This file implements type resolution for NumPy element-wise ufuncs.
+ * This mechanism is still backwards-compatible with the pre-existing
+ * legacy mechanism, so performs much slower than is necessary.
+ *
+ * Written by Mark Wiebe (mwwiebe@gmail.com)
+ * Copyright (c) 2011 by Enthought, Inc.
+ *
+ * See LICENSE.txt for the license.
+ */
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/fft/_pocketfft_umath.cpp
+
+/*
+ *  Main implementation file.
+ *
+ *  Copyright (C) 2004-2018 Max-Planck-Society
+ *  \author Martin Reinecke
+ */
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/fft/pocketfft/pocketfft_hdronly.h
+
+/*
+This file is part of pocketfft.
+
+Copyright (C) 2010-2022 Max-Planck-Society
+Copyright (C) 2019-2020 Peter Bell
+
+For the odd-sized DCT-IV transforms:
+  Copyright (C) 2003, 2007-14 Matteo Frigo
+  Copyright (C) 2003, 2007-14 Massachusetts Institute of Technology
+  
+For the prev_good_size search:
+  Copyright (C) 2024 Tan Ping Liang, Peter Bell
+
+Authors: Martin Reinecke, Peter Bell
+
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the above copyright notice, this
+  list of conditions and the following disclaimer in the documentation and/or
+  other materials provided with the distribution.
+* Neither the name of the copyright holder nor the names of its contributors may
+  be used to endorse or promote products derived from this software without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/random/src/mt19937/randomkit.c
+
+/*
+ * Copyright (c) 2003-2005, Jean-Sebastien Roy (js@jeannot.org)
+ *
+ * The rk_random and rk_seed functions algorithms and the original design of
+ * the Mersenne Twister RNG:
+ *
+ *   Copyright (C) 1997 - 2002, Makoto Matsumoto and Takuji Nishimura,
+ *   All rights reserved.
+ *
+ *   Redistribution and use in source and binary forms, with or without
+ *   modification, are permitted provided that the following conditions
+ *   are met:
+ *
+ *   1. Redistributions of source code must retain the above copyright
+ *   notice, this list of conditions and the following disclaimer.
+ *
+ *   2. Redistributions in binary form must reproduce the above copyright
+ *   notice, this list of conditions and the following disclaimer in the
+ *   documentation and/or other materials provided with the distribution.
+ *
+ *   3. The names of its contributors may not be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
+ *
+ *   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ *   "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ *   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ *   A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER
+ * OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ *   EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ *   PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ *   PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ *   LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ *   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ *   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * Original algorithm for the implementation of rk_interval function from
+ * Richard J. Wagner's implementation of the Mersenne Twister RNG, optimised by
+ * Magnus Jonsson.
+ *
+ * Constants used in the rk_double implementation by Isaku Wada.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included
+ * in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+ * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+ * CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+ * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/random/src/mt19937/randomkit.h
+
+/*
+ * Copyright (c) 2003-2005, Jean-Sebastien Roy (js@jeannot.org)
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included
+ * in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+ * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+ * CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+ * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/random/src/pcg64/pcg64.c
+numpy-2.5.4/numpy/random/src/pcg64/pcg64.h
+
+/*
+ * PCG64 Random Number Generation for C.
+ *
+ * Copyright 2014 Melissa O'Neill <oneill@pcg-random.org>
+ * Copyright 2015 Robert Kern <robert.kern@gmail.com>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * For additional information about the PCG random number generation scheme,
+ * including its license and other licensing options, visit
+ *
+ *     https://www.pcg-random.org
+ *
+ * Relicensed MIT in May 2019
+ *
+ * The MIT License
+ *
+ * PCG Random Number Generation for C.
+ *
+ * Copyright 2014 Melissa O'Neill <oneill@pcg-random.org>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the "Software"),
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/random/src/pcg64/pcg64.orig.h
+
+/*
+ * PCG Random Number Generation for C.
+ *
+ * Copyright 2014 Melissa O'Neill <oneill@pcg-random.org>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * For additional information about the PCG random number generation scheme,
+ * including its license and other licensing options, visit
+ *
+ *     http://www.pcg-random.org
+ */
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/random/src/splitmix64/splitmix64.c
+
+/*  Written in 2015 by Sebastiano Vigna (vigna@acm.org)
+
+To the extent possible under law, the author has dedicated all copyright
+and related and neighboring rights to this software to the public domain
+worldwide. This software is distributed without any warranty.
+
+See <http://creativecommons.org/publicdomain/zero/1.0/>.
+
+Modified 2018 by Kevin Sheppard.  Modifications licensed under the NCSA
+license.
+*/
+
+========================================================================
+Source member(s):
+numpy-2.5.4/numpy/random/src/splitmix64/splitmix64.orig.c
+
+/*  Written in 2015 by Sebastiano Vigna (vigna@acm.org)
+
+To the extent possible under law, the author has dedicated all copyright
+and related and neighboring rights to this software to the public domain
+worldwide. This software is distributed without any warranty.
+
+See <http://creativecommons.org/publicdomain/zero/1.0/>. */

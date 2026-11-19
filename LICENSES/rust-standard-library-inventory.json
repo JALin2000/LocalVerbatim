@@ -1,0 +1,350 @@
+[
+  {
+    "component": "hf-xet-1.8.0",
+    "rustc_commit": "88d9e12ae178fab0fb5cc050a94da85685d449ea",
+    "basis": "Exact /rustc/<commit>/ paths in the shipped native extension string table. Compiler itself is not distributed. Notices cover the linked Rust standard runtime.",
+    "notices": [
+      {
+        "path": "LICENSES/rust-standard-library/88d9e12ae178fab0fb5cc050a94da85685d449ea/COPYRIGHT",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/88d9e12ae178fab0fb5cc050a94da85685d449ea/COPYRIGHT",
+        "sha256": "172020dbfd5b53a226dfde77616190a48dcff519b0bc0e6deb91a8450782c4af"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/88d9e12ae178fab0fb5cc050a94da85685d449ea/LICENSE-APACHE",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/88d9e12ae178fab0fb5cc050a94da85685d449ea/LICENSE-APACHE",
+        "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/88d9e12ae178fab0fb5cc050a94da85685d449ea/LICENSE-MIT",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/88d9e12ae178fab0fb5cc050a94da85685d449ea/LICENSE-MIT",
+        "sha256": "b71bd43a069ca0641a9ecfe585ca7b3c53b5cc1608f8b68321168698e28b5ea1"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/88d9e12ae178fab0fb5cc050a94da85685d449ea/distribution/LICENSE-APACHE",
+        "source_member": "rust-std-1.98.0-aarch64-apple-darwin/LICENSE-APACHE",
+        "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/88d9e12ae178fab0fb5cc050a94da85685d449ea/distribution/COPYRIGHT",
+        "source_member": "rust-std-1.98.0-aarch64-apple-darwin/COPYRIGHT",
+        "sha256": "172020dbfd5b53a226dfde77616190a48dcff519b0bc0e6deb91a8450782c4af"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/88d9e12ae178fab0fb5cc050a94da85685d449ea/distribution/LICENSE-MIT",
+        "source_member": "rust-std-1.98.0-aarch64-apple-darwin/LICENSE-MIT",
+        "sha256": "b71bd43a069ca0641a9ecfe585ca7b3c53b5cc1608f8b68321168698e28b5ea1"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/88d9e12ae178fab0fb5cc050a94da85685d449ea/license-metadata.json",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/88d9e12ae178fab0fb5cc050a94da85685d449ea/license-metadata.json",
+        "sha256": "7bed295fb8d5ddc54ef9e7c795b18207d8da747513ae83fce9748e840200b40c"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/Cargo.lock",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/Cargo.lock",
+        "sha256": "d1c5dbdf53bfebd7de60f26a171819db3b28ebfd75f3fa99c3286893a5a7b7a6"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/88d9e12ae178fab0fb5cc050a94da85685d449ea/LICENSES/Unicode-3.0.txt",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/88d9e12ae178fab0fb5cc050a94da85685d449ea/LICENSES/Unicode-3.0.txt",
+        "sha256": "f5062c9a188d81dfe66b56db4182dcf9e4b17c0d9b0d311a8e20b3a1b075c443"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/88d9e12ae178fab0fb5cc050a94da85685d449ea/LICENSES/Apache-2.0.txt",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/88d9e12ae178fab0fb5cc050a94da85685d449ea/LICENSES/Apache-2.0.txt",
+        "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/88d9e12ae178fab0fb5cc050a94da85685d449ea/LICENSES/MIT.txt",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/88d9e12ae178fab0fb5cc050a94da85685d449ea/LICENSES/MIT.txt",
+        "sha256": "b85dcd3e453d05982552c52b5fc9e0bdd6d23c6f8e844b984a88af32570b0cc0"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/88d9e12ae178fab0fb5cc050a94da85685d449ea/LICENSES/BSD-2-Clause.txt",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/88d9e12ae178fab0fb5cc050a94da85685d449ea/LICENSES/BSD-2-Clause.txt",
+        "sha256": "f32fb3b417a194167cfad068223fc975ba96c5960513a10f66a3c28720aec1df"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/88d9e12ae178fab0fb5cc050a94da85685d449ea/LICENSES/LLVM-exception.txt",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/88d9e12ae178fab0fb5cc050a94da85685d449ea/LICENSES/LLVM-exception.txt",
+        "sha256": "e34c58338bd89d43e709e226610d8f32b3e3c47f4ad9a99a8dc1d4ac7842488e"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/88d9e12ae178fab0fb5cc050a94da85685d449ea/LICENSES/NCSA.txt",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/88d9e12ae178fab0fb5cc050a94da85685d449ea/LICENSES/NCSA.txt",
+        "sha256": "39cb0234065c92b9e6cee3830cbb52b1aa289aa8fe9ba2e66730fec5cf05c630"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/compiler-builtins/LICENSE.txt",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/compiler-builtins/LICENSE.txt",
+        "sha256": "ab6eec6caf0fa5775e411c7a8bc6a45c4ef2956b0980b157ab74fc5cd62a928b"
+      }
+    ],
+    "rust_version": "1.98.0",
+    "std_artifact": {
+      "url": "https://static.rust-lang.org/dist/rust-std-1.98.0-aarch64-apple-darwin.tar.xz",
+      "sha256": "48c05269ed36fb5f0a8438065156891fe59fcb868d90cfed9b7209540d54b2ce"
+    }
+  },
+  {
+    "component": "tokenizers-0.23.3",
+    "rustc_commit": "b940084d7eb6a299eb4bfeb8e34901bc051e7ac4",
+    "basis": "Exact /rustc/<commit>/ paths in the shipped native extension string table. Compiler itself is not distributed. Notices cover the linked Rust standard runtime.",
+    "notices": [
+      {
+        "path": "LICENSES/rust-standard-library/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/COPYRIGHT",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/COPYRIGHT",
+        "sha256": "172020dbfd5b53a226dfde77616190a48dcff519b0bc0e6deb91a8450782c4af"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/LICENSE-APACHE",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/LICENSE-APACHE",
+        "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/LICENSE-MIT",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/LICENSE-MIT",
+        "sha256": "b71bd43a069ca0641a9ecfe585ca7b3c53b5cc1608f8b68321168698e28b5ea1"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/distribution/LICENSE-APACHE",
+        "source_member": "rust-std-1.99.0-aarch64-apple-darwin/LICENSE-APACHE",
+        "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/distribution/COPYRIGHT",
+        "source_member": "rust-std-1.99.0-aarch64-apple-darwin/COPYRIGHT",
+        "sha256": "172020dbfd5b53a226dfde77616190a48dcff519b0bc0e6deb91a8450782c4af"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/distribution/LICENSE-MIT",
+        "source_member": "rust-std-1.99.0-aarch64-apple-darwin/LICENSE-MIT",
+        "sha256": "b71bd43a069ca0641a9ecfe585ca7b3c53b5cc1608f8b68321168698e28b5ea1"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/license-metadata.json",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/license-metadata.json",
+        "sha256": "7bed295fb8d5ddc54ef9e7c795b18207d8da747513ae83fce9748e840200b40c"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/library/Cargo.lock",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/library/Cargo.lock",
+        "sha256": "53d9ccff0c906de434b65af90d5c30063894b940fc839261f1fb06ef2e69e3d3"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/LICENSES/Unicode-3.0.txt",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/LICENSES/Unicode-3.0.txt",
+        "sha256": "f5062c9a188d81dfe66b56db4182dcf9e4b17c0d9b0d311a8e20b3a1b075c443"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/LICENSES/Apache-2.0.txt",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/LICENSES/Apache-2.0.txt",
+        "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/LICENSES/MIT.txt",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/LICENSES/MIT.txt",
+        "sha256": "b85dcd3e453d05982552c52b5fc9e0bdd6d23c6f8e844b984a88af32570b0cc0"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/LICENSES/BSD-2-Clause.txt",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/LICENSES/BSD-2-Clause.txt",
+        "sha256": "f32fb3b417a194167cfad068223fc975ba96c5960513a10f66a3c28720aec1df"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/LICENSES/LLVM-exception.txt",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/LICENSES/LLVM-exception.txt",
+        "sha256": "e34c58338bd89d43e709e226610d8f32b3e3c47f4ad9a99a8dc1d4ac7842488e"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/LICENSES/NCSA.txt",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/LICENSES/NCSA.txt",
+        "sha256": "39cb0234065c92b9e6cee3830cbb52b1aa289aa8fe9ba2e66730fec5cf05c630"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/library/compiler-builtins/LICENSE.txt",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/library/compiler-builtins/LICENSE.txt",
+        "sha256": "ab6eec6caf0fa5775e411c7a8bc6a45c4ef2956b0980b157ab74fc5cd62a928b"
+      }
+    ],
+    "rust_version": "1.99.0",
+    "std_artifact": {
+      "url": "https://static.rust-lang.org/dist/rust-std-1.99.0-aarch64-apple-darwin.tar.xz",
+      "sha256": "a7c6de8aa21e7c31163a7656295b321bb85f5dce55ed8ea95ac9ac561202bb5b"
+    }
+  },
+  {
+    "component": "pydantic-core-2.50.4",
+    "rustc_commit": "58cf8f9c35b355199727627d07ae34a4e2846d67",
+    "basis": "Exact /rustc/<commit>/ paths in the shipped native extension string table. Compiler itself is not distributed. Notices cover the linked Rust standard runtime.",
+    "notices": [
+      {
+        "path": "LICENSES/rust-standard-library/58cf8f9c35b355199727627d07ae34a4e2846d67/COPYRIGHT",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/COPYRIGHT",
+        "sha256": "172020dbfd5b53a226dfde77616190a48dcff519b0bc0e6deb91a8450782c4af"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/58cf8f9c35b355199727627d07ae34a4e2846d67/LICENSE-APACHE",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/LICENSE-APACHE",
+        "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/58cf8f9c35b355199727627d07ae34a4e2846d67/LICENSE-MIT",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/LICENSE-MIT",
+        "sha256": "b71bd43a069ca0641a9ecfe585ca7b3c53b5cc1608f8b68321168698e28b5ea1"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/58cf8f9c35b355199727627d07ae34a4e2846d67/distribution/LICENSE-APACHE",
+        "source_member": "rust-std-1.99.1-aarch64-apple-darwin/LICENSE-APACHE",
+        "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/58cf8f9c35b355199727627d07ae34a4e2846d67/distribution/COPYRIGHT",
+        "source_member": "rust-std-1.99.1-aarch64-apple-darwin/COPYRIGHT",
+        "sha256": "172020dbfd5b53a226dfde77616190a48dcff519b0bc0e6deb91a8450782c4af"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/58cf8f9c35b355199727627d07ae34a4e2846d67/distribution/LICENSE-MIT",
+        "source_member": "rust-std-1.99.1-aarch64-apple-darwin/LICENSE-MIT",
+        "sha256": "b71bd43a069ca0641a9ecfe585ca7b3c53b5cc1608f8b68321168698e28b5ea1"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/58cf8f9c35b355199727627d07ae34a4e2846d67/license-metadata.json",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/license-metadata.json",
+        "sha256": "7bed295fb8d5ddc54ef9e7c795b18207d8da747513ae83fce9748e840200b40c"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/58cf8f9c35b355199727627d07ae34a4e2846d67/library/Cargo.lock",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/library/Cargo.lock",
+        "sha256": "53d9ccff0c906de434b65af90d5c30063894b940fc839261f1fb06ef2e69e3d3"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/58cf8f9c35b355199727627d07ae34a4e2846d67/LICENSES/Unicode-3.0.txt",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/LICENSES/Unicode-3.0.txt",
+        "sha256": "f5062c9a188d81dfe66b56db4182dcf9e4b17c0d9b0d311a8e20b3a1b075c443"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/58cf8f9c35b355199727627d07ae34a4e2846d67/LICENSES/Apache-2.0.txt",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/LICENSES/Apache-2.0.txt",
+        "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/58cf8f9c35b355199727627d07ae34a4e2846d67/LICENSES/MIT.txt",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/LICENSES/MIT.txt",
+        "sha256": "b85dcd3e453d05982552c52b5fc9e0bdd6d23c6f8e844b984a88af32570b0cc0"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/58cf8f9c35b355199727627d07ae34a4e2846d67/LICENSES/BSD-2-Clause.txt",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/LICENSES/BSD-2-Clause.txt",
+        "sha256": "f32fb3b417a194167cfad068223fc975ba96c5960513a10f66a3c28720aec1df"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/58cf8f9c35b355199727627d07ae34a4e2846d67/LICENSES/LLVM-exception.txt",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/LICENSES/LLVM-exception.txt",
+        "sha256": "e34c58338bd89d43e709e226610d8f32b3e3c47f4ad9a99a8dc1d4ac7842488e"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/58cf8f9c35b355199727627d07ae34a4e2846d67/LICENSES/NCSA.txt",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/LICENSES/NCSA.txt",
+        "sha256": "39cb0234065c92b9e6cee3830cbb52b1aa289aa8fe9ba2e66730fec5cf05c630"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/58cf8f9c35b355199727627d07ae34a4e2846d67/library/compiler-builtins/LICENSE.txt",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/library/compiler-builtins/LICENSE.txt",
+        "sha256": "ab6eec6caf0fa5775e411c7a8bc6a45c4ef2956b0980b157ab74fc5cd62a928b"
+      }
+    ],
+    "rust_version": "1.99.1",
+    "std_artifact": {
+      "url": "https://static.rust-lang.org/dist/rust-std-1.99.1-aarch64-apple-darwin.tar.xz",
+      "sha256": "fe79d6ab5a0321de26463999d8c112b8ad3eafbcbcf822d66a2300b45dde1031"
+    }
+  },
+  {
+    "component": "safetensors-0.8.0",
+    "rustc_commit": "59807616e1fa2540724bfbac14d7976d7e4a3860",
+    "basis": "Exact /rustc/<commit>/ paths in the shipped native extension string table. Compiler itself is not distributed. Notices cover the linked Rust standard runtime.",
+    "notices": [
+      {
+        "path": "LICENSES/rust-standard-library/59807616e1fa2540724bfbac14d7976d7e4a3860/COPYRIGHT",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/59807616e1fa2540724bfbac14d7976d7e4a3860/COPYRIGHT",
+        "sha256": "172020dbfd5b53a226dfde77616190a48dcff519b0bc0e6deb91a8450782c4af"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/59807616e1fa2540724bfbac14d7976d7e4a3860/LICENSE-APACHE",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/59807616e1fa2540724bfbac14d7976d7e4a3860/LICENSE-APACHE",
+        "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/59807616e1fa2540724bfbac14d7976d7e4a3860/LICENSE-MIT",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/59807616e1fa2540724bfbac14d7976d7e4a3860/LICENSE-MIT",
+        "sha256": "b71bd43a069ca0641a9ecfe585ca7b3c53b5cc1608f8b68321168698e28b5ea1"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/59807616e1fa2540724bfbac14d7976d7e4a3860/distribution/LICENSE-APACHE",
+        "source_member": "rust-std-1.95.0-aarch64-apple-darwin/LICENSE-APACHE",
+        "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/59807616e1fa2540724bfbac14d7976d7e4a3860/distribution/COPYRIGHT",
+        "source_member": "rust-std-1.95.0-aarch64-apple-darwin/COPYRIGHT",
+        "sha256": "172020dbfd5b53a226dfde77616190a48dcff519b0bc0e6deb91a8450782c4af"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/59807616e1fa2540724bfbac14d7976d7e4a3860/distribution/LICENSE-MIT",
+        "source_member": "rust-std-1.95.0-aarch64-apple-darwin/LICENSE-MIT",
+        "sha256": "b71bd43a069ca0641a9ecfe585ca7b3c53b5cc1608f8b68321168698e28b5ea1"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/59807616e1fa2540724bfbac14d7976d7e4a3860/license-metadata.json",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/59807616e1fa2540724bfbac14d7976d7e4a3860/license-metadata.json",
+        "sha256": "7c693ea746d879a27c3db8ae26131090d0cd89c36f79550ea6674b97e2da9a03"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/59807616e1fa2540724bfbac14d7976d7e4a3860/library/Cargo.lock",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/59807616e1fa2540724bfbac14d7976d7e4a3860/library/Cargo.lock",
+        "sha256": "24ee3436f747470180e01a14bb9dea54eba96be15f65ab0407922a7132de84b4"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/59807616e1fa2540724bfbac14d7976d7e4a3860/LICENSES/Unicode-3.0.txt",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/59807616e1fa2540724bfbac14d7976d7e4a3860/LICENSES/Unicode-3.0.txt",
+        "sha256": "f5062c9a188d81dfe66b56db4182dcf9e4b17c0d9b0d311a8e20b3a1b075c443"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/59807616e1fa2540724bfbac14d7976d7e4a3860/LICENSES/Apache-2.0.txt",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/59807616e1fa2540724bfbac14d7976d7e4a3860/LICENSES/Apache-2.0.txt",
+        "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/59807616e1fa2540724bfbac14d7976d7e4a3860/LICENSES/MIT.txt",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/59807616e1fa2540724bfbac14d7976d7e4a3860/LICENSES/MIT.txt",
+        "sha256": "b85dcd3e453d05982552c52b5fc9e0bdd6d23c6f8e844b984a88af32570b0cc0"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/59807616e1fa2540724bfbac14d7976d7e4a3860/LICENSES/BSD-2-Clause.txt",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/59807616e1fa2540724bfbac14d7976d7e4a3860/LICENSES/BSD-2-Clause.txt",
+        "sha256": "f32fb3b417a194167cfad068223fc975ba96c5960513a10f66a3c28720aec1df"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/59807616e1fa2540724bfbac14d7976d7e4a3860/LICENSES/LLVM-exception.txt",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/59807616e1fa2540724bfbac14d7976d7e4a3860/LICENSES/LLVM-exception.txt",
+        "sha256": "e34c58338bd89d43e709e226610d8f32b3e3c47f4ad9a99a8dc1d4ac7842488e"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/59807616e1fa2540724bfbac14d7976d7e4a3860/LICENSES/NCSA.txt",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/59807616e1fa2540724bfbac14d7976d7e4a3860/LICENSES/NCSA.txt",
+        "sha256": "39cb0234065c92b9e6cee3830cbb52b1aa289aa8fe9ba2e66730fec5cf05c630"
+      },
+      {
+        "path": "LICENSES/rust-standard-library/59807616e1fa2540724bfbac14d7976d7e4a3860/library/compiler-builtins/LICENSE.txt",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/59807616e1fa2540724bfbac14d7976d7e4a3860/library/compiler-builtins/LICENSE.txt",
+        "sha256": "ab6eec6caf0fa5775e411c7a8bc6a45c4ef2956b0980b157ab74fc5cd62a928b"
+      }
+    ],
+    "rust_version": "1.95.0",
+    "std_artifact": {
+      "url": "https://static.rust-lang.org/dist/rust-std-1.95.0-aarch64-apple-darwin.tar.xz",
+      "sha256": "9b30089b0f767cb91b2190ffec55a9beeb2a21a1405d8da0f664d7e09d08e6d8"
+    }
+  }
+]
