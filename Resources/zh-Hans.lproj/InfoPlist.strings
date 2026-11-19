@@ -1,0 +1,5 @@
+"CFBundleName" = "本地逐字稿";
+"CFBundleDisplayName" = "本地逐字稿";
+"NSMicrophoneUsageDescription" = "本地逐字稿（LocalVerbatim）需要麦克风来录制你的发言。音频与文字稿只保存在本机。";
+"NSScreenCaptureUsageDescription" = "本地逐字稿（LocalVerbatim）需要系统音频捕获权限来录制会议声音，不保存屏幕画面。";
+"NSAudioCaptureUsageDescription" = "录制电脑中播放的会议声音，在本机生成逐字稿。";

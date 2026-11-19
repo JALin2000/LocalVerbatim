@@ -1,0 +1,45 @@
+# Local application data and private development material
+Recordings/
+Diagnostics/
+models/
+Models/
+runtime/
+.venv/
+cache/
+.localverbatim/
+settings.json
+settings-backup-*.json
+preferences.json
+preferences-backup-*.json
+migration.json
+*.log
+docs/development-recordings/
+docs/private-work/
+*.wav
+*.m4a
+*.mp3
+*.mp4
+*.mov
+*.result.json
+
+# Build and package outputs
+*.app/
+*.dmg
+*.zip
+dist/
+.build/
+.build-cache/
+.runtime-stage/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Credentials and signing material
+.env
+.env.*
+!.env.example
+*.p12
+*.p8
+*.key
+*.mobileprovision
+*.provisionprofile

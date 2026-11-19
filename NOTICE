@@ -1,0 +1,13 @@
+LocalVerbatim / 本地逐字稿
+Copyright 2026 LocalVerbatim contributors
+
+Original project source code, documentation and original icon artwork are
+licensed under the Apache License, Version 2.0. A copy is provided in LICENSE.
+
+The project was previously developed under the working name LocalScribe.
+The historical bundle identifier and data-directory name are retained for
+upgrade compatibility; they do not imply affiliation with other projects.
+
+Third-party software and model weights retain their respective copyrights and
+licenses. See THIRD_PARTY_NOTICES.md and LICENSES/ for attribution and texts.
+No third-party models or executable runtime are included in this source tree.

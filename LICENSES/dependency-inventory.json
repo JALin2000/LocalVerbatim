@@ -1,0 +1,393 @@
+{
+  "basis": "Dependency metadata and license files from the tested v0.4.3 runtime; packages and binaries are not included in this source tree. Native embedded libraries require a separate distribution review.",
+  "python_version": "3.13.15",
+  "packages": [
+    {
+      "name": "annotated-doc",
+      "version": "0.0.6",
+      "declared_license": "MIT",
+      "preserved_license_files": [
+        "LICENSES/dependencies/annotated_doc-0.0.6.dist-info/licenses/LICENSE"
+      ]
+    },
+    {
+      "name": "annotated-types",
+      "version": "0.8.0",
+      "declared_license": "MIT",
+      "preserved_license_files": [
+        "LICENSES/dependencies/annotated_types-0.8.0.dist-info/licenses/LICENSE"
+      ]
+    },
+    {
+      "name": "anyio",
+      "version": "4.16.0",
+      "declared_license": "MIT",
+      "preserved_license_files": [
+        "LICENSES/dependencies/anyio-4.16.0.dist-info/licenses/LICENSE"
+      ]
+    },
+    {
+      "name": "cffi",
+      "version": "2.1.1",
+      "declared_license": "MIT-0",
+      "preserved_license_files": [
+        "LICENSES/dependencies/cffi-2.1.1.dist-info/licenses/LICENSE"
+      ]
+    },
+    {
+      "name": "click",
+      "version": "8.5.1",
+      "declared_license": "BSD-3-Clause",
+      "preserved_license_files": [
+        "LICENSES/dependencies/click-8.5.1.dist-info/licenses/LICENSE.txt"
+      ]
+    },
+    {
+      "name": "filelock",
+      "version": "4.2.10",
+      "declared_license": "MIT",
+      "preserved_license_files": [
+        "LICENSES/dependencies/filelock-4.2.10.dist-info/licenses/LICENSE"
+      ]
+    },
+    {
+      "name": "fsspec",
+      "version": "2026.9.0",
+      "declared_license": "BSD-3-Clause",
+      "preserved_license_files": [
+        "LICENSES/dependencies/fsspec-2026.9.0.dist-info/licenses/LICENSE"
+      ]
+    },
+    {
+      "name": "h11",
+      "version": "0.16.0",
+      "declared_license": "MIT",
+      "preserved_license_files": [
+        "LICENSES/dependencies/h11-0.16.0.dist-info/licenses/LICENSE.txt"
+      ]
+    },
+    {
+      "name": "hf-xet",
+      "version": "1.8.0",
+      "declared_license": "Apache-2.0",
+      "preserved_license_files": [
+        "LICENSES/dependencies/hf_xet-1.8.0.dist-info/licenses/LICENSE"
+      ]
+    },
+    {
+      "name": "httpcore2",
+      "version": "2.16.0",
+      "declared_license": "BSD-3-Clause",
+      "preserved_license_files": [
+        "LICENSES/dependencies/httpcore2-2.16.0.dist-info/licenses/LICENSE.md"
+      ]
+    },
+    {
+      "name": "httpx2",
+      "version": "2.16.0",
+      "declared_license": "BSD-3-Clause",
+      "preserved_license_files": [
+        "LICENSES/dependencies/httpx2-2.16.0.dist-info/licenses/LICENSE.md"
+      ]
+    },
+    {
+      "name": "huggingface_hub",
+      "version": "2.4.0",
+      "declared_license": "Apache-2.0",
+      "preserved_license_files": [
+        "LICENSES/dependencies/huggingface_hub-2.4.0.dist-info/licenses/LICENSE"
+      ]
+    },
+    {
+      "name": "idna",
+      "version": "3.20",
+      "declared_license": "BSD-3-Clause",
+      "preserved_license_files": [
+        "LICENSES/dependencies/idna-3.20.dist-info/licenses/LICENSE.md"
+      ]
+    },
+    {
+      "name": "Jinja2",
+      "version": "3.1.6",
+      "declared_license": "License :: OSI Approved :: BSD License",
+      "preserved_license_files": [
+        "LICENSES/dependencies/jinja2-3.1.6.dist-info/licenses/LICENSE.txt"
+      ]
+    },
+    {
+      "name": "markdown-it-py",
+      "version": "4.3.0",
+      "declared_license": "License :: OSI Approved :: MIT License",
+      "preserved_license_files": [
+        "LICENSES/dependencies/markdown_it_py-4.3.0.dist-info/licenses/LICENSE",
+        "LICENSES/dependencies/markdown_it_py-4.3.0.dist-info/licenses/LICENSE.markdown-it"
+      ]
+    },
+    {
+      "name": "MarkupSafe",
+      "version": "3.0.4",
+      "declared_license": "BSD-3-Clause",
+      "preserved_license_files": [
+        "LICENSES/dependencies/markupsafe-3.0.4.dist-info/licenses/LICENSE.txt"
+      ]
+    },
+    {
+      "name": "mdurl",
+      "version": "0.1.2",
+      "declared_license": "License :: OSI Approved :: MIT License",
+      "preserved_license_files": [
+        "LICENSES/dependencies/mdurl-0.1.2.dist-info/LICENSE"
+      ]
+    },
+    {
+      "name": "miniaudio",
+      "version": "1.73",
+      "declared_license": "MIT",
+      "preserved_license_files": [
+        "LICENSES/dependencies/miniaudio-1.73.dist-info/licenses/LICENSE"
+      ]
+    },
+    {
+      "name": "mlx",
+      "version": "0.32.4",
+      "declared_license": "MIT",
+      "preserved_license_files": [
+        "LICENSES/dependencies/mlx-0.32.4.dist-info/licenses/LICENSE"
+      ]
+    },
+    {
+      "name": "mlx-audio",
+      "version": "0.6.5",
+      "declared_license": "MIT",
+      "preserved_license_files": [
+        "LICENSES/dependencies/mlx_audio-0.6.5.dist-info/licenses/LICENSE"
+      ]
+    },
+    {
+      "name": "mlx-metal",
+      "version": "0.32.4",
+      "declared_license": "MIT",
+      "preserved_license_files": [
+        "LICENSES/dependencies/mlx_metal-0.32.4.dist-info/licenses/LICENSE"
+      ]
+    },
+    {
+      "name": "numpy",
+      "version": "2.5.4",
+      "declared_license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+      "preserved_license_files": [
+        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/LICENSE.txt",
+        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/ma/LICENSE",
+        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/random/LICENSE.md",
+        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/random/src/mt19937/LICENSE.md",
+        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/random/src/sfc64/LICENSE.md",
+        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/random/src/pcg64/LICENSE.md",
+        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/random/src/philox/LICENSE.md",
+        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/random/src/splitmix64/LICENSE.md",
+        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/random/src/distributions/LICENSE.md",
+        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/fft/pocketfft/LICENSE.md",
+        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/_core/src/highway/LICENSE",
+        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/_core/src/multiarray/dragon4_LICENSE.txt",
+        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/_core/src/umath/svml/LICENSE",
+        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/_core/src/common/pythoncapi-compat/COPYING",
+        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/_core/src/npysort/x86-simd-sort/LICENSE.md",
+        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/_core/include/numpy/libdivide/LICENSE.txt",
+        "LICENSES/dependencies/numpy-2.5.4.dist-info/licenses/numpy/linalg/lapack_lite/LICENSE.txt"
+      ]
+    },
+    {
+      "name": "packaging",
+      "version": "26.3",
+      "declared_license": "Apache-2.0 OR BSD-2-Clause",
+      "preserved_license_files": [
+        "LICENSES/dependencies/packaging-26.3.dist-info/licenses/LICENSE",
+        "LICENSES/dependencies/packaging-26.3.dist-info/licenses/LICENSE.APACHE",
+        "LICENSES/dependencies/packaging-26.3.dist-info/licenses/LICENSE.BSD"
+      ]
+    },
+    {
+      "name": "pip",
+      "version": "26.2.1",
+      "declared_license": "MIT",
+      "preserved_license_files": [
+        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/LICENSE.txt",
+        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/packaging/LICENSE",
+        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/packaging/LICENSE.APACHE",
+        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/packaging/LICENSE.BSD",
+        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/truststore/LICENSE",
+        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/msgpack/COPYING",
+        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/pygments/LICENSE",
+        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/distlib/LICENSE.txt",
+        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/distro/LICENSE",
+        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/cachecontrol/LICENSE.txt",
+        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/idna/LICENSE.md",
+        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/requests/LICENSE",
+        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/tomli/LICENSE",
+        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/certifi/LICENSE",
+        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/pyproject_hooks/LICENSE",
+        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/rich/LICENSE",
+        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/tomli_w/LICENSE",
+        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/urllib3/LICENSE.txt",
+        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/pkg_resources/LICENSE",
+        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/resolvelib/LICENSE",
+        "LICENSES/dependencies/pip-26.2.1.dist-info/licenses/src/pip/_vendor/platformdirs/LICENSE"
+      ]
+    },
+    {
+      "name": "psutil",
+      "version": "7.2.2",
+      "declared_license": "BSD-3-Clause",
+      "preserved_license_files": [
+        "LICENSES/dependencies/psutil-7.2.2.dist-info/LICENSE"
+      ]
+    },
+    {
+      "name": "pycparser",
+      "version": "3.12",
+      "declared_license": "BSD-3-Clause",
+      "preserved_license_files": [
+        "LICENSES/dependencies/pycparser-3.12.dist-info/licenses/LICENSE"
+      ]
+    },
+    {
+      "name": "pydantic",
+      "version": "2.14.3",
+      "declared_license": "MIT",
+      "preserved_license_files": [
+        "LICENSES/dependencies/pydantic-2.14.3.dist-info/licenses/LICENSE"
+      ]
+    },
+    {
+      "name": "pydantic_core",
+      "version": "2.50.4",
+      "declared_license": "MIT",
+      "preserved_license_files": [
+        "LICENSES/dependencies/pydantic_core-2.50.4.dist-info/licenses/LICENSE"
+      ]
+    },
+    {
+      "name": "Pygments",
+      "version": "2.21.0",
+      "declared_license": "BSD-2-Clause",
+      "preserved_license_files": [
+        "LICENSES/dependencies/pygments-2.21.0.dist-info/licenses/LICENSE"
+      ]
+    },
+    {
+      "name": "PyYAML",
+      "version": "6.0.3",
+      "declared_license": "MIT",
+      "preserved_license_files": [
+        "LICENSES/dependencies/pyyaml-6.0.3.dist-info/licenses/LICENSE"
+      ]
+    },
+    {
+      "name": "regex",
+      "version": "2026.11.9",
+      "declared_license": "Apache-2.0 AND CNRI-Python",
+      "preserved_license_files": [
+        "LICENSES/dependencies/regex-2026.11.9.dist-info/licenses/LICENSE.txt"
+      ]
+    },
+    {
+      "name": "rich",
+      "version": "15.0.0",
+      "declared_license": "MIT",
+      "preserved_license_files": [
+        "LICENSES/dependencies/rich-15.0.0.dist-info/licenses/LICENSE"
+      ]
+    },
+    {
+      "name": "safetensors",
+      "version": "0.8.0",
+      "declared_license": "License :: OSI Approved :: Apache Software License",
+      "preserved_license_files": [
+        "LICENSES/dependencies/safetensors-0.8.0.dist-info/licenses/LICENSE"
+      ]
+    },
+    {
+      "name": "scipy",
+      "version": "1.18.1",
+      "declared_license": "See preserved upstream license text (contains component-specific terms).",
+      "preserved_license_files": [
+        "LICENSES/dependencies/scipy-1.18.1.dist-info/LICENSE.txt"
+      ]
+    },
+    {
+      "name": "sentencepiece",
+      "version": "0.2.3",
+      "declared_license": "Apache-2.0",
+      "preserved_license_files": []
+    },
+    {
+      "name": "shellingham",
+      "version": "1.5.4",
+      "declared_license": "ISC License",
+      "preserved_license_files": [
+        "LICENSES/dependencies/shellingham-1.5.4.dist-info/LICENSE"
+      ]
+    },
+    {
+      "name": "sounddevice",
+      "version": "0.5.6",
+      "declared_license": "MIT",
+      "preserved_license_files": [
+        "LICENSES/dependencies/sounddevice-0.5.6.dist-info/licenses/LICENSE"
+      ]
+    },
+    {
+      "name": "tokenizers",
+      "version": "0.23.3",
+      "declared_license": "License :: OSI Approved :: Apache Software License",
+      "preserved_license_files": []
+    },
+    {
+      "name": "tqdm",
+      "version": "4.70.1",
+      "declared_license": "MPL-2.0 AND MIT",
+      "preserved_license_files": [
+        "LICENSES/dependencies/tqdm-4.70.1.dist-info/licenses/LICENCE"
+      ]
+    },
+    {
+      "name": "transformers",
+      "version": "5.22.2",
+      "declared_license": "Apache 2.0 License",
+      "preserved_license_files": [
+        "LICENSES/dependencies/transformers-5.22.2.dist-info/licenses/LICENSE"
+      ]
+    },
+    {
+      "name": "truststore",
+      "version": "0.10.5",
+      "declared_license": "MIT",
+      "preserved_license_files": [
+        "LICENSES/dependencies/truststore-0.10.5.dist-info/licenses/LICENSE"
+      ]
+    },
+    {
+      "name": "typer",
+      "version": "0.29.1",
+      "declared_license": "MIT",
+      "preserved_license_files": [
+        "LICENSES/dependencies/typer-0.29.1.dist-info/licenses/LICENSE"
+      ]
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0",
+      "declared_license": "PSF-2.0",
+      "preserved_license_files": [
+        "LICENSES/dependencies/typing_extensions-4.16.0.dist-info/licenses/LICENSE"
+      ]
+    },
+    {
+      "name": "typing-inspection",
+      "version": "0.4.5",
+      "declared_license": "MIT",
+      "preserved_license_files": [
+        "LICENSES/dependencies/typing_inspection-0.4.5.dist-info/licenses/LICENSE"
+      ]
+    }
+  ]
+}

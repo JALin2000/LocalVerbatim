@@ -1,0 +1,5 @@
+"NSMicrophoneUsageDescription" = "LocalVerbatim records your microphone to create a transcript on this Mac. Audio stays on your device.";
+"NSScreenCaptureUsageDescription" = "LocalVerbatim captures meeting audio played by your computer. It does not save screen images.";
+"NSAudioCaptureUsageDescription" = "Capture computer audio and transcribe it locally.";
+"CFBundleName" = "LocalVerbatim";
+"CFBundleDisplayName" = "LocalVerbatim";

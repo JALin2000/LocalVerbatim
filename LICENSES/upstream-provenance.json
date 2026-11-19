@@ -1,0 +1,23 @@
+[
+  {
+    "component": "sentencepiece",
+    "source_url": "https://github.com/google/sentencepiece/blob/master/LICENSE",
+    "git_blob_sha": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+    "retrieved": "2026-11-16",
+    "note": "Upstream default-branch license snapshot; verify the exact artifact at binary release."
+  },
+  {
+    "component": "tokenizers",
+    "source_url": "https://github.com/huggingface/tokenizers/blob/main/LICENSE",
+    "git_blob_sha": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+    "retrieved": "2026-11-16",
+    "note": "Upstream default-branch license snapshot; verify the exact artifact at binary release."
+  },
+  {
+    "component": "qwen",
+    "source_url": "https://github.com/QwenLM/Qwen3-ASR/blob/main/LICENSE",
+    "git_blob_sha": "c347eb5ec781d2702623e8e2b5923fa1a766a64d",
+    "retrieved": "2026-11-16",
+    "note": "Upstream default-branch license snapshot; verify the exact artifact at binary release."
+  }
+]
