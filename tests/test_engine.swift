@@ -9,11 +9,13 @@ import Darwin
         let first = TranscriptionJob(meetingID: "A", chunk: chunk, language: "", refinementID: "run1")
         let second = TranscriptionJob(meetingID: "B", chunk: chunk, language: "", refinementID: "run2")
         let live = TranscriptionJob(meetingID: "C", chunk: chunk, language: "")
+        let importedChunk = AudioChunk(id: "imported-0", source: "imported", start: 0, end: 1, path: "/unused")
+        let imported = TranscriptionJob(meetingID: "I", chunk: importedChunk, language: "")
         engine.onError = { failures.append($0) }
         engine.onJobStarted = { job in
             if job.identity == first.identity {
                 engine.setRefinementsPaused(true)
-                engine.enqueue([live, second]) // duplicate refinement must not duplicate work
+                engine.enqueue([imported, live, second]) // duplicate refinement must not duplicate work
             }
         }
         engine.onResult = { job, _, _ in results.append(job.identity) }
@@ -24,13 +26,13 @@ import Darwin
         }
         precondition(failures.isEmpty, failures.joined(separator: "; "))
         precondition(results == [first.identity, live.identity], "Live audio did not preempt the refinement queue: \(results)")
-        precondition(engine.pendingCount == 1, "Queued refinement lost or duplicated")
+        precondition(engine.pendingCount == 2, "Queued import or refinement lost or duplicated")
         engine.setRefinementsPaused(false)
         for _ in 0..<300 {
-            if results.count == 3 && engine.pendingCount == 0 { break }
+            if results.count == 4 && engine.pendingCount == 0 { break }
             try? await Task.sleep(nanoseconds: 10_000_000)
         }
-        precondition(results == [first.identity, live.identity, second.identity])
+        precondition(results == [first.identity, live.identity, imported.identity, second.identity])
 
         let deleted = TranscriptionJob(meetingID: "deleted", chunk: chunk, language: "")
         let deletedRefinement = TranscriptionJob(meetingID: "deleted", chunk: chunk, language: "", refinementID: "deleted-run")
@@ -46,7 +48,7 @@ import Darwin
             if results.last == survivor.identity && engine.pendingCount == 0 { break }
             try? await Task.sleep(nanoseconds: 10_000_000)
         }
-        precondition(results == [first.identity, live.identity, second.identity, survivor.identity], "Deleted jobs returned or another meeting was cancelled")
+        precondition(results == [first.identity, live.identity, imported.identity, second.identity, survivor.identity], "Deleted jobs returned or another meeting was cancelled")
         precondition(failures.isEmpty && engine.pendingCount == 0)
         let missing = AudioChunk(id: "missing", source: "system", start: 0, end: 1, path: "/force-error")
         let cancelledError = TranscriptionJob(meetingID: "deleted-error", chunk: missing, language: "")

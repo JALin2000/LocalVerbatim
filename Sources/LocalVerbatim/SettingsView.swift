@@ -98,7 +98,7 @@ struct SettingsView: View {
                     Text("English").tag("English"); Text(tr("普通话", "Mandarin")).tag("Chinese")
                 }.frame(maxWidth: 380, alignment: .leading)
             }
-            Toggle(tr("结束后自动二次识别，保留原稿", "Run a second pass after recording; keep the original"), isOn: settings.binding(\.autoRefine))
+            Toggle(tr("自动二次识别录音，保留原稿", "Run a second pass on recordings and keep the original transcript"), isOn: settings.binding(\.autoRefine))
             LabeledControl(tr("空闲后释放模型内存", "Unload the model when idle")) {
                 Picker(tr("空闲后释放模型内存", "Unload the model when idle"), selection: settings.binding(\.idleUnloadMinutes)) {
                     Text(tr("从不", "Never")).tag(0)
@@ -175,9 +175,10 @@ struct SettingsView: View {
             Text((Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "0.4.1") + tr(" · Mac 试用版", " · Mac preview"))
             Text(tr("本地双路会议录音与中英文逐字稿。", "Local microphone and system-audio recording with English and Mandarin transcription."))
             Text("Qwen3-ASR-1.7B BF16 · MLX").font(.caption).foregroundStyle(.secondary)
-            Text(tr("模型物理内存达到8.5GB时提前停止转写并保留录音。采样监测不是操作系统级的绝对内存上限。", "Transcription stops at the sampled 8.5GB model-memory guard; recordings are retained. Sampling is not an OS-enforced hard memory limit.")).font(.caption).foregroundStyle(.secondary)
+            Text(tr("识别进程的物理内存达到本机 RAM 的 90% 时停止转写，保留录音。实际能用的内存也取决于系统和其他应用。", "Transcription stops when the recognition process reaches 90% of installed RAM. Audio is retained. Available memory also depends on macOS and other apps.")).font(.caption).foregroundStyle(.secondary)
             Button(tr("打开本地数据目录", "Open local data folder")) { NSWorkspace.shared.open(AppPaths.dataRoot) }
-            Text(tr("本试用版未发布到 GitHub。", "This preview has not been published to GitHub.")).font(.caption).foregroundStyle(.secondary)
+            Link(tr("在 GitHub 查看源码和发行版", "View source and releases on GitHub"), destination: URL(string: "https://github.com/JALin2000/LocalVerbatim")!)
+                .font(.caption)
         }
     }
     private func title(_ zh: String, _ en: String) -> some View { Text(tr(zh, en)).font(.headline) }

@@ -21,6 +21,11 @@ final class TranscriptionEngine: ObservableObject {
     @Published var memoryGB: Double = 0
     @Published var peakGB: Double = 0
     @Published var lastLatency: Double = 0
+    @Published private(set) var memoryTestPeakBytes: Double?
+    static let installedRAM = ProcessInfo.processInfo.physicalMemory
+    static let memoryLimit = installedRAM * 9 / 10
+    static let bytesPerDisplayGB = 1_073_741_824.0
+    private static let memoryGuardMessage = "识别进程已达到本机 RAM 的 90%，转写已停止。已保存的录音可以稍后重试。"
     var onResult: ((TranscriptionJob, String, String) -> Void)?
     var onError: ((String) -> Void)?
     var onJobStarted: ((TranscriptionJob) -> Void)?
@@ -41,13 +46,15 @@ final class TranscriptionEngine: ObservableObject {
     private var cancelledRuns: Set<String> = []
     private var cancelledMeetings: Set<String> = []
 
-    func start() {
+    func start(testMemory: Bool = false) {
         guard process == nil else {
             if !ready && (failure || input == nil) { restartWhenExited = true }
             return
         }
         failure = false
         terminating = false
+        peakGB = 0
+        memoryTestPeakBytes = nil
         guard FileManager.default.fileExists(atPath: AppPaths.python.path),
               FileManager.default.fileExists(atPath: AppPaths.model.appendingPathComponent("config.json").path) else {
             state = "模型未安装"
@@ -59,8 +66,10 @@ final class TranscriptionEngine: ObservableObject {
         let child = Process(), stdin = Pipe(), stdout = Pipe()
         child.executableURL = AppPaths.python
         child.arguments = ["-B", "-u", AppPaths.worker.path, "--model", AppPaths.model.path]
+        if testMemory { child.arguments?.append("--test-memory") }
         child.currentDirectoryURL = AppPaths.dataRoot
         var env = ProcessInfo.processInfo.environment
+        env["LOCALVERBATIM_RAM_BYTES"] = String(Self.installedRAM)
         env["HF_HUB_OFFLINE"] = "1"
         env["TRANSFORMERS_OFFLINE"] = "1"
         env["HF_HUB_DISABLE_TELEMETRY"] = "1"
@@ -90,7 +99,8 @@ final class TranscriptionEngine: ObservableObject {
                 self.memoryGB = 0
                 if proc.terminationStatus != 0 && !self.failure && !self.terminating && !interrupted {
                     self.state = "转写已停止"
-                    let message = "识别进程退出（\(proc.terminationStatus)）。录音和待处理片段已保存，可重试。详情见 engine.log。"
+                    let message = proc.terminationStatus == 75 ? Self.memoryGuardMessage :
+                        "识别进程退出（\(proc.terminationStatus)）。录音和待处理片段已保存，可重试。详情见 engine.log。"
                     self.onFatalError?(message)
                     self.onError?(message)
                 } else if !self.failure {
@@ -146,8 +156,10 @@ final class TranscriptionEngine: ObservableObject {
 
     private func pump() {
         guard ready, active == nil, !queue.isEmpty, let input else { return }
-        guard let index = queue.firstIndex(where: { !$0.isRefinement }) ?? (refinementsPaused ? nil : queue.indices.first) else {
-            state = "二次识别等待录音结束"
+        let liveJob = queue.firstIndex { !$0.isRefinement && $0.chunk.source != "imported" }
+        let backgroundJob = queue.firstIndex { !$0.isRefinement } ?? queue.indices.first
+        guard let index = liveJob ?? (refinementsPaused ? nil : backgroundJob) else {
+            state = "后台转写等待录音结束"
             return
         }
         let job = queue.remove(at: index)
@@ -191,6 +203,8 @@ final class TranscriptionEngine: ObservableObject {
         }
         switch type {
         case "ready": ready = true; state = "模型已就绪"; pump()
+        case "memory_test":
+            memoryTestPeakBytes = event["peak"] as? Double
         case "status": state = event["message"] as? String ?? state
         case "result":
             guard let job = active, event["id"] as? String == job.identity else { return }
@@ -220,7 +234,7 @@ final class TranscriptionEngine: ObservableObject {
     }
 
     private func checkMemory() {
-        guard let process, process.isRunning else { return }
+        guard !failure, let process, process.isRunning else { return }
         var usage = rusage_info_v2()
         let status = withUnsafeMutablePointer(to: &usage) {
             $0.withMemoryRebound(to: rusage_info_t?.self, capacity: 1) { proc_pid_rusage(process.processIdentifier, RUSAGE_INFO_V2, $0) }
@@ -228,12 +242,11 @@ final class TranscriptionEngine: ObservableObject {
         guard status == 0 else { return }
         memoryGB = Double(usage.ri_phys_footprint) / 1e9
         peakGB = max(peakGB, memoryGB)
-        if usage.ri_phys_footprint >= 8_500_000_000 {
-            fail("模型已达到 8.5GB 安全阈值，转写已停止。录音继续保存，稍后可以重试。")
-        }
+        if usage.ri_phys_footprint >= Self.memoryLimit { fail(Self.memoryGuardMessage) }
     }
 
     private func fail(_ message: String) {
+        guard !failure else { return }
         failure = true
         ready = false
         state = "转写已停止"

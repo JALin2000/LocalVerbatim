@@ -1,6 +1,6 @@
 # Contributing / 参与贡献
 
-LocalVerbatim is an experimental project for Apple Silicon Macs. v0.4.8 provides an explicitly unnotarized preview installer. English and Chinese contributions are welcome.
+LocalVerbatim is an experimental project for Apple Silicon Macs. v0.4.9 provides an explicitly unnotarized preview installer. English and Chinese contributions are welcome.
 
 ## English
 

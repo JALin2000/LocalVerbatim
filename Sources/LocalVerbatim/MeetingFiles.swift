@@ -28,8 +28,8 @@ enum MeetingFiles {
     static func transcript(in folder: URL, format: String, refined: Bool = false) -> URL {
         transcripts(in: folder).appendingPathComponent("\(refined ? "refined" : "original").\(format)")
     }
-    static func save(_ meeting: Meeting) throws {
-        let target = readableMetadata(in: meeting.folder)
+    static func save(_ meeting: Meeting, in folder: URL? = nil) throws {
+        let target = readableMetadata(in: folder ?? meeting.folder)
         try FileManager.default.createDirectory(at: target.deletingLastPathComponent(), withIntermediateDirectories: true)
         let encoder = JSONEncoder(); encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
         try encoder.encode(meeting).write(to: target, options: .atomic)

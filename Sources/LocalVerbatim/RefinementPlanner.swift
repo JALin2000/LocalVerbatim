@@ -3,9 +3,9 @@ import Foundation
 /// Plans bounded 30-second reads of finalized archives. Audio is never copied
 /// into a second recording or loaded into memory for the whole meeting.
 enum RefinementPlanner {
-    static func plan(folder: URL) throws -> [AudioChunk] {
+    static func plan(folder: URL, sources: [String] = ["microphone", "system"]) throws -> [AudioChunk] {
         var jobs: [AudioChunk] = []
-        for source in ["microphone", "system"] {
+        for source in sources {
             let path = folder.appendingPathComponent("\(source).wav")
             let handle = try FileHandle(forReadingFrom: path)
             defer { try? handle.close() }

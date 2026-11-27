@@ -21,6 +21,7 @@ final class MeetingStore: ObservableObject {
     @Published var vocabularyFeedback = ""
     @Published var showSettings = false
     @Published var showSetup = false
+    @Published private(set) var importingAudio = false
     @Published var migrating = false
     @Published var migrationMessage = ""
     @Published var libraryUnavailable = false
@@ -41,6 +42,7 @@ final class MeetingStore: ObservableObject {
     private var stopTask: Task<Void, Never>?
     private var shuttingDown = false
     private var migrationTask: Task<Void, Never>?
+    private var importTask: Task<(duration: Double, chunks: [AudioChunk]), Error>?
     private var planningTasks: [String: Task<Void, Never>] = [:]
     private var planningAttempts: [String: UUID] = [:]
     private var pendingFolderRenames: Set<String> = []
@@ -138,7 +140,7 @@ final class MeetingStore: ObservableObject {
     }
 
     func reloadLibrary() {
-        guard !recording, !starting, !stopping, !migrating, engine.pendingCount == 0, planningTasks.isEmpty else { return }
+        guard !recording, !starting, !stopping, !migrating, !importingAudio, engine.pendingCount == 0, planningTasks.isEmpty else { return }
         do {
             let loaded = try readLibrary()
             stopPlayback(); meetings = loaded; libraryUnavailable = false; errorMessage = nil
@@ -151,16 +153,25 @@ final class MeetingStore: ObservableObject {
     var selected: Meeting? { meetings.first { $0.id == selectedID } }
     var visibleMeetings: [Meeting] { query.isEmpty ? meetings : meetings.filter { $0.title.localizedCaseInsensitiveContains(query) } }
     var recording: Bool { recordingID != nil }
-    var canStart: Bool { !recording && !starting && !stopping && !shuttingDown && !migrating && !libraryUnavailable && !diagnostics.running }
+    var canStart: Bool { !recording && !starting && !stopping && !shuttingDown && !migrating && !importingAudio && !libraryUnavailable && !diagnostics.running }
     var visibleSegments: [TranscriptSegment] { selected?.ordered(version: transcriptVersion) ?? [] }
 
     func newMeeting() {
-        guard !recording, !starting, !stopping, !migrating, !libraryUnavailable else { return }
+        guard canStart else { return }
         commitVocabularyDraft()
         stopPlayback()
         if let draft = meetings.first(where: { $0.status == "draft" }) { selectedID = draft.id; return }
+        let meeting = makeMeeting(title: tr("会议 · ", "Meeting · ") + formattedDate(Date()))
+        meetings.insert(meeting, at: 0)
+        selectedID = meeting.id
+        tab = "transcript"
+        transcriptVersion = "original"
+        persist(meeting)
+    }
+
+    private func makeMeeting(title: String) -> Meeting {
         var meeting = Meeting()
-        meeting.title = tr("会议 · ", "Meeting · ") + formattedDate(Date())
+        meeting.title = title
         meeting.language = AppSettings.shared.options.defaultLanguage
         if let hints = preferences.lastUsedHints {
             meeting.templateID = hints.templateID
@@ -169,11 +180,70 @@ final class MeetingStore: ObservableObject {
         }
         meeting.autoRefineRequested = AppSettings.shared.options.autoRefine
         MeetingFiles.assignNewFolder(&meeting)
-        meetings.insert(meeting, at: 0)
-        selectedID = meeting.id
-        tab = "transcript"
-        transcriptVersion = "original"
-        persist(meeting)
+        return meeting
+    }
+
+    func chooseAudioImport() {
+        guard canStart else { return }
+        let panel = NSOpenPanel()
+        panel.allowedContentTypes = [.mp3, .mpeg4Audio, .wav]
+        panel.canChooseDirectories = false
+        panel.allowsMultipleSelection = false
+        panel.prompt = tr("上传录音", "Import recording")
+        panel.message = tr("选择一个 MP3、M4A 或 WAV。文件将保存在本机。", "Choose an MP3, M4A or WAV file. Audio stays on this Mac.")
+        if panel.runModal() == .OK, let url = panel.url {
+            Task { await importAudio(from: url) }
+        }
+    }
+
+    func cancelAudioImport() { importTask?.cancel() }
+
+    func importAudio(from url: URL) async {
+        guard canStart else { return }
+        commitVocabularyDraft()
+        stopPlayback()
+        importingAudio = true
+        errorMessage = nil
+        defer { importingAudio = false; importTask = nil }
+
+        var meeting = makeMeeting(title: url.deletingPathExtension().lastPathComponent)
+        let library = AppPaths.recordings
+        let staging = library.appendingPathComponent(".import-\(meeting.id)", isDirectory: true)
+        let fm = FileManager.default
+        do {
+            if AppSettings.shared.options.recordingsPath != nil && !fm.fileExists(atPath: library.path) {
+                throw CocoaError(.fileNoSuchFile, userInfo: [NSFilePathErrorKey: library.path])
+            }
+            try StorageMigration.checkWritable(library)
+            try fm.createDirectory(at: staging, withIntermediateDirectories: false)
+            defer { try? fm.removeItem(at: staging) }
+
+            let task = Task.detached(priority: .userInitiated) { try AudioImport.prepare(from: url, in: staging) }
+            importTask = task
+            let audio = try await withTaskCancellationHandler(operation: { try await task.value }, onCancel: { task.cancel() })
+            guard !shuttingDown, !Task.isCancelled, !task.isCancelled else { return }
+
+            meeting.importedAudioFilename = url.lastPathComponent
+            meeting.duration = audio.duration
+            meeting.chunks = audio.chunks
+            meeting.status = meeting.chunks.isEmpty ? "complete" : "processing"
+            if meeting.autoRefineRequested == true { meeting.refinement = makeRun(meeting) }
+            MeetingFiles.rebase(&meeting)
+            try MeetingFiles.save(meeting, in: staging)
+            try fm.moveItem(at: staging, to: meeting.folder)
+            meetings.insert(meeting, at: 0)
+            query = ""
+            select(meeting.id)
+            autoExport(meeting)
+            if modelManager.available {
+                enqueueOriginal(meeting)
+                kickRefinements()
+            } else { showSetup = true }
+        } catch is CancellationError {
+            // Cancellation discards only the staging copy. The source is untouched.
+        } catch {
+            errorMessage = tr("无法导入录音：", "Could not import recording: ") + error.localizedDescription
+        }
     }
 
     func updateTitle(_ value: String) {
@@ -189,7 +259,7 @@ final class MeetingStore: ObservableObject {
         }
     }
     private func organizePendingFolders() {
-        guard !recording, !starting, !stopping, !migrating, !libraryUnavailable,
+        guard !recording, !starting, !stopping, !migrating, !importingAudio, !libraryUnavailable,
               engine.pendingCount == 0, planningTasks.isEmpty, !diagnostics.running else { return }
         for id in Array(pendingFolderRenames) {
             guard let index = meetings.firstIndex(where: { $0.id == id }) else { pendingFolderRenames.remove(id); continue }
@@ -421,9 +491,15 @@ final class MeetingStore: ObservableObject {
                 persist(meeting)
             } catch { errorMessage = "无法恢复待转写音频：\(error.localizedDescription)"; return }
         }
-        engine.start()
+        enqueueOriginal(meeting)
+        kickRefinements()
+    }
+
+    private func enqueueOriginal(_ meeting: Meeting) {
+        guard !meeting.outstanding.isEmpty else { return }
         engine.enqueue(meeting.outstanding.map { TranscriptionJob(meetingID: meeting.id, chunk: $0, language: meeting.language,
                                                                   vocabulary: meeting.vocabulary ?? "", context: meeting.recognitionContext ?? "") })
+        engine.start()
     }
 
     @discardableResult
@@ -474,7 +550,7 @@ final class MeetingStore: ObservableObject {
     func play(at seconds: Double = 0) {
         guard let meeting = selected, meeting.id != recordingID else { return }
         stopPlayback()
-        for source in ["microphone", "system"] {
+        for source in meeting.audioSources {
             let url = meeting.folder.appendingPathComponent("\(source).wav")
             if let player = try? AVAudioPlayer(contentsOf: url), player.duration > seconds {
                 player.currentTime = seconds
@@ -650,13 +726,16 @@ final class MeetingStore: ObservableObject {
         var originalJobs: [TranscriptionJob] = []
         for index in meetings.indices {
             let meeting = meetings[index]
-            guard !["draft", "starting", "recording"].contains(meeting.status), meeting.autoRefineRequested == true || meeting.refinement != nil else { continue }
-            if meeting.refinement == nil { meetings[index].refinement = makeRun(meeting) }
+            guard !["draft", "starting", "recording"].contains(meeting.status) else { continue }
+            if meeting.refinement == nil && meeting.autoRefineRequested == true {
+                meetings[index].refinement = makeRun(meeting)
+                persist(meetings[index])
+            }
+            guard meeting.isImported || meetings[index].refinement != nil else { continue }
             if !meeting.outstanding.isEmpty && meetings[index].refinement?.state != "failed" {
                 originalJobs += meeting.outstanding.map { TranscriptionJob(meetingID: meeting.id, chunk: $0, language: meeting.language,
                     vocabulary: meeting.vocabulary ?? "", context: meeting.recognitionContext ?? "") }
             }
-            persist(meetings[index])
         }
         if !originalJobs.isEmpty { engine.enqueue(originalJobs); engine.start() }
         kickRefinements()
@@ -674,6 +753,7 @@ final class MeetingStore: ObservableObject {
     private func planRefinement(meetingID: String, runID: String) {
         guard let index = meetings.firstIndex(where: { $0.id == meetingID }), meetings[index].refinement?.id == runID else { return }
         let folder = meetings[index].folder
+        let sources = meetings[index].audioSources
         do {
             let snapshot = MeetingFiles.snapshot(in: folder)
             if !FileManager.default.fileExists(atPath: snapshot.path) {
@@ -688,7 +768,7 @@ final class MeetingStore: ObservableObject {
         planningAttempts[meetingID] = attempt
         planningTasks[meetingID] = Task { @MainActor [weak self] in
             do {
-                let planning = Task.detached(priority: .utility) { try RefinementPlanner.plan(folder: folder) }
+                let planning = Task.detached(priority: .utility) { try RefinementPlanner.plan(folder: folder, sources: sources) }
                 let chunks = try await withTaskCancellationHandler(operation: { try await planning.value }, onCancel: { planning.cancel() })
                 try Task.checkCancellation()
                 guard let self, let index = self.meetings.firstIndex(where: { $0.id == meetingID }),
@@ -795,7 +875,7 @@ final class MeetingStore: ObservableObject {
     }
 
     var canMigrate: Bool {
-        !recording && !starting && !stopping && !shuttingDown && !migrating && !diagnostics.running && !modelManager.busy && engine.pendingCount == 0 && planningTasks.isEmpty
+        !recording && !starting && !stopping && !shuttingDown && !migrating && !importingAudio && !diagnostics.running && !modelManager.busy && engine.pendingCount == 0 && planningTasks.isEmpty
     }
 
     func chooseStorageLocation(models: Bool) {
@@ -850,6 +930,8 @@ final class MeetingStore: ObservableObject {
         shuttingDown = true
         folderRenameTask?.cancel()
         cancelStarting()
+        cancelAudioImport()
+        if let importTask { _ = try? await importTask.value }
         modelManager.pause()
         commitVocabularyDraft()
         await diagnostics.cancel()

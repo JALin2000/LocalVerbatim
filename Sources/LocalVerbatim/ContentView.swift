@@ -23,6 +23,14 @@ struct ContentView: View {
             VStack(spacing: 0) {
                 header
                 Divider().padding(.horizontal, 32)
+                if store.importingAudio {
+                    HStack {
+                        ProgressView().controlSize(.small)
+                        Text(tr("正在导入录音…", "Importing recording…"))
+                        Spacer()
+                        Button(tr("取消", "Cancel")) { store.cancelAudioImport() }
+                    }.font(.caption).padding(.horizontal, 32).padding(.vertical, 10)
+                }
                 if let message = store.errorMessage {
                     HStack(alignment: .top, spacing: 10) {
                         Image(systemName: "exclamationmark.circle.fill").foregroundStyle(.orange)
@@ -74,7 +82,7 @@ struct ContentView: View {
             Button(tr("删除会议及录音", "Delete meeting and audio"), role: .destructive) { store.deleteMeeting(meeting.id) }
             Button(tr("取消", "Cancel"), role: .cancel) {}
         } message: { meeting in
-            Text(tr("“", "“") + meeting.title + tr("”的两条录音、全部逐字稿和笔记将一起移到系统废纸篓，可从废纸篓恢复。", "”: both audio tracks, all transcripts and notes will move to Trash, where they can be recovered."))
+            Text(tr("“", "“") + meeting.title + tr("”的录音、全部逐字稿和笔记将一起移到系统废纸篓，可从废纸篓恢复。", "”: the saved audio, all transcripts and notes will move to Trash, where they can be recovered."))
         }
         .sheet(isPresented: $store.showSettings) { SettingsView(store: store) }
         .sheet(isPresented: $store.showSetup) { SetupView(store: store) }
@@ -110,6 +118,13 @@ struct ContentView: View {
             }
             .buttonStyle(.borderedProminent).disabled(!store.canStart)
             .padding(.horizontal, 20).padding(.top, 26)
+            Button { store.chooseAudioImport() } label: {
+                Label(tr("上传录音", "Import recording"), systemImage: "waveform.badge.plus")
+                    .font(.system(size: 13, weight: .medium))
+                    .frame(maxWidth: .infinity).padding(.vertical, 7)
+            }
+            .buttonStyle(.bordered).disabled(!store.canStart)
+            .padding(.horizontal, 20).padding(.top, 8)
             HStack {
                 Image(systemName: "magnifyingglass").font(.system(size: 11))
                 TextField(tr("搜索会议", "Search meetings"), text: $store.query).textFieldStyle(.plain).font(.system(size: 12))
@@ -193,29 +208,34 @@ struct ContentView: View {
     }
 
     private var recordingCard: some View {
-        VStack(alignment: .leading, spacing: 20) {
+        let imported = store.selected?.isImported == true && !store.recording && !store.starting
+        return VStack(alignment: .leading, spacing: 20) {
             HStack(alignment: .center) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 14).fill(store.recording ? Color.red.opacity(0.07) : teal.opacity(0.07)).frame(width: 52, height: 52)
-                    Image(systemName: store.recording ? "waveform" : "mic.and.signal.meter.fill")
+                    Image(systemName: imported ? "waveform" : store.recording ? "waveform" : "mic.and.signal.meter.fill")
                         .font(.system(size: 23)).foregroundStyle(store.recording ? .red : teal)
                 }
                 VStack(alignment: .leading, spacing: 6) {
                     HStack(spacing: 8) {
-                        Text(store.starting ? tr("正在准备录音", "Preparing recording") : store.stopping ? tr("正在保存录音", "Saving recording") : store.recording ? tr("正在录制会议", "Recording meeting") : store.selected?.status == "draft" ? tr("准备好，开始记录", "Ready when you are") : tr("会议录音已保存", "Meeting audio saved"))
+                        Text(imported ? tr("已导入录音", "Imported recording") : store.starting ? tr("正在准备录音", "Preparing recording") : store.stopping ? tr("正在保存录音", "Saving recording") : store.recording ? tr("正在录制会议", "Recording meeting") : store.selected?.status == "draft" ? tr("准备好，开始记录", "Ready when you are") : tr("会议录音已保存", "Meeting audio saved"))
                             .font(.system(size: 15, weight: .semibold))
                         if store.recording { Circle().fill(.red).frame(width: 6, height: 6) }
                     }
-                    Text(store.recording ? tr("麦克风与电脑声音同步录制，文字稿持续更新", "Recording both sources; the transcript updates as you speak") : tr("同时收录你的发言与电脑中的与会者声音", "Capture your microphone and the participants playing on your computer"))
-                        .font(.system(size: 11)).foregroundStyle(.secondary)
+                    Text(imported ? store.selected?.importedAudioFilename ?? "" : store.recording
+                         ? tr("麦克风与电脑声音同步录制，文字稿持续更新", "Recording both sources; the transcript updates as you speak")
+                         : tr("同时收录你的发言与电脑中的与会者声音", "Capture your microphone and the participants playing on your computer"))
+                        .font(.system(size: 11)).foregroundStyle(.secondary).lineLimit(1).truncationMode(.middle)
                 }
                 Spacer()
                 Text(clockText(store.recording ? store.elapsed : store.selected?.duration ?? 0))
                     .font(.system(size: 24, weight: .light, design: .monospaced)).foregroundStyle(store.recording ? ink : .secondary)
             }
-            HStack(spacing: 18) {
-                MeterView(title: tr("我的麦克风", "My microphone"), icon: "mic.fill", level: capture.micLevel, active: store.recording, color: teal)
-                MeterView(title: tr("电脑声音", "System audio"), icon: "speaker.wave.2.fill", level: capture.systemLevel, active: store.recording, color: Color(red: 0.36, green: 0.43, blue: 0.70))
+            if !imported {
+                HStack(spacing: 18) {
+                    MeterView(title: tr("我的麦克风", "My microphone"), icon: "mic.fill", level: capture.micLevel, active: store.recording, color: teal)
+                    MeterView(title: tr("电脑声音", "System audio"), icon: "speaker.wave.2.fill", level: capture.systemLevel, active: store.recording, color: Color(red: 0.36, green: 0.43, blue: 0.70))
+                }
             }
             if let warning = capture.warning, store.recording {
                 Label(userFacingError(warning), systemImage: "mic.badge.xmark")
@@ -228,7 +248,7 @@ struct ContentView: View {
                         Label(store.stopping ? tr("正在保存…", "Saving…") : tr("结束录音", "Stop recording"), systemImage: "stop.fill")
                             .font(.system(size: 12, weight: .semibold)).padding(.horizontal, 12).padding(.vertical, 6)
                     }.buttonStyle(.borderedProminent).tint(.red).disabled(store.stopping)
-                } else {
+                } else if !imported {
                     Button { Task { await store.startRecording() } } label: {
                         Label(store.starting ? tr("正在准备…", "Preparing…") : tr("开始录音", "Start recording"), systemImage: "record.circle")
                             .font(.system(size: 12, weight: .semibold)).padding(.horizontal, 12).padding(.vertical, 6)
@@ -466,21 +486,28 @@ struct ContentView: View {
             if store.visibleSegments.isEmpty {
                 VStack(spacing: 15) {
                     Image(systemName: "text.bubble").font(.system(size: 31, weight: .light)).foregroundStyle(teal.opacity(0.55))
-                    Text(store.transcriptVersion != "original" ? tr("二次识别结果会显示在这里", "Second-pass results will appear here") : store.recording ? tr("正在聆听你的会议", "Listening to your meeting") : tr("让对话留下来", "Keep the conversation")).font(.system(size: 16, weight: .medium))
-                    Text(store.recording ? tr("每约 18 秒转写一段语音。\n你可以一边开会，一边在这里记下想法。", "New text arrives about every 18 seconds.\nYou can take notes while the meeting continues.") : tr("开始录音后，中英文逐字稿会出现在这里。\n带时间戳，支持回放与导出。", "Start recording to see English and Mandarin transcripts.\nWith timestamps, playback and export."))
-                        .font(.system(size: 12)).foregroundStyle(.secondary).multilineTextAlignment(.center).lineSpacing(6)
-                    if !store.recording {
-                        HStack(spacing: 16) {
-                            Label(tr("麦克风 + 系统声音", "Microphone + System audio"), systemImage: "waveform")
-                            Label(tr("无需会议机器人", "No meeting bot needed"), systemImage: "person.crop.circle.badge.checkmark")
-                        }.font(.system(size: 10)).foregroundStyle(.secondary).padding(.top, 12)
+                    if store.selected?.isImported == true {
+                        Text(store.transcriptVersion != "original" ? tr("二次识别结果会显示在这里", "Second-pass results will appear here")
+                             : store.selected?.status == "complete" ? tr("未识别到语音", "No speech transcribed")
+                             : tr("逐字稿将随转写进度显示", "The transcript will appear as processing progresses"))
+                            .font(.system(size: 16, weight: .medium))
+                    } else {
+                        Text(store.transcriptVersion != "original" ? tr("二次识别结果会显示在这里", "Second-pass results will appear here") : store.recording ? tr("正在聆听你的会议", "Listening to your meeting") : tr("让对话留下来", "Keep the conversation")).font(.system(size: 16, weight: .medium))
+                        Text(store.recording ? tr("每约 18 秒转写一段语音。\n你可以一边开会，一边在这里记下想法。", "New text arrives about every 18 seconds.\nYou can take notes while the meeting continues.") : tr("开始录音后，中英文逐字稿会出现在这里。\n带时间戳，支持回放与导出。", "Start recording to see English and Mandarin transcripts.\nWith timestamps, playback and export."))
+                            .font(.system(size: 12)).foregroundStyle(.secondary).multilineTextAlignment(.center).lineSpacing(6)
+                        if !store.recording {
+                            HStack(spacing: 16) {
+                                Label(tr("麦克风 + 系统声音", "Microphone + System audio"), systemImage: "waveform")
+                                Label(tr("无需会议机器人", "No meeting bot needed"), systemImage: "person.crop.circle.badge.checkmark")
+                            }.font(.system(size: 10)).foregroundStyle(.secondary).padding(.top, 12)
+                        }
                     }
                 }.frame(maxWidth: .infinity).padding(.vertical, 34)
             } else {
                 LazyVStack(alignment: .leading, spacing: 24) {
                     ForEach(store.visibleSegments) { segment in
                         HStack(alignment: .top, spacing: 13) {
-                            Text(segment.source == "microphone" ? tr("我", "Me") : tr("会", "P")).font(.system(size: 11, weight: .semibold))
+                            Text(segment.source == "imported" ? tr("录", "A") : segment.source == "microphone" ? tr("我", "Me") : tr("会", "P")).font(.system(size: 11, weight: .semibold))
                                 .frame(width: 30, height: 30).background(segment.source == "microphone" ? teal.opacity(0.09) : Color.indigo.opacity(0.07))
                                 .foregroundStyle(segment.source == "microphone" ? teal : .indigo).clipShape(Circle())
                             VStack(alignment: .leading, spacing: 8) {
@@ -533,13 +560,31 @@ struct ContentView: View {
             Text("·").padding(.horizontal, 2)
             Text("Qwen3-ASR 1.7B")
             if engine.ready && engine.pendingCount == 0 && !store.recording {
-                Button(tr("释放内存", "Unload model")) { engine.unload() }.buttonStyle(.link)
-            } else if engine.state == "模型待命" && !store.recording && !store.starting {
-                Button(store.modelManager.available ? tr("准备识别", "Load model") : tr("设置模型", "Set up model")) { if store.modelManager.available { engine.start() } else { store.showSetup = true } }.buttonStyle(.link)
+                Button {
+                    engine.unload()
+                } label: {
+                    Label(tr("释放模型内存", "Unload model"), systemImage: "memorychip")
+                }.buttonStyle(.bordered).controlSize(.small)
+            } else if !engine.hasRunningProcess && !store.recording && !store.starting {
+                Button {
+                    if store.modelManager.available { engine.start(testMemory: true) }
+                    else { store.showSetup = true }
+                } label: {
+                    Label(store.modelManager.available ? tr("预载并测试内存", "Preload & test memory") : tr("设置模型", "Set up model"),
+                          systemImage: "memorychip")
+                }.buttonStyle(.bordered).controlSize(.small)
+                    .help(tr("可选。录音或转写时会自动载入模型。此按钮预载模型并用合成音频测试内存。", "Optional. Recording and transcription load the model automatically. This button preloads it and tests memory with synthetic audio."))
             }
             Spacer()
-            Text(engine.memoryGB > 0 ? String(format: tr("识别内存 %.2f / 10 GB", "Model memory %.2f / 10 GB"), engine.memoryGB) : tr("模型尚未占用内存", "Model is not loaded"))
-                .monospacedDigit().help(tr("监测 macOS 物理内存占用，达到 8.5GB 提前停止转写并保留录音。", "Monitors model physical memory. At 8.5GB, transcription stops and recordings are retained."))
+            if let peak = engine.memoryTestPeakBytes, engine.ready {
+                Text(String(format: tr("内存测试通过 · 峰值 %.2f GB", "Test passed · Peak %.2f GB"), peak / TranscriptionEngine.bytesPerDisplayGB))
+                    .help(tr("短时测试结果，实际会议的内存占用可能变化。", "Short test result. Memory usage can vary during a meeting."))
+            }
+            let total = Double(TranscriptionEngine.installedRAM) / TranscriptionEngine.bytesPerDisplayGB
+            let memory = engine.memoryGB * 1e9 / TranscriptionEngine.bytesPerDisplayGB
+            Text(String(format: tr("识别内存 %.2f / %g GB", "Model memory %.2f / %g GB"), memory, total))
+                .monospacedDigit()
+                .help(tr("识别进程达到本机 RAM 的 90% 时停止转写，保留录音。", "Transcription stops when the recognition process reaches 90% of installed RAM. Audio is retained."))
         }.font(.system(size: 10)).foregroundStyle(.secondary).padding(.horizontal, 32).padding(.vertical, 13).background(paper.opacity(0.5))
     }
 }

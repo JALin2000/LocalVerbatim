@@ -8,15 +8,16 @@ Local meeting recording and English/Mandarin transcription for Apple Silicon Mac
 
 Record your microphone and the audio playing on your computer as separate tracks. Transcribe both on your Mac, keep the original recording, and review the transcript alongside your notes.
 
-**[Download the Mac preview DMG](https://github.com/JALin2000/LocalVerbatim/releases/download/v0.4.8-preview.1/LocalVerbatim-0.4.8-preview-mac-arm64.dmg)** · Apple Silicon · macOS 15+ · approximately 117 MB. [Release notes and checksums](https://github.com/JALin2000/LocalVerbatim/releases/tag/v0.4.8-preview.1).
+**[Download the Mac preview DMG](https://github.com/JALin2000/LocalVerbatim/releases/download/v0.4.9-preview.1/LocalVerbatim-0.4.9-preview-mac-arm64.dmg)** · Apple Silicon · macOS 15+ · approximately 117 MB. [Release notes and checksums](https://github.com/JALin2000/LocalVerbatim/releases/tag/v0.4.9-preview.1).
 
-**Status:** v0.4.8 preview of **LocalVerbatim / 本地逐字稿**. This installer is **ad-hoc signed and not notarized by Apple**. First launch may require **System Settings → Privacy & Security → Open Anyway** after an attempted opening; managed Macs may prohibit it. See [installation instructions](docs/INSTALL.md). Clean-Mac first-install and wider hardware/OS testing remain pending.
+**Status:** v0.4.9 preview of **LocalVerbatim / 本地逐字稿**. This installer is **ad-hoc signed and not notarized by Apple**. First launch may require **System Settings → Privacy & Security → Open Anyway** after an attempted opening; managed Macs may prohibit it. See [installation instructions](docs/INSTALL.md). Clean-Mac first-install and wider hardware/OS testing remain pending.
 
 Upgrading from LocalScribe preserves the existing library, model, settings and templates. The historical data directory and bundle identifier intentionally remain stable; see [upgrade details](docs/INSTALL.md#upgrade-backup-and-uninstall).
 
 ## Features
 
 - Microphone and system audio capture, with separate WAV files and source labels.
+- Import MP3, M4A or WAV recordings for local transcription, playback and automatic second pass.
 - Local Qwen3-ASR-1.7B BF16 inference through MLX; English, Mandarin and mixed-language meetings.
 - Incremental transcription during recording, with an optional automatic second pass after stopping.
 - Original transcript retained; stop/resume a second pass, or run it again with updated terminology. Previous passes remain selectable and exportable.
@@ -44,7 +45,7 @@ Meetings are stored in `date · meeting title [ID]/`: the two full WAV tracks ar
 
 ## Get started
 
-Download the [Mac preview](https://github.com/JALin2000/LocalVerbatim/releases/download/v0.4.8-preview.1/LocalVerbatim-0.4.8-preview-mac-arm64.dmg) and follow the [installation guide](docs/INSTALL.md). The installer includes Python and inference dependencies; the model is downloaded or imported on first use. To build from source, follow the [developer guide](docs/DEVELOPMENT.md).
+Download the [Mac preview](https://github.com/JALin2000/LocalVerbatim/releases/download/v0.4.9-preview.1/LocalVerbatim-0.4.9-preview-mac-arm64.dmg) and follow the [installation guide](docs/INSTALL.md). The installer includes Python and inference dependencies; the model is downloaded or imported on first use. To build from source, follow the [developer guide](docs/DEVELOPMENT.md).
 
 Installing the packaged app does not require Python, Homebrew or Xcode. After model setup, run **Settings → Recording → Run 10-second audio test** and confirm that both sources receive audio before an important meeting.
 
@@ -60,13 +61,13 @@ Default global shortcuts: **Control + Option + R** starts recording, **Control +
 
 The model is [Qwen3-ASR-1.7B](https://huggingface.co/Qwen/Qwen3-ASR-1.7B), using [MLX BF16 weights](https://huggingface.co/mlx-community/Qwen3-ASR-1.7B-bf16). The revision and file hashes are pinned in [the model manifest](engine/model-manifest.json). One model processes both sources serially; long recordings are read in bounded windows.
 
-Short local tests on an M4 with 16 GB memory measured roughly **5.2–5.4 GB of ASR-process physical footprint**. This is not a whole-system measurement or a cross-device guarantee. An 8.5 GB guard stops transcription while preserving audio; sampled monitoring is not an absolute OS-enforced 10 GB cap.
+Short local tests on an M4 with 16 GB memory measured roughly **5.2–5.4 GB of ASR-process physical footprint**. This is not a whole-system measurement or a cross-device guarantee. The app stops transcription when the recognition process reaches 90% of installed RAM and keeps the audio. On an 8 GB Mac, this threshold is 7.2 GB, and macOS and other apps share the same RAM. Try **Preload & test memory** for an initial check.
 
 - Severe repetition loops trigger bounded local retries from the audio. Failed attempts remain on disk; an unresolved failure is reported instead of accepting looping text. This does not detect every recognition error.
 - Recognition can miss words, names, numbers or language switches. Review important passages against the recording; a second pass is not guaranteed to improve every sentence.
 - “Me” and “Participants” identify the audio source. Multiple remote speakers are not separated by voice.
 - Timestamps mark chunks, not individual words. There is no acoustic echo cancellation; headphones help avoid duplicated speaker audio.
-- File import, automatic summaries, cloud sync and calendar integrations are not implemented.
+- Automatic summaries, cloud sync and calendar integrations are not implemented.
 - No automatic updater; signed public distribution and Windows support are future work.
 
 ## License and attribution

@@ -17,7 +17,7 @@ git clone https://github.com/JALin2000/LocalVerbatim.git
 cd LocalVerbatim
 ```
 
-Run the commands below from this directory, which contains `Package.swift` and `setup.command`. v0.4.8 has an explicitly unnotarized preview installer; see the [installation guide](INSTALL.md). See [Contributing](../CONTRIBUTING.md) before submitting changes.
+Run the commands below from this directory, which contains `Package.swift` and `setup.command`. v0.4.9 has an explicitly unnotarized preview installer; see the [installation guide](INSTALL.md). See [Contributing](../CONTRIBUTING.md) before submitting changes.
 
 ## Development app
 
@@ -71,8 +71,8 @@ bash scripts/prepare_runtime.sh "$release_work/runtime-build"
 LOCALVERBATIM_BUILD_CACHE="$release_work/swift-cache" bash scripts/package_app.sh \
   "$release_work/runtime-build/runtime" "$release_work/LocalVerbatim.app" --download-model
 bash scripts/package_dmg.sh "$release_work/LocalVerbatim.app" \
-  "$release_work/LocalVerbatim-0.4.8-preview-mac-arm64.dmg" --preview
-shasum -a 256 "$release_work/LocalVerbatim-0.4.8-preview-mac-arm64.dmg"
+  "$release_work/LocalVerbatim-0.4.9-preview-mac-arm64.dmg" --preview
+shasum -a 256 "$release_work/LocalVerbatim-0.4.9-preview-mac-arm64.dmg"
 ```
 
 `--download-model` produces an app without weights, ready for the first-run download/import guide. The runtime, engine, original icon, root license and collected third-party notices are copied into the app. Legal materials are in `Contents/Resources/Legal/`; the DMG also includes English/Chinese installation notes.

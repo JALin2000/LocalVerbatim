@@ -1,6 +1,7 @@
 import Foundation
 import Combine
 import AVFoundation
+import AudioToolbox
 import ScreenCaptureKit
 import CoreMedia
 import CoreGraphics
@@ -469,7 +470,7 @@ private final class CaptureTrack {
         }
     }
 
-    private func appendContinuous(_ samples: [Float], onChunk: (AudioChunk) -> Void) throws {
+    func appendContinuous(_ samples: [Float], onChunk: (AudioChunk) -> Void) throws {
         try archive.append(samples)
         writtenFrames += Int64(samples.count)
         rolling.append(contentsOf: samples)
@@ -585,5 +586,85 @@ private final class PCM16WaveWriter {
         fourCC("fmt "); u32(16); u16(1); u16(1); u32(16_000); u32(32_000); u16(2); u16(16)
         fourCC("data"); u32(dataBytes)
         return data
+    }
+}
+
+/// Decodes local files in bounded buffers and uses the same archive and chunk
+/// format as live capture. The caller publishes the staging folder atomically.
+enum AudioImport {
+    static func prepare(from source: URL, in folder: URL) throws -> (duration: Double, chunks: [AudioChunk]) {
+        let ext = source.pathExtension.lowercased()
+        guard ["mp3", "m4a", "wav"].contains(ext) else {
+            throw CaptureError.message(tr("请选择 MP3、M4A 或 WAV 录音。", "Choose an MP3, M4A or WAV recording."))
+        }
+        let accessing = source.startAccessingSecurityScopedResource()
+        defer { if accessing { source.stopAccessingSecurityScopedResource() } }
+        let resolvedSource = source.resolvingSymlinksInPath()
+        guard try resolvedSource.resourceValues(forKeys: [.isRegularFileKey]).isRegularFile == true else {
+            throw CaptureError.message(tr("请选择一个音频文件。", "Choose an audio file."))
+        }
+        let original = folder.appendingPathComponent("original.\(ext)")
+        try FileManager.default.copyItem(at: resolvedSource, to: original)
+        try Task.checkCancellation()
+
+        var decoder: ExtAudioFileRef?
+        try check(ExtAudioFileOpenURL(original as CFURL, &decoder))
+        guard let decoder else { throw CaptureError.message(tr("无法打开录音。", "Could not open the recording.")) }
+        defer { ExtAudioFileDispose(decoder) }
+
+        var originalFormat = AudioStreamBasicDescription()
+        var formatSize = UInt32(MemoryLayout<AudioStreamBasicDescription>.size)
+        try check(ExtAudioFileGetProperty(decoder, kExtAudioFileProperty_FileDataFormat, &formatSize, &originalFormat))
+        let channels = originalFormat.mChannelsPerFrame
+        guard (1...32).contains(channels) else {
+            throw CaptureError.message(tr("此录音的声道数不受支持。", "The recording has an unsupported channel count."))
+        }
+        let rate = CaptureTrack.rate
+        let frameBytes = UInt32(MemoryLayout<Float>.size) * channels
+        var decodedFormat = AudioStreamBasicDescription(mSampleRate: rate, mFormatID: kAudioFormatLinearPCM,
+            mFormatFlags: kAudioFormatFlagsNativeFloatPacked, mBytesPerPacket: frameBytes, mFramesPerPacket: 1,
+            mBytesPerFrame: frameBytes, mChannelsPerFrame: channels, mBitsPerChannel: 32, mReserved: 0)
+        try check(ExtAudioFileSetProperty(decoder, kExtAudioFileProperty_ClientDataFormat, formatSize, &decodedFormat))
+
+        let directory = MeetingFiles.chunks(in: folder)
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        let track = try CaptureTrack(source: "imported", directory: folder, chunks: directory)
+        let bufferFrames: UInt32 = 8192
+        let channelCount = Int(channels)
+        var decoded = [Float](repeating: 0, count: Int(bufferFrames) * channelCount)
+        var chunks: [AudioChunk] = []
+        var frames: Int64 = 0
+        while true {
+            try Task.checkCancellation()
+            var count = bufferFrames
+            let status = decoded.withUnsafeMutableBytes { bytes in
+                let audio = AudioBuffer(mNumberChannels: channels, mDataByteSize: UInt32(bytes.count), mData: bytes.baseAddress)
+                var list = AudioBufferList(mNumberBuffers: 1, mBuffers: audio)
+                return ExtAudioFileRead(decoder, &count, &list)
+            }
+            try check(status)
+            if count == 0 { break }
+
+            // Keep speech on either stereo channel. Requesting mono directly
+            // can make Core Audio select just the first channel on some files.
+            var mono = [Float](repeating: 0, count: Int(count))
+            for frame in mono.indices {
+                let offset = frame * channelCount
+                var sum: Float = 0
+                for channel in 0..<channelCount { sum += decoded[offset + channel] }
+                mono[frame] = sum / Float(channelCount)
+            }
+            try track.appendContinuous(mono) { chunks.append($0) }
+            frames += Int64(count)
+        }
+        guard frames > 0 else { throw CaptureError.message(tr("文件没有可转写的音频。", "The file contains no audio to transcribe.")) }
+        try track.finish { chunks.append($0) }
+        return (Double(frames) / rate, chunks)
+    }
+
+    private static func check(_ status: OSStatus) throws {
+        guard status == noErr else {
+            throw CaptureError.message(tr("无法解码录音（\(status)）。", "Could not decode the recording (\(status))."))
+        }
     }
 }

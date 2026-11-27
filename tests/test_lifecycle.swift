@@ -39,6 +39,19 @@ final class TestGate {
     }
 }
 
+enum AudioImport {
+    static func prepare(from url: URL, in folder: URL) throws -> (duration: Double, chunks: [AudioChunk]) {
+        let audio = try Data(contentsOf: url)
+        try audio.write(to: folder.appendingPathComponent("original.wav"))
+        try audio.write(to: folder.appendingPathComponent("imported.wav"))
+        let chunks = MeetingFiles.chunks(in: folder)
+        try FileManager.default.createDirectory(at: chunks, withIntermediateDirectories: true)
+        let path = chunks.appendingPathComponent("imported-0.wav")
+        try audio.write(to: path)
+        return (1, [AudioChunk(id: "imported-0", source: "imported", start: 0, end: 1, path: path.path)])
+    }
+}
+
 private enum MockFailure: Error { case captureStart }
 
 @MainActor
@@ -197,6 +210,7 @@ struct LifecycleChecks {
             case "failed-start-preserves-audio": try await failedStartPreservesAudio()
             case "multiple-stops-during-start": try await multipleStopsDuringStart()
             case "template-inheritance": try await templateInheritance()
+            case "import-refinement": try await importRefinement()
             case "automatic-refinement": try await automaticRefinement()
             case "refinement-resume": try await refinementResume()
             case "recording-priority": try await recordingPriority()
@@ -221,6 +235,34 @@ struct LifecycleChecks {
             FileHandle.standardError.write(Data("FAIL: \(error)\n".utf8))
             exit(1)
         }
+    }
+
+    @MainActor
+    private static func importRefinement() async throws {
+        let store = MeetingStore()
+        let file = AppPaths.dataRoot.appendingPathComponent("Sample.wav")
+        let original = fixtureWave(marker: 5)
+        try original.write(to: file)
+        await store.importAudio(from: file)
+        let meeting = store.selected!
+        precondition(meeting.isImported && meeting.importedAudioFilename == "Sample.wav")
+        precondition(meeting.status == "processing" && store.capture.startCalls == 0)
+        precondition(meeting.refinement?.state == "waiting")
+        let copy = try Data(contentsOf: meeting.folder.appendingPathComponent("original.wav"))
+        let retained = try Data(contentsOf: file)
+        precondition(copy == original && retained == original)
+        let imported = store.engine.jobs.first!
+        precondition(imported.chunk.source == "imported" && !imported.isRefinement)
+        precondition(FileManager.default.fileExists(atPath: imported.chunk.path))
+        store.engine.complete(imported, text: "Original text")
+        try await eventually("imported second pass") { !store.engine.jobs.isEmpty }
+        let refined = store.engine.jobs.first!
+        precondition(refined.isRefinement && refined.chunk.source == "imported")
+        store.engine.complete(refined, text: "Refined text")
+        precondition(store.selected?.segments.first?.text == "Original text")
+        precondition(store.selected?.refinement?.segments.first?.text == "Refined text")
+        let reopened = MeetingStore()
+        precondition(reopened.selected?.isImported == true && reopened.selected?.refinement?.state == "complete")
     }
 
     @MainActor

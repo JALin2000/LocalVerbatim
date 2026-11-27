@@ -22,7 +22,7 @@ enum RecordingRecovery {
         let completed = Set(meeting.completedIDs)
         var archiveDuration: Double?
 
-        for source in ["microphone", "system"] {
+        for source in meeting.audioSources {
             let archiveURL = meeting.folder.appendingPathComponent("\(source).wav")
             guard FileManager.default.fileExists(atPath: archiveURL.path) else { continue }
             let archive = try RecoveryWaveArchive(url: archiveURL)

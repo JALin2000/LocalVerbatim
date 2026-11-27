@@ -8,7 +8,7 @@ Use an Apple Silicon Mac with macOS 15 or later. A 16 GB machine is recommended;
 
 Allow at least 6 GB for the app and the approximately 4.08 GB model, with additional space for download work files and recordings. A packaged app contains its own Python runtime. No developer tools or account are needed to use that package.
 
-Download the v0.4.8 preview DMG and `SHA256SUMS.txt` from the [GitHub release](https://github.com/JALin2000/LocalVerbatim/releases/tag/v0.4.8-preview.1). It is **ad-hoc signed and not notarized by Apple**. A checksum identifies a particular file; it does not establish an Apple-verified publisher. Managed Macs may prohibit opening this preview. Use the [developer guide](DEVELOPMENT.md) to build from source instead.
+Download the v0.4.9 preview DMG and `SHA256SUMS.txt` from the [GitHub release](https://github.com/JALin2000/LocalVerbatim/releases/tag/v0.4.9-preview.1). It is **ad-hoc signed and not notarized by Apple**. A checksum identifies a particular file; it does not establish an Apple-verified publisher. Managed Macs may prohibit opening this preview. Use the [developer guide](DEVELOPMENT.md) to build from source instead.
 
 ## Install the preview DMG
 
@@ -51,6 +51,12 @@ Use headphones during meetings to avoid speaker output entering the microphone a
 7. Select the desired transcript version and filler setting before copying/exporting. Display filtering never rewrites the original model output.
 
 Default shortcuts are Control + Option + R (start), S (stop), and L (show), all with the same two modifiers. Configure them in Settings → Shortcuts. Optional Dock hiding applies only to shortcut-started recordings; the menu-bar entry remains.
+
+## Transcribe an existing recording
+
+Click **Import recording** below **New meeting**. Choose an MP3, M4A or WAV file. The app stores a local copy and runs transcription with the current language and terminology defaults. The setting **Run a second pass on recordings and keep the original transcript** also applies to imports. Imported recordings support timestamp playback, notes, export and manual second passes.
+
+The footer shows the recognition process's current physical footprint over installed RAM. **Preload & test memory** optionally loads the model and runs a short synthetic audio test. Recording and transcription load the model automatically.
 
 ## Troubleshooting
 

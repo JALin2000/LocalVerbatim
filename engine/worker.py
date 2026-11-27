@@ -18,7 +18,6 @@ os.environ["HF_HUB_DISABLE_TELEMETRY"] = "1"
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 OUTPUT = sys.stdout
 LOCK = threading.Lock()
-LIMIT = 8_500_000_000  # Leave 1.5 GB headroom below the user's 10 GB ceiling.
 peak = 0
 
 
@@ -44,15 +43,25 @@ def footprint():
     return int(result.values[7])
 
 
-def monitor():
+def memory_limit():
+    # Both processes use the same installed RAM value. Standalone worker tests
+    # and CLI callers derive it from the OS when the app does not supply it.
+    configured = os.environ.get("LOCALVERBATIM_RAM_BYTES")
+    ram = int(configured) if configured is not None else os.sysconf("SC_PHYS_PAGES") * os.sysconf("SC_PAGE_SIZE")
+    if ram <= 0:
+        raise RuntimeError("Cannot determine installed RAM")
+    return ram * 9 // 10
+
+
+def monitor(limit):
     global peak
     next_report = 0
     while True:
         try:
             current = footprint()
             peak = max(peak, current)
-            if current >= LIMIT:
-                emit("error", message="识别进程已达到 8.5GB 安全阈值，已停止转写。录音仍保留，可稍后重试。", fatal=True)
+            if current >= limit:
+                emit("error", message="识别进程已达到本机 RAM 的 90%，转写已停止。已保存的录音可以稍后重试。", fatal=True)
                 os._exit(75)
             if time.monotonic() >= next_report:
                 emit("memory", bytes=current, peak=peak)
@@ -259,13 +268,14 @@ def recognize_guarded(model, data, language, hints, refining, clear_cache):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", required=True)
+    parser.add_argument("--test-memory", action="store_true")
     args = parser.parse_args()
     model_path = Path(args.model).resolve()
     if not (model_path / "config.json").exists():
         emit("error", message="本地模型尚未安装，请运行 setup.command。", fatal=True)
         return 2
     footprint()  # Check before loading weights.
-    threading.Thread(target=monitor, daemon=True).start()
+    threading.Thread(target=monitor, args=(memory_limit(),), daemon=True).start()
     emit("status", message="正在载入本地中英文模型…")
     try:
         with contextlib.redirect_stdout(sys.stderr):
@@ -276,6 +286,16 @@ def main():
             mx.set_memory_limit(6_000_000_000)  # MLX guideline, not OS hard cap.
             model = load(str(model_path))
             mx.eval(model.parameters())
+            if args.test_memory:
+                emit("status", message="正在测试模型内存…")
+                # Exercise a full second-pass input window without using any
+                # meeting data or requiring audio permissions.
+                time_axis = np.arange(30 * 16_000, dtype=np.float32) / 16_000
+                sample = (0.05 * np.sin(2 * np.pi * 220 * time_axis)).astype(np.float32)
+                model.generate(sample, max_tokens=96, chunk_duration=30.0, batch_size=1, verbose=False)
+                mx.synchronize()
+                emit("memory_test", peak=max(peak, footprint()))
+                mx.clear_cache()
         emit("ready", bytes=footprint())
     except Exception as exc:
         emit("error", message=f"模型载入失败：{exc}", fatal=True)

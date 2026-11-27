@@ -9,6 +9,12 @@ Version 0.4.7 is the first public source snapshot; 0.4.8 adds the first unnotari
 - Disable Hugging Face telemetry and implicit token use in the command-line model installer as well as the app.
 - Correct the SwiftPM macOS deployment declaration for Swift tools 5.10.
 
+## 0.4.9 — recording import
+
+- Import MP3, M4A or WAV audio for local transcription, playback, export and automatic second pass.
+- Add an optional model preload and memory test. Show installed RAM and stop recognition at 90% of that capacity while retaining audio.
+- Link to GitHub source and releases from About.
+
 ## 0.4.8 — installer preview
 
 - Prepare a self-contained Apple Silicon DMG with first-run model download and explicit unnotarized-preview labeling.

@@ -17,7 +17,7 @@ git clone https://github.com/JALin2000/LocalVerbatim.git
 cd LocalVerbatim
 ```
 
-以下命令均在此目录执行，其中包含 `Package.swift` 和 `setup.command`。v0.4.8 提供明确标注未经公证的预览安装包，见[安装说明](INSTALL.zh-CN.md)。提交修改前请阅读[参与贡献](../CONTRIBUTING.md)。
+以下命令均在此目录执行，其中包含 `Package.swift` 和 `setup.command`。v0.4.9 提供明确标注未经公证的预览安装包，见[安装说明](INSTALL.zh-CN.md)。提交修改前请阅读[参与贡献](../CONTRIBUTING.md)。
 
 ## 开发版应用
 
@@ -71,8 +71,8 @@ bash scripts/prepare_runtime.sh "$release_work/runtime-build"
 LOCALVERBATIM_BUILD_CACHE="$release_work/swift-cache" bash scripts/package_app.sh \
   "$release_work/runtime-build/runtime" "$release_work/LocalVerbatim.app" --download-model
 bash scripts/package_dmg.sh "$release_work/LocalVerbatim.app" \
-  "$release_work/LocalVerbatim-0.4.8-preview-mac-arm64.dmg" --preview
-shasum -a 256 "$release_work/LocalVerbatim-0.4.8-preview-mac-arm64.dmg"
+  "$release_work/LocalVerbatim-0.4.9-preview-mac-arm64.dmg" --preview
+shasum -a 256 "$release_work/LocalVerbatim-0.4.9-preview-mac-arm64.dmg"
 ```
 
 `--download-model` 生成不带权重、首次使用时下载或导入模型的应用。运行时、识别引擎、原创图标、项目许可证和已整理的第三方许可会复制进应用；许可文件位于 `Contents/Resources/Legal/`，DMG 也包含中英文安装说明。

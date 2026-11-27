@@ -2,6 +2,8 @@
 
 ## English
 
+- Import recording copies the selected file into the local library and transcribes it on this Mac. It requires file access only.
+
 - Microphone audio and computer playback are recorded to separate local WAV files. System capture receives audio; screen pictures/video are not saved. Follow the meeting's recording expectations and obtain any required permission before recording.
 - Transcription runs on this Mac. There is no account, cloud ASR, telemetry service, automatic updater or cloud synchronization in the current application.
 - A user-requested model download connects to Hugging Face and its file delivery services. Those services receive ordinary download connection information such as an IP address; meeting audio/text is not part of the request. Both the app and command-line model installer disable Hugging Face telemetry and implicit token use. Developer setup also downloads tools and dependencies from their providers.
@@ -12,6 +14,8 @@
 - Hiding the Dock icon or recording badge does not alter macOS's own privacy indicators or the fact that recording is in progress.
 
 ## 简体中文
+
+- 「上传录音」会把所选文件复制到本地会议库并在本机转写，仅需访问所选文件。
 
 - 麦克风与电脑声音分别录为本地 WAV。系统采集接收音频，不保存屏幕图片或视频。录音前应遵循会议的录制约定并获得必要许可。
 - 识别在本机运行，当前应用没有账号、云端转写、遥测服务、自动更新或云同步。

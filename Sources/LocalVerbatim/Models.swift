@@ -51,7 +51,13 @@ struct TranscriptSegment: Codable, Identifiable {
     var end: Double
     var text: String
     var language: String
-    var speaker: String { source == "microphone" ? tr("我", "Me") : tr("与会者", "Participants") }
+    var speaker: String {
+        switch source {
+        case "microphone": return tr("我", "Me")
+        case "imported": return tr("录音", "Recording")
+        default: return tr("与会者", "Participants")
+        }
+    }
 }
 
 struct RecognitionHints: Codable, Equatable {
@@ -103,6 +109,9 @@ struct Meeting: Codable, Identifiable {
     var recognitionContext: String?
     var templateID: String?
     var autoRefineRequested: Bool?
+    var importedAudioFilename: String?
+    var isImported: Bool { importedAudioFilename != nil }
+    var audioSources: [String] { isImported ? ["imported"] : ["microphone", "system"] }
     var refinement: RefinementRun?
     var refinementHistory: [RefinementRun]?
     var notes = ""

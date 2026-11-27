@@ -25,6 +25,6 @@ swiftc -swift-version 5 -target arm64-apple-macos15.0 -parse-as-library \
   "$test_directory/test_lifecycle.swift" \
   -o "$test_build/lifecycle_tests"
 
-for scenario in quit-during-start quit-during-stop failed-start-preserves-audio multiple-stops-during-start template-inheritance automatic-refinement refinement-resume recording-priority refinement-failure-retry refinement-stop-resume refinement-stop-waiting-planning delete-meeting-and-audio delete-failure-preserves-meeting delete-recording-guards tagged-terminology storage-migration legacy-file-organization rename-when-idle organization-conflicts refinement-rerun-current-hints refinement-rerun-paused refinement-rerun-save-failure; do
+for scenario in quit-during-start quit-during-stop failed-start-preserves-audio multiple-stops-during-start template-inheritance import-refinement automatic-refinement refinement-resume recording-priority refinement-failure-retry refinement-stop-resume refinement-stop-waiting-planning delete-meeting-and-audio delete-failure-preserves-meeting delete-recording-guards tagged-terminology storage-migration legacy-file-organization rename-when-idle organization-conflicts refinement-rerun-current-hints refinement-rerun-paused refinement-rerun-save-failure; do
   LOCALVERBATIM_ROOT="$test_build/$scenario" "$test_build/lifecycle_tests" "$scenario"
 done

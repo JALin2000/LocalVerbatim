@@ -1,3 +1,4 @@
+import os
 """Small input-contract tests; no model download or microphone access."""
 import importlib.util
 from pathlib import Path
@@ -79,6 +80,13 @@ class AudioInputContractTests(unittest.TestCase):
 
 
 class PhysicalFootprintTests(unittest.TestCase):
+    def test_memory_limit_uses_installed_ram(self):
+        from unittest.mock import patch
+        for gib in (8, 16, 24):
+            ram = gib * 2**30
+            with patch.dict(os.environ, {"LOCALVERBATIM_RAM_BYTES": str(ram)}):
+                self.assertEqual(worker.memory_limit(), ram * 9 // 10)
+
     def test_darwin_physical_footprint_is_readable_and_positive(self):
         self.assertGreater(worker.footprint(), 0)
 
