@@ -17,7 +17,7 @@ git clone https://github.com/JALin2000/LocalVerbatim.git
 cd LocalVerbatim
 ```
 
-Run the commands below from this directory, which contains `Package.swift` and `setup.command`. v0.4.9 has an explicitly unnotarized preview installer; see the [installation guide](INSTALL.md). See [Contributing](../CONTRIBUTING.md) before submitting changes.
+Run the commands below from this directory, which contains `Package.swift` and `setup.command`. v0.5.0 has an explicitly unnotarized preview installer; see the [installation guide](INSTALL.md). See [Contributing](../CONTRIBUTING.md) before submitting changes.
 
 ## Development app
 
@@ -71,13 +71,13 @@ bash scripts/prepare_runtime.sh "$release_work/runtime-build"
 LOCALVERBATIM_BUILD_CACHE="$release_work/swift-cache" bash scripts/package_app.sh \
   "$release_work/runtime-build/runtime" "$release_work/LocalVerbatim.app" --download-model
 bash scripts/package_dmg.sh "$release_work/LocalVerbatim.app" \
-  "$release_work/LocalVerbatim-0.4.9-preview-mac-arm64.dmg" --preview
-shasum -a 256 "$release_work/LocalVerbatim-0.4.9-preview-mac-arm64.dmg"
+  "$release_work/LocalVerbatim-0.5.0-preview-mac-arm64.dmg" --preview
+shasum -a 256 "$release_work/LocalVerbatim-0.5.0-preview-mac-arm64.dmg"
 ```
 
 `--download-model` produces an app without weights, ready for the first-run download/import guide. The runtime, engine, original icon, root license and collected third-party notices are copied into the app. Legal materials are in `Contents/Resources/Legal/`; the DMG also includes English/Chinese installation notes.
 
-Omitting that option bundles the local BF16 model from `models/Qwen3-ASR-1.7B-bf16`. Do not distribute that variant before verifying the exact model and bundled-native-library attribution requirements. The older optional `--include-8bit` path also needs separately obtained compatible weights; the UI does not provide a model selector.
+Omitting that option bundles the local BF16 model from `models/Qwen3-ASR-1.7B-bf16`. Do not distribute that variant before verifying the exact model and bundled-native-library attribution requirements. The optional `--include-8bit` path needs the pinned 8-bit weights in `models/Qwen3-ASR-1.7B-8bit`. Public packages use `--download-model`. The setup guide and **Settings → Transcription** let the user choose, download or import either variant.
 
 These scripts create **ad-hoc signed trial packages**, not notarized public releases. They neither install to Applications nor publish anywhere. Complete [the release checklist](RELEASE_CHECKLIST.md) before distributing binaries.
 

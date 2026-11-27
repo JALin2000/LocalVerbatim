@@ -6,9 +6,9 @@
 
 Use an Apple Silicon Mac with macOS 15 or later. A 16 GB machine is recommended; 8 GB and the full supported OS range have not been validated. Intel Macs and Windows are not supported.
 
-Allow at least 6 GB for the app and the approximately 4.08 GB model, with additional space for download work files and recordings. A packaged app contains its own Python runtime. No developer tools or account are needed to use that package.
+Allow at least 6 GB for the app and one model, with additional space for download work files and recordings. A packaged app contains its own Python runtime. No developer tools or account are needed to use that package.
 
-Download the v0.4.9 preview DMG and `SHA256SUMS.txt` from the [GitHub release](https://github.com/JALin2000/LocalVerbatim/releases/tag/v0.4.9-preview.1). It is **ad-hoc signed and not notarized by Apple**. A checksum identifies a particular file; it does not establish an Apple-verified publisher. Managed Macs may prohibit opening this preview. Use the [developer guide](DEVELOPMENT.md) to build from source instead.
+Download the v0.5.0 preview DMG and `SHA256SUMS.txt` from the [GitHub release](https://github.com/JALin2000/LocalVerbatim/releases/tag/v0.5.0-preview.1). It is **ad-hoc signed and not notarized by Apple**. A checksum identifies a particular file; it does not establish an Apple-verified publisher. Managed Macs may prohibit opening this preview. Use the [developer guide](DEVELOPMENT.md) to build from source instead.
 
 ## Install the preview DMG
 
@@ -26,11 +26,14 @@ To build instead, follow the [developer guide](DEVELOPMENT.md). The development 
 
 ## First launch and model installation
 
-1. Choose English, Chinese or the system interface language. This is independent of the recognition language.
-2. In the setup guide, download the model or import an existing matching **Qwen3-ASR-1.7B BF16** folder.
-3. Downloads use a fixed Hugging Face revision and verify file sizes and SHA-256 hashes. A different revision or a quantized model cannot be substituted through this import action.
+1. The setup guide starts in Simplified Chinese when macOS prefers Chinese and in English otherwise. Choose **Follow system**, **简体中文** or **English** at the top of the guide. The interface updates immediately.
+2. Choose a **Qwen3-ASR-1.7B** model to download or import. The guide recommends **8-bit (2.47 GB)** for Macs with **8 GB RAM or less**, and **BF16 (4.08 GB)** for Macs with more than 8 GB. The installer ships without model weights.
+3. Each download uses a fixed Hugging Face revision and verifies file sizes and SHA-256 hashes. Import accepts a folder matching the selected variant and revision.
 4. The model download can be paused and resumed. Keep enough free space until verification completes. If the network fails, retry; partial files are retained. Recording/transcription do not require a Hugging Face login.
 5. After installation, recording and recognition can run offline. The default model cache is `~/Library/Application Support/LocalScribe/Models/`; Settings → Storage shows the active location.
+6. In **Settings → Transcription**, download the other variant and click **Use this model** when recording and transcription are idle. The model already in use stays selected until you switch. Upgrades keep your existing model.
+
+**Settings → General → Interface text size** offers Small, Standard and Large. Adjust transcript text separately in the same section. Click the area around the settings panel to close it.
 
 ## Grant permissions and verify both tracks
 

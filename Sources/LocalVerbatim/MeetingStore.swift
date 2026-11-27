@@ -22,6 +22,7 @@ final class MeetingStore: ObservableObject {
     @Published var showSettings = false
     @Published var showSetup = false
     @Published private(set) var importingAudio = false
+    @Published private(set) var switchingModel = false
     @Published var migrating = false
     @Published var migrationMessage = ""
     @Published var libraryUnavailable = false
@@ -86,7 +87,11 @@ final class MeetingStore: ObservableObject {
             guard let self, !running, self.recordingID != nil, !self.stopping, !self.starting else { return }
             Task { await self.stopRecording() }
         }.store(in: &subscriptions)
-        modelManager.onReady = { [weak self] in guard let self, !self.shuttingDown else { return }; self.resumePendingWork(); self.engine.start() }
+        modelManager.onReady = { [weak self] in
+            guard let self, !self.shuttingDown else { return }
+            self.resumePendingWork()
+            if self.recording || self.engine.pendingCount > 0 { self.engine.start() }
+        }
         diagnostics.objectWillChange.sink { [weak self] in self?.objectWillChange.send() }.store(in: &subscriptions)
         modelManager.objectWillChange.sink { [weak self] in self?.objectWillChange.send() }.store(in: &subscriptions)
         Task { @MainActor [weak self] in self?.resumePendingWork() }
@@ -153,7 +158,7 @@ final class MeetingStore: ObservableObject {
     var selected: Meeting? { meetings.first { $0.id == selectedID } }
     var visibleMeetings: [Meeting] { query.isEmpty ? meetings : meetings.filter { $0.title.localizedCaseInsensitiveContains(query) } }
     var recording: Bool { recordingID != nil }
-    var canStart: Bool { !recording && !starting && !stopping && !shuttingDown && !migrating && !importingAudio && !libraryUnavailable && !diagnostics.running }
+    var canStart: Bool { !recording && !starting && !stopping && !shuttingDown && !migrating && !switchingModel && !importingAudio && !libraryUnavailable && !diagnostics.running }
     var visibleSegments: [TranscriptSegment] { selected?.ordered(version: transcriptVersion) ?? [] }
 
     func newMeeting() {
@@ -482,6 +487,8 @@ final class MeetingStore: ObservableObject {
     }
 
     func retrySelected() {
+        guard !switchingModel else { return }
+        guard modelManager.available else { showSetup = true; return }
         guard var meeting = selected else { return }
         errorMessage = nil
         if meeting.id != recordingID {
@@ -658,7 +665,7 @@ final class MeetingStore: ObservableObject {
     }
 
     var canRequestRefinement: Bool {
-        guard !starting, !stopping, !shuttingDown, !migrating, !libraryUnavailable, !diagnostics.running,
+        guard !starting, !stopping, !shuttingDown, !migrating, !switchingModel, !libraryUnavailable, !diagnostics.running,
               let meeting = selected, meeting.id != recordingID else { return false }
         return meeting.status != "draft" && meeting.duration > 0
     }
@@ -722,7 +729,7 @@ final class MeetingStore: ObservableObject {
     }
 
     private func resumePendingWork() {
-        guard !shuttingDown, !libraryUnavailable, modelManager.available else { return }
+        guard !shuttingDown, !switchingModel, !libraryUnavailable, modelManager.available else { return }
         var originalJobs: [TranscriptionJob] = []
         for index in meetings.indices {
             let meeting = meetings[index]
@@ -742,7 +749,7 @@ final class MeetingStore: ObservableObject {
     }
 
     private func kickRefinements() {
-        guard !shuttingDown, !recording, !starting, !stopping else { return }
+        guard !shuttingDown, !switchingModel, !recording, !starting, !stopping else { return }
         for meeting in meetings {
             guard meeting.outstanding.isEmpty, let run = meeting.refinement else { continue }
             if run.state == "waiting", planningTasks[meeting.id] == nil { planRefinement(meetingID: meeting.id, runID: run.id) }
@@ -874,8 +881,37 @@ final class MeetingStore: ObservableObject {
         vocabularyFeedback = tr("已删除术语：", "Removed term: ") + term
     }
 
+    var canSwitchModel: Bool {
+        canStart && !modelManager.busy && planningTasks.isEmpty &&
+        (engine.pendingCount == 0 || !engine.hasRunningProcess)
+    }
+
+    func switchModel(to variant: ModelVariant) async {
+        guard canSwitchModel, variant != AppPaths.modelVariant, AppPaths.installedModel(variant) != nil else { return }
+        switchingModel = true
+        defer { switchingModel = false }
+        engine.unload()
+        for _ in 0..<100 where engine.hasRunningProcess {
+            do { try await Task.sleep(nanoseconds: 100_000_000) }
+            catch { return }
+        }
+        guard !shuttingDown else { return }
+        guard !engine.hasRunningProcess else {
+            errorMessage = tr("模型仍在退出，请稍后重试。", "The model is still unloading. Try again in a moment.")
+            return
+        }
+        guard AppSettings.shared.update({ $0.modelVariant = variant }) else {
+            errorMessage = AppSettings.shared.error
+            return
+        }
+        modelManager.refresh()
+        switchingModel = false
+        resumePendingWork()
+        if engine.pendingCount > 0 { engine.start() }
+    }
+
     var canMigrate: Bool {
-        !recording && !starting && !stopping && !shuttingDown && !migrating && !importingAudio && !diagnostics.running && !modelManager.busy && engine.pendingCount == 0 && planningTasks.isEmpty
+        !recording && !starting && !stopping && !shuttingDown && !migrating && !switchingModel && !importingAudio && !diagnostics.running && !modelManager.busy && engine.pendingCount == 0 && planningTasks.isEmpty
     }
 
     func chooseStorageLocation(models: Bool) {
@@ -893,8 +929,8 @@ final class MeetingStore: ObservableObject {
         guard canMigrate else { return }
         migrating = true; migrationMessage = tr("正在复制并校验文件…", "Copying and verifying files…")
         commitVocabularyDraft(); stopPlayback()
-        let source = models ? AppPaths.model : AppPaths.recordings
-        let target = models ? destination.appendingPathComponent("Qwen3-ASR-1.7B-bf16") : destination
+        let source = AppPaths.recordings
+        let modelSources = models ? ModelVariant.allCases.compactMap { AppPaths.installedModel($0) } : []
         let operation = Task<Void, Never> { @MainActor [weak self] in
             guard let self else { return }
             do {
@@ -903,8 +939,14 @@ final class MeetingStore: ObservableObject {
                     for _ in 0..<100 where self.engine.hasRunningProcess { try await Task.sleep(nanoseconds: 100_000_000) }
                     guard !self.engine.hasRunningProcess else { throw NSError(domain: "LocalVerbatim.Storage", code: 2, userInfo: [NSLocalizedDescriptionKey: tr("请等待模型停止后重试。", "Wait for the model to stop, then try again.")]) }
                 }
-                guard FileManager.default.fileExists(atPath: source.path) else { throw NSError(domain: "LocalVerbatim.Storage", code: 3, userInfo: [NSLocalizedDescriptionKey: tr("原目录不可用，未更改位置。", "The original location is unavailable. No location was changed.")]) }
-                try await Task.detached(priority: .utility) { try StorageMigration.copyVerified(from: source, to: target) }.value
+                if models {
+                    try await Task.detached(priority: .utility) {
+                        try StorageMigration.copyModels(modelSources, to: destination)
+                    }.value
+                } else {
+                    guard FileManager.default.fileExists(atPath: source.path) else { throw CocoaError(.fileNoSuchFile) }
+                    try await Task.detached(priority: .utility) { try StorageMigration.copyVerified(from: source, to: destination) }.value
+                }
                 let saved = AppSettings.shared.update { options in
                     if models { options.modelCachePath = destination.path }
                     else { options.recordingsPath = destination.path }

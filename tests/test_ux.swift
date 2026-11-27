@@ -9,7 +9,24 @@ import Foundation
         try Data("{\"interfaceLanguage\":\"en\",\"textSize\":18}".utf8).write(to: file)
         let settings = AppSettings(file: file)
         precondition(settings.options.textSize == 18 && settings.options.recordingBadge && settings.options.autoRefine)
-        precondition(settings.update { $0.hideDockForHotkeys = true })
+        precondition(settings.options.interfaceTextSize == .standard && settings.options.modelVariant == nil)
+        precondition(AppSettings.systemInterfaceLanguage(["zh-CN"]) == "zh-Hans")
+        precondition(AppSettings.systemInterfaceLanguage(["zh-Hant-TW"]) == "zh-Hans")
+        precondition(AppSettings.systemInterfaceLanguage(["en-GB", "zh-CN"]) == "en")
+        precondition(AppSettings.systemInterfaceLanguage(["fr-FR"]) == "en")
+        precondition(InterfaceTextSize.small.scale < InterfaceTextSize.standard.scale &&
+                     InterfaceTextSize.standard.scale < InterfaceTextSize.large.scale)
+        let gib: UInt64 = 1_073_741_824
+        precondition(ModelVariant.recommended(for: 8 * gib) == .quantized)
+        precondition(ModelVariant.recommended(for: 8 * gib + 1) == .bf16)
+        precondition(ModelVariant.recommended(for: 16 * gib) == .bf16)
+        precondition(settings.update {
+            $0.hideDockForHotkeys = true
+            $0.interfaceTextSize = .large
+            $0.modelVariant = .quantized
+        })
+        precondition(AppSettings(file: file).options.interfaceTextSize == .large)
+        precondition(AppSettings(file: file).options.modelVariant == .quantized)
         precondition(AppSettings(file: file).options.hideDockForHotkeys)
         let badFile = root.appendingPathComponent("not-a-directory"); try Data().write(to: badFile)
         let failed = AppSettings(file: badFile.appendingPathComponent("settings.json"))

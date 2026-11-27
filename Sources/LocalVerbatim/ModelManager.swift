@@ -4,7 +4,10 @@ import Combine
 
 @MainActor
 final class ModelManager: ObservableObject {
-    @Published private(set) var available = false
+    @Published private(set) var installed: Set<ModelVariant> = []
+    @Published private(set) var activeVariant = AppPaths.modelVariant
+    @Published private(set) var downloadingVariant: ModelVariant?
+    var available: Bool { installed.contains(activeVariant) }
     @Published private(set) var busy = false
     @Published private(set) var fraction: Double = 0
     @Published private(set) var phase = "idle"
@@ -16,36 +19,45 @@ final class ModelManager: ObservableObject {
 
     init() { refresh() }
     func refresh() {
-        let folder = AppPaths.model
-        let config = folder.appendingPathComponent("config.json")
-        let files = (try? FileManager.default.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil)) ?? []
-        available = FileManager.default.fileExists(atPath: config.path) && files.contains { $0.pathExtension == "safetensors" }
+        installed = Set(ModelVariant.allCases.filter { AppPaths.installedModel($0) != nil })
+        activeVariant = AppPaths.modelVariant
     }
     var status: String {
-        if available && !busy { return tr("本地模型已安装", "Local model installed") }
+
         switch phase {
         case "downloading": return tr("正在下载模型", "Downloading model")
         case "copying": return tr("正在导入模型", "Importing model")
         case "verifying": return tr("正在校验模型", "Verifying model")
         case "paused": return tr("下载已暂停，可继续", "Download paused; ready to resume")
         case "failed": return tr("模型安装未完成", "Model installation incomplete")
-        default: return tr("需要安装本地识别模型", "Install the local speech model")
+        default: return available ? tr("本地模型已安装", "Local model installed") : tr("选择本地识别模型", "Choose a local model")
         }
     }
-    func importFolder() {
+    func importFolder(_ variant: ModelVariant) {
         let panel = NSOpenPanel(); panel.canChooseDirectories = true; panel.canChooseFiles = false
-        panel.message = tr("选择 Qwen3-ASR-1.7B BF16 模型文件夹。将校验文件后导入。", "Choose a Qwen3-ASR-1.7B BF16 model folder. Files will be verified before importing.")
-        if panel.runModal() == .OK, let url = panel.url { start(importing: url) }
+        panel.message = tr("选择模型文件夹，导入前会校验文件。", "Choose the model folder. The files will be verified before import.") + " · " + variant.title
+        if panel.runModal() == .OK, let url = panel.url { start(variant, importing: url) }
     }
-    func start(importing source: URL? = nil) {
-        guard process == nil, !busy, !available else { return }
+    func start(_ variant: ModelVariant, importing source: URL? = nil) {
+        guard process == nil, !busy, !installed.contains(variant) else { return }
+        let hadActiveModel = available
+        // Installing an alternative must not change the model used by a
+        // running worker, including legacy users without a saved choice.
+        if hadActiveModel && AppSettings.shared.options.modelVariant == nil,
+           !AppSettings.shared.update({ $0.modelVariant = activeVariant }) {
+            error = AppSettings.shared.error
+            return
+        }
         do {
             try FileManager.default.createDirectory(at: AppPaths.dataRoot, withIntermediateDirectories: true)
-            try StorageMigration.checkWritable(AppSettings.shared.modelCacheDirectory, minimumFreeBytes: 4_500_000_000)
+            let destination = AppSettings.shared.modelCacheDirectory
+            let staging = destination.appendingPathComponent(".download-" + variant.directory)
+            let resumed = FileManager.default.fileExists(atPath: staging.path)
+            try StorageMigration.checkWritable(destination, minimumFreeBytes: resumed ? 50_000_000 : variant.downloadBytes + 150_000_000)
             let worker = AppPaths.root.appendingPathComponent("engine/manage_model.py")
             let child = Process(), output = Pipe()
             child.executableURL = AppPaths.python
-            child.arguments = ["-B", "-u", worker.path, "--destination", AppSettings.shared.modelCacheDirectory.path]
+            child.arguments = ["-B", "-u", worker.path, "--destination", destination.path, "--variant", variant.rawValue]
             if let source { child.arguments! += ["--import-folder", source.path] }
             var env = ProcessInfo.processInfo.environment
             env["HF_HUB_OFFLINE"] = "0"; env["HF_HUB_DISABLE_TELEMETRY"] = "1"; env["HF_HUB_DISABLE_IMPLICIT_TOKEN"] = "1"
@@ -58,14 +70,23 @@ final class ModelManager: ObservableObject {
             child.terminationHandler = { [weak self] proc in
                 Task { @MainActor in
                     guard let self, self.process === proc else { return }
-                    self.process = nil; self.busy = false; self.refresh()
-                    if self.paused { self.phase = "paused" }
-                    else if !self.available { self.phase = "failed"; if self.error == nil { self.error = tr("安装未完成。可重试，已下载的内容会保留。", "Installation did not finish. Retry to resume the download.") } }
-                    if proc.terminationStatus == 0 && self.available { self.onReady?() }
-                    else if proc.terminationStatus != 0 { self.available = false }
+                    self.process = nil
+                    self.busy = false
+                    self.downloadingVariant = nil
+                    self.refresh()
+                    if proc.terminationStatus == 0 && self.installed.contains(variant) {
+                        self.phase = "idle"
+                        if !hadActiveModel && self.available { self.onReady?() }
+                    } else if self.paused {
+                        self.phase = "paused"
+                    } else {
+                        self.phase = "failed"
+                        if self.error == nil { self.error = tr("模型安装未完成。可以重试。", "Model installation did not finish. You can retry.") }
+                    }
                     try? self.log?.close(); self.log = nil
                 }
             }
+            downloadingVariant = variant
             paused = false; error = nil; phase = source == nil ? "downloading" : "copying"; busy = true
             try child.run(); process = child
             DispatchQueue(label: "local.verbatim.model-download").async { [weak self] in
@@ -76,7 +97,7 @@ final class ModelManager: ObservableObject {
                     while let index = buffer.firstIndex(of: 10) {
                         let line = Data(buffer[..<index]); buffer.removeSubrange(...index)
                         Task { @MainActor in
-                            guard let self, let event = try? JSONSerialization.jsonObject(with: line) as? [String: Any] else { return }
+                            guard let self, self.process === child, let event = try? JSONSerialization.jsonObject(with: line) as? [String: Any] else { return }
                             if let phase = event["phase"] as? String { self.phase = phase }
                             if let fraction = event["fraction"] as? Double { self.fraction = fraction }
                             if let message = event["message"] as? String { self.error = message }

@@ -17,7 +17,7 @@ git clone https://github.com/JALin2000/LocalVerbatim.git
 cd LocalVerbatim
 ```
 
-以下命令均在此目录执行，其中包含 `Package.swift` 和 `setup.command`。v0.4.9 提供明确标注未经公证的预览安装包，见[安装说明](INSTALL.zh-CN.md)。提交修改前请阅读[参与贡献](../CONTRIBUTING.md)。
+以下命令均在此目录执行，其中包含 `Package.swift` 和 `setup.command`。v0.5.0 提供明确标注未经公证的预览安装包，见[安装说明](INSTALL.zh-CN.md)。提交修改前请阅读[参与贡献](../CONTRIBUTING.md)。
 
 ## 开发版应用
 
@@ -71,13 +71,13 @@ bash scripts/prepare_runtime.sh "$release_work/runtime-build"
 LOCALVERBATIM_BUILD_CACHE="$release_work/swift-cache" bash scripts/package_app.sh \
   "$release_work/runtime-build/runtime" "$release_work/LocalVerbatim.app" --download-model
 bash scripts/package_dmg.sh "$release_work/LocalVerbatim.app" \
-  "$release_work/LocalVerbatim-0.4.9-preview-mac-arm64.dmg" --preview
-shasum -a 256 "$release_work/LocalVerbatim-0.4.9-preview-mac-arm64.dmg"
+  "$release_work/LocalVerbatim-0.5.0-preview-mac-arm64.dmg" --preview
+shasum -a 256 "$release_work/LocalVerbatim-0.5.0-preview-mac-arm64.dmg"
 ```
 
 `--download-model` 生成不带权重、首次使用时下载或导入模型的应用。运行时、识别引擎、原创图标、项目许可证和已整理的第三方许可会复制进应用；许可文件位于 `Contents/Resources/Legal/`，DMG 也包含中英文安装说明。
 
-省略该选项会从 `models/Qwen3-ASR-1.7B-bf16` 打包模型。分发此变体前，需要核对具体权重及内嵌原生库的许可。旧的 `--include-8bit` 可选路径还需要另行取得兼容权重，当前界面没有模型选择器。
+省略该选项会从 `models/Qwen3-ASR-1.7B-bf16` 打包模型。分发此变体前，需要核对具体权重及内嵌原生库的许可。可选的 `--include-8bit` 路径还需要将固定版本的 8 位权重放入 `models/Qwen3-ASR-1.7B-8bit`。公开安装包使用 `--download-model`，用户可在首次向导或**设置 → 转写**选择、下载或导入任一版本。
 
 这些脚本生成**临时签名的试用包**，不等于已公证的公开发行版；不会自动安装到 Applications，也不会上传。公开发安装包前完成[发布清单](RELEASE_CHECKLIST.md)。
 

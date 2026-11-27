@@ -12,10 +12,24 @@ struct Shortcut: Codable, Equatable {
     static let show = Shortcut(keyCode: 37, modifiers: UInt32(controlKey | optionKey), display: "⌃⌥L")
 }
 
+enum InterfaceTextSize: String, Codable, CaseIterable {
+    case small, standard, large
+
+    var scale: Double {
+        switch self {
+        case .small: return 0.90
+        case .standard: return 1
+        case .large: return 1.18
+        }
+    }
+}
+
 struct UserOptions: Codable, Equatable {
     var interfaceLanguage = "system"
     var appearance = "system"
     var textSize: Double = 14
+    var interfaceTextSize = InterfaceTextSize.standard
+    var modelVariant: ModelVariant?
     var reduceFillers = true
     var recordingsPath: String?
     var modelCachePath: String?
@@ -35,7 +49,7 @@ struct UserOptions: Codable, Equatable {
     var closeHintShown = false
     var onboardingComplete = false
 
-    enum CodingKeys: String, CodingKey { case interfaceLanguage, appearance, textSize, reduceFillers, recordingsPath, modelCachePath, recordingBadge, hideDockForHotkeys, startShortcut, stopShortcut, showShortcut, shortcutsEnabled, microphoneID, defaultLanguage, autoRefine, startSound, stopSound, completionNotifications, idleUnloadMinutes, closeHintShown, onboardingComplete }
+    enum CodingKeys: String, CodingKey { case interfaceLanguage, appearance, textSize, interfaceTextSize, modelVariant, reduceFillers, recordingsPath, modelCachePath, recordingBadge, hideDockForHotkeys, startShortcut, stopShortcut, showShortcut, shortcutsEnabled, microphoneID, defaultLanguage, autoRefine, startSound, stopSound, completionNotifications, idleUnloadMinutes, closeHintShown, onboardingComplete }
     init() {}
     init(from decoder: Decoder) throws {
         self.init()
@@ -43,6 +57,12 @@ struct UserOptions: Codable, Equatable {
         interfaceLanguage = try values.decodeIfPresent(String.self, forKey: .interfaceLanguage) ?? interfaceLanguage
         appearance = try values.decodeIfPresent(String.self, forKey: .appearance) ?? appearance
         textSize = try values.decodeIfPresent(Double.self, forKey: .textSize) ?? textSize
+        if let size = try values.decodeIfPresent(String.self, forKey: .interfaceTextSize) {
+            interfaceTextSize = InterfaceTextSize(rawValue: size) ?? .standard
+        }
+        if let variant = try values.decodeIfPresent(String.self, forKey: .modelVariant) {
+            modelVariant = ModelVariant(rawValue: variant)
+        }
         reduceFillers = try values.decodeIfPresent(Bool.self, forKey: .reduceFillers) ?? reduceFillers
         recordingsPath = try values.decodeIfPresent(String.self, forKey: .recordingsPath) ?? recordingsPath
         modelCachePath = try values.decodeIfPresent(String.self, forKey: .modelCachePath) ?? modelCachePath
@@ -109,7 +129,11 @@ final class AppSettings: ObservableObject {
     var isChinese: Bool {
         if options.interfaceLanguage == "zh-Hans" { return true }
         if options.interfaceLanguage == "en" { return false }
-        return Locale.preferredLanguages.first?.hasPrefix("zh") == true
+        return Self.systemInterfaceLanguage(Locale.preferredLanguages) == "zh-Hans"
+    }
+    static func systemInterfaceLanguage(_ preferred: [String]) -> String {
+        guard let primary = preferred.first else { return "en" }
+        return Locale(identifier: primary).language.languageCode?.identifier == "zh" ? "zh-Hans" : "en"
     }
     var locale: Locale { Locale(identifier: isChinese ? "zh_Hans" : "en") }
     var colorScheme: ColorScheme? { options.appearance == "dark" ? .dark : options.appearance == "light" ? .light : nil }

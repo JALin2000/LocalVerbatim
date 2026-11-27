@@ -1,6 +1,6 @@
 # Release preparation / 发行准备
 
-This checklist separates the [0.4.9 unnotarized preview installer](https://github.com/JALin2000/LocalVerbatim/releases/tag/v0.4.9-preview.1) from Developer ID/notarized distribution. Open signing and wider-device checks are disclosed preview limitations.
+This checklist separates the [0.5.0 unnotarized preview installer](https://github.com/JALin2000/LocalVerbatim/releases/tag/v0.5.0-preview.1) from Developer ID/notarized distribution. Open signing and wider-device checks are disclosed preview limitations.
 
 ## Source preparation
 
@@ -34,4 +34,4 @@ Contribution guidance, issue templates and CI improve maintenance; they are sepa
 
 The local build and packaging scripts do not publish to GitHub, enroll certificates or upload artifacts.
 
-v0.4.7 源码已经公开；0.4.9 提供未公证预览安装包。已固定解释器及依赖文件哈希、核查精简后的实际运行时许可，并补充必要源码与隐私检查。未公证预览版必须明确标注安装限制；它不等于正式签名、公证或全新 Mac 验证已完成。正式 Developer ID 路径需要维护者配置会员、证书和本机公证凭据。源码公开、预览包准备与公证发行分别记录。
+v0.4.7 源码已经公开；0.5.0 提供未公证预览安装包。已固定解释器及依赖文件哈希、核查精简后的实际运行时许可，并补充必要源码与隐私检查。未公证预览版必须明确标注安装限制；它不等于正式签名、公证或全新 Mac 验证已完成。正式 Developer ID 路径需要维护者配置会员、证书和本机公证凭据。源码公开、预览包准备与公证发行分别记录。

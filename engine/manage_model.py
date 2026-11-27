@@ -68,12 +68,16 @@ def install(destination, manifest, source=None):
     return target
 
 
+MANIFESTS = {'bf16': 'model-manifest.json', '8bit': 'model-manifest-8bit.json'}
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--destination', type=Path, required=True)
     parser.add_argument('--import-folder', type=Path)
+    parser.add_argument('--variant', choices=MANIFESTS, default='bf16')
     args = parser.parse_args()
-    manifest = json.loads(Path(__file__).with_name('model-manifest.json').read_text())
+    manifest = json.loads(Path(__file__).with_name(MANIFESTS[args.variant]).read_text())
     try:
         args.destination.mkdir(parents=True, exist_ok=True)
         target = install(args.destination, manifest, args.import_folder)

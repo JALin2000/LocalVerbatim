@@ -10,6 +10,7 @@ This is an application-specific Qwen3-ASR runtime. SciPy and its bundled GCC/qua
 |---|---|---|
 | [Qwen3-ASR](https://github.com/QwenLM/Qwen3-ASR) / [1.7B model](https://huggingface.co/Qwen/Qwen3-ASR-1.7B) | Speech recognition | Apache-2.0; Alibaba Cloud; [preserved license](LICENSES/upstream/Qwen3-ASR.LICENSE). Model weights are downloaded separately using the pinned manifest. |
 | [MLX BF16 conversion](https://huggingface.co/mlx-community/Qwen3-ASR-1.7B-bf16) | Model conversion used by the app | Model card declares Apache-2.0; MLX Community; revision in `engine/model-manifest.json`. |
+| [MLX 8-bit conversion](https://huggingface.co/mlx-community/Qwen3-ASR-1.7B-8bit) | Optional on-demand model weights | Model card declares Apache-2.0. MLX Community revision in `engine/model-manifest-8bit.json`. |
 | [MLX](https://github.com/ml-explore/mlx), MLX Metal and [MLX Audio](https://github.com/Neywa-Labs/mlx-audio) | Apple Silicon inference and ASR implementation | MIT; Apple, Prince Canuma and contributors; additional embedded-component notices are preserved. |
 | [CPython](https://www.python.org/) | Python interpreter | PSF and historical terms plus separately licensed incorporated components; [details](LICENSES/README.md). |
 | Transformers, Hugging Face Hub, Tokenizers, SafeTensors and hf-xet | Model loading, download and tokenization | Primarily Apache-2.0, with separately licensed Rust and other dependencies. |

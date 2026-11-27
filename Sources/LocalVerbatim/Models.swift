@@ -15,6 +15,19 @@ enum AppIdentity {
     }
 }
 
+enum ModelVariant: String, Codable, CaseIterable {
+    case bf16, quantized = "8bit"
+
+    static func recommended(for ramBytes: UInt64 = ProcessInfo.processInfo.physicalMemory) -> Self {
+        ramBytes <= 8 * 1_073_741_824 ? .quantized : .bf16
+    }
+
+    var directory: String { "Qwen3-ASR-1.7B-" + rawValue }
+    var title: String { self == .bf16 ? "BF16" : tr("8 位量化", "8-bit quantized") }
+    var downloadSize: String { self == .bf16 ? "4.08 GB" : "2.47 GB" }
+    var downloadBytes: Int64 { self == .bf16 ? 4_080_000_000 : 2_470_000_000 }
+}
+
 enum AppPaths {
     static let bundledSupport: URL? = {
         guard let resources = Bundle.main.resourceURL else { return nil }
@@ -33,12 +46,27 @@ enum AppPaths {
         return support.appendingPathComponent(AppIdentity.dataDirectoryName, isDirectory: true)
     }()
     static var recordings: URL { AppSettings.shared.recordingsDirectory }
+    static var modelVariant: ModelVariant {
+        if let choice = AppSettings.shared.options.modelVariant { return choice }
+        // Keep the installed model for existing users. On a fresh install,
+        // the recommendation determines which of the two choices is offered first.
+        return ModelVariant.allCases.first(where: { installedModel($0) != nil }) ?? .recommended()
+    }
+
+    static func installedModel(_ variant: ModelVariant) -> URL? {
+        let settings = AppSettings.shared
+        let cache = settings.modelCacheDirectory.appendingPathComponent(variant.directory, isDirectory: true)
+        let bundled = root.appendingPathComponent("models").appendingPathComponent(variant.directory, isDirectory: true)
+        let locations = settings.options.modelCachePath == nil ? [cache, bundled] : [cache]
+        return locations.first {
+            FileManager.default.fileExists(atPath: $0.appendingPathComponent("config.json").path) &&
+            FileManager.default.fileExists(atPath: $0.appendingPathComponent("model.safetensors").path)
+        }
+    }
+
     static var model: URL {
-        let cached = AppSettings.shared.modelCacheDirectory.appendingPathComponent("Qwen3-ASR-1.7B-bf16", isDirectory: true)
-        if AppSettings.shared.options.modelCachePath != nil || FileManager.default.fileExists(atPath: cached.appendingPathComponent("config.json").path) { return cached }
-        let full = root.appendingPathComponent("models/Qwen3-ASR-1.7B-bf16", isDirectory: true)
-        return FileManager.default.fileExists(atPath: full.appendingPathComponent("config.json").path)
-            ? full : root.appendingPathComponent("models/Qwen3-ASR-1.7B-8bit", isDirectory: true)
+        let variant = modelVariant
+        return installedModel(variant) ?? AppSettings.shared.modelCacheDirectory.appendingPathComponent(variant.directory)
     }
     static var python: URL { root.appendingPathComponent("runtime/bin/python") }
     static var worker: URL { root.appendingPathComponent("engine/worker.py") }

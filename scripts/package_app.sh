@@ -59,7 +59,7 @@ cp "$package_source/scripts/AppIcon.icns" "$package_output/Contents/Resources/Ap
 # installed app, user settings, recordings, diagnostics or development docs.
 /bin/cp -cR "$package_runtime" "$package_support/runtime"
 mkdir -p "$package_support/engine" "$package_support/models"
-cp "$package_source"/engine/worker.py "$package_source"/engine/manage_model.py "$package_source"/engine/model-manifest.json "$package_support/engine/"
+cp "$package_source"/engine/worker.py "$package_source"/engine/manage_model.py "$package_source"/engine/model-manifest.json "$package_source"/engine/model-manifest-8bit.json "$package_support/engine/"
 # Keep resource additions explicit and reviewable.
 /bin/cp -R "$package_source/Resources/en.lproj" "$package_source/Resources/zh-Hans.lproj" "$package_output/Contents/Resources/"
 mkdir -p "$package_output/Contents/Resources/Legal"

@@ -81,7 +81,7 @@ LocalVerbatim / 本地逐字稿
 从 LocalScribe 升级时先退出旧应用，保留原数据目录，无需移动录音。
 升级前请备份完整录音库（含隐藏文件）。0.4.5 起自动按日期和会议名整理目录。
 如果旧模型内置于应用包，请保留旧应用并在向导中导入其模型文件夹，避免重新下载。
-第一次使用时选择界面语言；若本机没有模型，按向导下载或导入模型（约4.08GB）。
+首次启动跟随系统语言。按向导选择并下载 BF16（约 4.08 GB）或 8 位量化版（约 2.47 GB）。
 录音与识别在本机完成。需要麦克风及屏幕与系统音频录制授权；不保存屏幕画面。
 适用于 Apple Silicon Mac，macOS 15 或更新版本。Windows 尚未适配。
 
@@ -91,7 +91,7 @@ Back up the complete library, including hidden files, before upgrading. From 0.4
 meeting folders are organized by date and title. The app reuses recordings and settings.
 Models in the user cache are reused; for older builds with bundled weights, import
 its model folder using the setup guide. If a local model is unavailable, the guide
-also offers download (about 4.08GB). Recording and transcription stay local.
+offers BF16 (4.08 GB) and 8-bit (2.47 GB) downloads. Recordings and transcription stay local.
 Microphone and Screen & System Audio Recording permissions are needed;
 screen images are not saved. Apple Silicon, macOS 15 or later.
 TEXT

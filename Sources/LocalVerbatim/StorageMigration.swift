@@ -29,6 +29,20 @@ enum StorageMigration {
             throw error
         }
     }
+    static func copyModels(_ sources: [URL], to destination: URL) throws {
+        let fm = FileManager.default
+        guard !sources.isEmpty else { throw failure("No installed model files are available.") }
+        guard !fm.fileExists(atPath: destination.path) else { throw failure("The destination already exists. Choose an empty parent folder.") }
+        let stage = destination.deletingLastPathComponent().appendingPathComponent(".localverbatim-models-\(UUID().uuidString)")
+        try fm.createDirectory(at: stage, withIntermediateDirectories: false)
+        defer { try? fm.removeItem(at: stage) }
+        for source in sources {
+            guard fm.fileExists(atPath: source.path) else { throw CocoaError(.fileNoSuchFile) }
+            try copyVerified(from: source, to: stage.appendingPathComponent(source.lastPathComponent))
+        }
+        try fm.moveItem(at: stage, to: destination)
+    }
+
     static func hashes(in folder: URL) throws -> [String: String] {
         let fm = FileManager.default
         var result: [String: String] = [:]

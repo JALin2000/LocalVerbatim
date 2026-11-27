@@ -38,12 +38,12 @@ struct TermTokenEditor: View {
                         HStack(spacing: 6) {
                             Text(term).lineLimit(1)
                             Button { store.removeVocabularyTerm(term) } label: {
-                                Image(systemName: "xmark").font(.system(size: 9, weight: .bold))
+                                Image(systemName: "xmark").uiFont(9, weight: .bold)
                                     .frame(width: 16, height: 16).contentShape(Rectangle())
                             }
                                 .buttonStyle(.plain).accessibilityLabel(tr("删除术语：", "Remove term: ") + term)
                         }
-                        .font(.system(size: 12)).padding(.horizontal, 9).padding(.vertical, 6)
+                        .uiFont(12).padding(.horizontal, 9).padding(.vertical, 6)
                         .foregroundStyle(AppPalette.accent).background(AppPalette.accent.opacity(0.12), in: RoundedRectangle(cornerRadius: 7))
                         .accessibilityElement(children: .contain)
                     }
@@ -52,13 +52,13 @@ struct TermTokenEditor: View {
             CommaTermField(text: Binding(get: { store.vocabularyDraft }, set: store.setVocabularyDraft),
                            placeholder: tr("输入人名、公司名或缩写，例如：张伟、Acme、API", "Names, companies, or abbreviations, e.g. Alex Chen, Acme, API"),
                            submit: store.commitVocabularyDraft)
-                .frame(height: 22)
+                .frame(height: 22 * AppSettings.shared.options.interfaceTextSize.scale)
             HStack(spacing: 5) {
                 Image(systemName: store.vocabularyFeedback.isEmpty ? "comma" : "checkmark.circle.fill")
                 Text(store.vocabularyFeedback.isEmpty ? tr("输入逗号或按回车，术语会变成独立标签。", "Type a comma or press Return to create a term chip.") : store.vocabularyFeedback)
                 Spacer()
                 Text("\(Vocabulary.terms(store.selected?.vocabulary ?? "").count)/40")
-            }.font(.system(size: 10)).foregroundStyle(.secondary)
+            }.uiFont(10).foregroundStyle(.secondary)
         }
         .padding(12).background(Color(nsColor: .textBackgroundColor), in: RoundedRectangle(cornerRadius: 9))
         .overlay(RoundedRectangle(cornerRadius: 9).stroke(Color.secondary.opacity(0.2)))
@@ -77,12 +77,13 @@ private struct CommaTermField: NSViewRepresentable {
     func makeNSView(context: Context) -> NSTextField {
         let field = NSTextField()
         field.isBordered = false; field.drawsBackground = false
-        field.font = NSFont.systemFont(ofSize: 13)
+        field.font = NSFont.systemFont(ofSize: 13 * settings.options.interfaceTextSize.scale)
         field.delegate = context.coordinator
         return field
     }
     func updateNSView(_ field: NSTextField, context: Context) {
         context.coordinator.parent = self
+        field.font = NSFont.systemFont(ofSize: 13 * settings.options.interfaceTextSize.scale)
         field.placeholderString = placeholder
         field.textColor = .labelColor
         field.setAccessibilityLabel(tr("添加会议术语", "Add meeting terms"))

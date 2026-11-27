@@ -9,6 +9,12 @@ Version 0.4.7 is the first public source snapshot; 0.4.8 adds the first unnotari
 - Disable Hugging Face telemetry and implicit token use in the command-line model installer as well as the app.
 - Correct the SwiftPM macOS deployment declaration for Swift tools 5.10.
 
+## 0.5.0 — setup and model choice
+
+- Start in the system-selected language and let users switch between English and Simplified Chinese directly in the setup guide.
+- Add three interface text sizes, plus click-outside dismissal for Settings. The transcript size remains separately adjustable.
+- Recommend 8-bit Qwen3-ASR-1.7B for up to 8 GB of RAM and BF16 above 8 GB. Download or import either pinned model after installation and switch in Settings when idle. Existing installations keep their active model.
+
 ## 0.4.9 — recording import
 
 - Import MP3, M4A or WAV audio for local transcription, playback, export and automatic second pass.

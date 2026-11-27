@@ -8,9 +8,9 @@
 
 分别录下麦克风和电脑声音，在本机转成逐字稿，保留完整录音，并在同一页面阅读逐字稿、记录笔记。
 
-**[下载 Mac 预览版 DMG](https://github.com/JALin2000/LocalVerbatim/releases/download/v0.4.9-preview.1/LocalVerbatim-0.4.9-preview-mac-arm64.dmg)** · Apple Silicon · macOS 15+ · 约 117 MB。[发行说明与校验和](https://github.com/JALin2000/LocalVerbatim/releases/tag/v0.4.9-preview.1)。
+**[下载 Mac 预览版 DMG](https://github.com/JALin2000/LocalVerbatim/releases/download/v0.5.0-preview.1/LocalVerbatim-0.5.0-preview-mac-arm64.dmg)** · Apple Silicon · macOS 15+ · 约 117 MB。[发行说明与校验和](https://github.com/JALin2000/LocalVerbatim/releases/tag/v0.5.0-preview.1)。
 
-**当前状态：** **LocalVerbatim／本地逐字稿** v0.4.9 预览版。安装包采用**临时签名，未经过 Apple 公证**。首次尝试打开后，可能需要到“系统设置 → 隐私与安全性 → 仍要打开”手动允许；受管理的 Mac 可能禁止此例外，详见[安装说明](docs/INSTALL.zh-CN.md)。全新 Mac 首装及更广泛的系统／硬件验证仍待完成。
+**当前状态：** **LocalVerbatim／本地逐字稿** v0.5.0 预览版。安装包采用**临时签名，未经过 Apple 公证**。首次尝试打开后，可能需要到“系统设置 → 隐私与安全性 → 仍要打开”手动允许；受管理的 Mac 可能禁止此例外，详见[安装说明](docs/INSTALL.zh-CN.md)。全新 Mac 首装及更广泛的系统／硬件验证仍待完成。
 
 从 LocalScribe 升级会继续使用现有会议库、模型、设置和术语模板，历史数据目录与应用标识保持稳定。无需搬动或重命名录音，详见[升级说明](docs/INSTALL.zh-CN.md#升级备份与卸载)。
 
@@ -18,7 +18,7 @@
 
 - 同时采集麦克风与系统音频，分别保存 WAV 音轨并标注来源。
 - 导入 MP3、M4A 或 WAV 录音，支持本地转写、回放和自动二次识别。
-- 使用 Qwen3-ASR-1.7B BF16 与 MLX 本地识别，面向英语、普通话及混合会议。
+- 使用 Qwen3-ASR-1.7B 与 MLX 本地识别，提供 BF16 和 8 位量化两版，面向英语、普通话及混合会议。
 - 录音期间分段更新逐字稿，停止后可自动进行二次识别。
 - 保留原始逐字稿；二次识别可停止、继续，也可更新术语后重新运行。此前的二次稿可切换查看和导出。
 - 常用术语模板；新会议沿用上一场实际录音的术语与背景。
@@ -34,7 +34,7 @@
 | 电脑 | Apple Silicon Mac；暂不支持 Intel Mac 和 Windows |
 | 系统 | macOS 15 或更新；最低系统版本还需更广泛的实机验证 |
 | 内存 | 建议 16 GB；尚未验证 8 GB 配置 |
-| 模型下载 | 约 4.08 GB，一次下载；可导入版本匹配的已有模型 |
+| 模型下载 | 8 GB RAM 及以下推荐 8 位版（约 2.47 GB），超过 8 GB 推荐 BF16（约 4.08 GB） |
 | 磁盘 | 为应用和模型预留至少 6 GB，另留录音和下载工作空间 |
 | 网络 | 下载模型时需要；模型就绪后可离线录音与识别 |
 | 权限 | 麦克风、屏幕与系统音频录制 |
@@ -45,7 +45,7 @@
 
 ## 开始使用
 
-下载 [Mac 预览版](https://github.com/JALin2000/LocalVerbatim/releases/download/v0.4.9-preview.1/LocalVerbatim-0.4.9-preview-mac-arm64.dmg)并按[安装说明](docs/INSTALL.zh-CN.md)操作。包内包含 Python 和识别依赖，模型在首次启动时下载或导入。从源码构建请阅读[开发说明](docs/DEVELOPMENT.zh-CN.md)。
+下载 [Mac 预览版](https://github.com/JALin2000/LocalVerbatim/releases/download/v0.5.0-preview.1/LocalVerbatim-0.5.0-preview-mac-arm64.dmg)并按[安装说明](docs/INSTALL.zh-CN.md)操作。包内包含 Python 和识别依赖。首次启动时可选择界面语言，再下载或导入所选模型。另一版本也可在**设置 → 转写**下载。从源码构建请阅读[开发说明](docs/DEVELOPMENT.zh-CN.md)。
 
 使用独立安装包不需要安装 Python、Homebrew 或 Xcode。模型就绪后，运行**设置 → 录音 → 10 秒收音测试**；重要会议前，确认两路均收到音频。
 
@@ -59,9 +59,9 @@
 
 ## 模型与实际边界
 
-默认使用 [Qwen3-ASR-1.7B](https://huggingface.co/Qwen/Qwen3-ASR-1.7B) 的 [MLX BF16 权重](https://huggingface.co/mlx-community/Qwen3-ASR-1.7B-bf16)。[模型清单](engine/model-manifest.json)固定了版本与文件哈希。同一份模型串行处理两个来源；长录音分窗口读取。
+应用使用 [Qwen3-ASR-1.7B](https://huggingface.co/Qwen/Qwen3-ASR-1.7B) 的 [MLX BF16](https://huggingface.co/mlx-community/Qwen3-ASR-1.7B-bf16) 或 [MLX 8 位](https://huggingface.co/mlx-community/Qwen3-ASR-1.7B-8bit)权重。[BF16](engine/model-manifest.json) 和 [8 位](engine/model-manifest-8bit.json)模型清单固定了版本与文件哈希。同一份模型串行处理两个来源；长录音分窗口读取。
 
-在 M4、16 GB 内存的短时本地测试中，**识别进程物理内存**约为 5.2–5.4 GB。这不是整个系统的内存占用，也不保证其他设备得到相同结果。识别进程达到本机 RAM 的 90% 时，应用会停止转写并保留录音。8 GB 机器的阈值为 7.2 GB，系统和其他应用也占用这 8 GB 内存。可先用「预载并测试内存」做初步检查。
+在 M4、16 GB 内存的短时本地测试中，BF16 的**识别进程物理内存**约为 5.2–5.4 GB。同一台 Mac 上，8 位版处理短英文、普通话及二次识别的测试峰值约为 **3.35 GB**。这不是整个系统的内存占用，也不保证其他设备得到相同结果。识别进程达到本机 RAM 的 90% 时，应用会停止转写并保留录音。8 GB 机器的阈值为 7.2 GB，系统和其他应用也占用这 8 GB 内存。可先用「预载并测试内存」做初步检查。
 
 - 检测到严重循环重复时，会从原音频进行有限次数的本地重试，并保存异常原始输出；仍未通过则报告失败，不采用循环文字。这不能发现所有识别错误。
 - 人名、数字、专业词及语言切换仍可能识别错误，重要内容应对照录音校对。二次识别不保证每句话都更准确。

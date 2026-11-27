@@ -22,7 +22,8 @@ class AppReleaseAuditTests(unittest.TestCase):
         self.contents = self.app / 'Contents'
         names = ['MacOS/LocalVerbatim', 'Resources/AppIcon.icns',
                  'Resources/Support/engine/worker.py', 'Resources/Support/engine/manage_model.py',
-                 'Resources/Support/engine/model-manifest.json', 'Resources/Support/runtime/bin/python',
+                 'Resources/Support/engine/model-manifest.json', 'Resources/Support/engine/model-manifest-8bit.json',
+                 'Resources/Support/runtime/bin/python',
                  'Resources/Support/runtime-artifacts.json', 'Resources/Legal/LICENSE',
                  'Resources/Legal/NOTICE', 'Resources/Legal/THIRD_PARTY_NOTICES.md']
         for name in names:

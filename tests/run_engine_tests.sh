@@ -6,6 +6,7 @@ trap 'rm -rf "$scratch"' EXIT
 mkdir -p "$scratch/runtime/bin" "$scratch/engine" "$scratch/models/Qwen3-ASR-1.7B-bf16"
 ln -s "${LOCALVERBATIM_TEST_PYTHON:-$project/runtime/bin/python}" "$scratch/runtime/bin/python"
 echo '{}' > "$scratch/models/Qwen3-ASR-1.7B-bf16/config.json"
+touch "$scratch/models/Qwen3-ASR-1.7B-bf16/model.safetensors"
 cat > "$scratch/engine/worker.py" <<'PY'
 import json, sys, time, signal
 print('{"type":"ready"}',flush=True)
