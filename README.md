@@ -1,79 +1,94 @@
-# LocalVerbatim
-
-[简体中文](README.zh-CN.md)
-
-Local meeting recording and English/Mandarin transcription for Apple Silicon Macs. Chinese name: **本地逐字稿**.
+<div align="center">
 
 <img src="Resources/Brand/AppIcon-preview.png" width="96" alt="LocalVerbatim icon">
 
-Record your microphone and the audio playing on your computer as separate tracks. Transcribe both on your Mac, keep the original recording, and review the transcript alongside your notes.
+# LocalVerbatim
 
-**[Download the Mac preview DMG](https://github.com/JALin2000/LocalVerbatim/releases/download/v0.5.0-preview.1/LocalVerbatim-0.5.0-preview-mac-arm64.dmg)** · Apple Silicon · macOS 15+ · approximately 117 MB. [Release notes and checksums](https://github.com/JALin2000/LocalVerbatim/releases/tag/v0.5.0-preview.1).
+**Private, local meeting recording and English/Mandarin transcription for Apple Silicon Macs.**
 
-**Status:** v0.5.0 preview of **LocalVerbatim / 本地逐字稿**. This installer is **ad-hoc signed and not notarized by Apple**. First launch may require **System Settings → Privacy & Security → Open Anyway** after an attempted opening; managed Macs may prohibit it. See [installation instructions](docs/INSTALL.md). Clean-Mac first-install and wider hardware/OS testing remain pending.
+`Apple Silicon` · `macOS 15+` · `Qwen3-ASR-1.7B (MLX)` · `Apache-2.0`
 
-Upgrading from LocalScribe preserves the existing library, model, settings and templates. The historical data directory and bundle identifier intentionally remain stable; see [upgrade details](docs/INSTALL.md#upgrade-backup-and-uninstall).
+**[Download v0.5.0 Preview DMG](https://github.com/JALin2000/LocalVerbatim/releases/download/v0.5.0-preview.1/LocalVerbatim-0.5.0-preview-mac-arm64.dmg)** (~117 MB) · [Release Notes & Checksums](https://github.com/JALin2000/LocalVerbatim/releases/tag/v0.5.0-preview.1) · [简体中文](README.zh-CN.md)
 
-## Features
+</div>
 
-- Microphone and system audio capture, with separate WAV files and source labels.
-- Import MP3, M4A or WAV recordings for local transcription, playback and automatic second pass.
-- Local Qwen3-ASR-1.7B inference with BF16 and 8-bit options through MLX; English, Mandarin and mixed-language meetings.
-- Incremental transcription during recording, with an optional automatic second pass after stopping.
-- Original transcript retained; stop/resume a second pass, or run it again with updated terminology. Previous passes remain selectable and exportable.
-- Reusable terminology templates; new meetings inherit the last recorded meeting's terms and context.
-- Instantly switch between original wording and conservative filler reduction. Second-pass text also merges obvious Chinese speech repetitions; saved model output is retained.
-- Notes, playback from timestamps, TXT/Markdown/SRT export, and recoverable meeting deletion.
-- Chinese/English UI, light/dark appearance, global shortcuts, configurable storage, and a two-source audio test.
-- Optional Dock hiding for shortcut-started recording; the menu-bar entry stays available.
+---
+
+LocalVerbatim captures your microphone and computer audio as separate local tracks, transcribes both on-device with MLX, and keeps your original recordings, transcripts, and notes together in one offline workspace.
+
+## Highlights
+
+- **Dual-Track Capture & Audio Import** — Record your microphone (`Me`) and computer playback (`Participants`) into separate WAV files without any meeting bot, or import existing `MP3`, `M4A`, and `WAV` recordings.
+- **100% On-Device AI** — Runs [Qwen3-ASR-1.7B](https://huggingface.co/Qwen/Qwen3-ASR-1.7B) natively on Apple Silicon via MLX for English, Mandarin, and mixed-language speech. Choose between [BF16](https://huggingface.co/mlx-community/Qwen3-ASR-1.7B-bf16) (higher accuracy, 4.08 GB) and [8-bit](https://huggingface.co/mlx-community/Qwen3-ASR-1.7B-8bit) (lower memory, 2.47 GB), verified against pinned hashes in [model-manifest.json](engine/model-manifest.json) and [model-manifest-8bit.json](engine/model-manifest-8bit.json).
+- **Live Draft + Second Pass** — Generates incremental transcripts while you record, then optionally runs a full-context second pass after stopping. Original transcripts are always preserved, and you can stop, resume, rerun with updated terminology, or compare earlier passes.
+- **Terminology & Clean Reading** — Save reusable terminology templates, inherit terms from your last recorded meeting, and toggle conservative filler reduction (plus Chinese repetition cleanup in second-pass text) without altering saved model output.
+- **Complete Local Workspace** — Side-by-side notes, click-to-play timestamps, `TXT` / `Markdown` / `SRT` export, recoverable Trash deletion, Chinese/English UI, light/dark mode, and optional Dock hiding for shortcut-started recordings.
+
+## Quick Start
+
+1. **Install** — Download the [v0.5.0 Preview DMG](https://github.com/JALin2000/LocalVerbatim/releases/download/v0.5.0-preview.1/LocalVerbatim-0.5.0-preview-mac-arm64.dmg) (includes Python and MLX runtime; no Homebrew or Xcode needed) and drag **LocalVerbatim** to **Applications**.
+
+   > [!NOTE]
+   > The v0.5.0 preview DMG is ad-hoc signed and not notarized by Apple. On first launch, macOS may require **System Settings → Privacy & Security → Open Anyway** (managed Macs may restrict unnotarized apps). See the [installation guide](docs/INSTALL.md) for details.
+
+2. **Set up model & permissions** — Launch the app, pick English or 简体中文, download or import your preferred model (`8-bit` recommended for ≤ 8 GB RAM; `BF16` for > 8 GB RAM), and grant **Microphone** and **Screen & System Audio Recording** permissions.
+3. **Verify & record** — Run **Settings → Recording → Run 10-second audio test** to confirm both sources receive audio, then start recording from the window, menu bar, or global shortcuts.
+
+## Global Shortcuts
+
+| Action | Default Shortcut |
+|---|---|
+| Start recording | `⌃⌥R` (`Control + Option + R`) |
+| Stop recording | `⌃⌥S` (`Control + Option + S`) |
+| Show main window | `⌃⌥L` (`Control + Option + L`) |
+
+All shortcuts can be customized in **Settings → Shortcuts**, where you can also enable **Hide the Dock icon for shortcut-started recordings** (the menu-bar icon remains visible).
 
 ## Requirements
 
-| Item | Current support |
+| Item | Requirement |
 |---|---|
-| Computer | Apple Silicon Mac; Intel and Windows are not supported |
-| OS | macOS 15 or later; minimum-version coverage still needs broader testing |
-| Memory | 16 GB recommended; 8 GB configurations have not been validated |
-| Model download | 8-bit (2.47 GB) recommended for up to 8 GB RAM. BF16 (4.08 GB) recommended above 8 GB. |
-| Disk | Allow at least 6 GB for the app/model plus recordings and download workspace |
-| Network | Needed for model download; recording and transcription operate locally afterward |
-| Permissions | Microphone and Screen & System Audio Recording |
+| **Mac & OS** | Apple Silicon Mac, macOS 15 or later |
+| **Memory** | 16 GB recommended (`8-bit`: 2.47 GB, `BF16`: 4.08 GB; auto-stops transcription at 90% RAM while keeping audio) |
+| **Storage** | 6 GB+ for app and model, plus ~230 MB/hour for dual-track 16 kHz mono PCM16 recordings |
+| **Network** | Needed only for initial model download; recording and transcription work offline |
 
-The app saves 16 kHz mono PCM16 audio: about 230 MB/hour for the two full tracks combined, **plus** transcription chunks and exports. Storage grows with meeting duration.
+## How Meetings Are Stored
 
-Meetings are stored in `date · meeting title [ID]/`: the two full WAV tracks are at the top level, readable exports are in `Transcripts/`, and intermediate chunks/results are in hidden `.localverbatim/`. Back up the **whole folder**, including hidden files. Legacy folders are organized automatically on upgrade; see [Installation](docs/INSTALL.md).
+Each meeting is stored in a self-contained folder under `date · title [ID]/`:
 
-## Get started
+```text
+YYYY-MM-DD HH-MM · Meeting Title [ID]/
+├── microphone.wav          # Full microphone track
+├── system.wav              # Full computer audio track
+├── Transcripts/            # Auto-exported TXT, Markdown, and SRT
+└── .localverbatim/         # Metadata, notes, chunks, and pass history
+```
 
-Download the [Mac preview](https://github.com/JALin2000/LocalVerbatim/releases/download/v0.5.0-preview.1/LocalVerbatim-0.5.0-preview-mac-arm64.dmg) and follow the [installation guide](docs/INSTALL.md). The installer includes Python and inference dependencies; choose a language and download or import a model in the setup guide. Both model variants are available in **Settings → Transcription**. To build from source, follow the [developer guide](docs/DEVELOPMENT.md).
+Upgrading from **LocalScribe** automatically preserves your existing recordings, models, settings, and terminology templates.
 
-Installing the packaged app does not require Python, Homebrew or Xcode. After model setup, run **Settings → Recording → Run 10-second audio test** and confirm that both sources receive audio before an important meeting.
+## Good to Know
 
-| Guide | English | 简体中文 |
-|---|---|---|
-| Install, permissions, troubleshooting, upgrade and uninstall | [Installation](docs/INSTALL.md) | [安装说明](docs/INSTALL.zh-CN.md) |
-| Build, test and package | [Development](docs/DEVELOPMENT.md) | [开发说明](docs/DEVELOPMENT.zh-CN.md) |
-| Local data and network access | [Privacy / 隐私](docs/PRIVACY.md) | [同一文档](docs/PRIVACY.md) |
+- **Source labels, not speaker diarization**: `Me` and `Participants` identify the audio track (`microphone` vs. `system`), rather than separating multiple remote speakers by voice.
+- **Use headphones**: There is no acoustic echo cancellation yet; headphones prevent speaker audio from re-entering the microphone track.
+- **Review key details**: Severe decoder repetition loops trigger bounded local retries, though rare names, numbers, and language switches should still be verified against playback.
+- **Local-first scope**: Cloud sync, automatic AI summaries, calendar integration, and an auto-updater are intentionally not included.
 
-Default global shortcuts: **Control + Option + R** starts recording, **Control + Option + S** stops, and **Control + Option + L** shows the main window. All can be changed in Settings.
+## Build from Source & Docs
 
-## Model and limitations
+```sh
+git clone https://github.com/JALin2000/LocalVerbatim.git && cd LocalVerbatim
+bash setup.command
+open LocalVerbatim.app
+```
 
-The model is [Qwen3-ASR-1.7B](https://huggingface.co/Qwen/Qwen3-ASR-1.7B), with [MLX BF16](https://huggingface.co/mlx-community/Qwen3-ASR-1.7B-bf16) and [MLX 8-bit](https://huggingface.co/mlx-community/Qwen3-ASR-1.7B-8bit) weights. Revisions and file hashes are pinned in the [BF16](engine/model-manifest.json) and [8-bit](engine/model-manifest-8bit.json) manifests. One model processes both sources serially; long recordings are read in bounded windows.
+| Guide | Link |
+|---|---|
+| Install, permissions, upgrade & uninstall | [docs/INSTALL.md](docs/INSTALL.md) · [中文版](docs/INSTALL.zh-CN.md) |
+| Build, test & DMG packaging | [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md) · [中文版](docs/DEVELOPMENT.zh-CN.md) |
+| Local data & network behavior | [docs/PRIVACY.md](docs/PRIVACY.md) |
+| Release history | [CHANGELOG.md](CHANGELOG.md) |
 
-Short local tests on an M4 with 16 GB memory measured approximately **5.2–5.4 GB** of recognition-process physical memory with BF16. An 8-bit test covering short English and Mandarin clips and second passes peaked at **3.35 GB** on that Mac. This is not a whole-system measurement or a cross-device guarantee. The app stops transcription when the recognition process reaches 90% of installed RAM and keeps the audio. On an 8 GB Mac, this threshold is 7.2 GB, and macOS and other apps share the same RAM. Try **Preload & test memory** for an initial check.
+## License & Contributing
 
-- Severe repetition loops trigger bounded local retries from the audio. Failed attempts remain on disk; an unresolved failure is reported instead of accepting looping text. This does not detect every recognition error.
-- Recognition can miss words, names, numbers or language switches. Review important passages against the recording; a second pass is not guaranteed to improve every sentence.
-- “Me” and “Participants” identify the audio source. Multiple remote speakers are not separated by voice.
-- Timestamps mark chunks, not individual words. There is no acoustic echo cancellation; headphones help avoid duplicated speaker audio.
-- Automatic summaries, cloud sync and calendar integrations are not implemented.
-- No automatic updater; signed public distribution and Windows support are future work.
-
-## License and attribution
-
-Original project code, documentation and the original icon are licensed under [Apache-2.0](LICENSE). See [NOTICE](NOTICE) for attribution. Third-party packages and model weights keep their own licenses; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). This source tree contains neither model weights nor the Python runtime.
-
-See the [changelog](CHANGELOG.md) and the [release checklist](docs/RELEASE_CHECKLIST.md) for preparation status.
-
-For bug reports and changes, read [Contributing / 参与贡献](CONTRIBUTING.md). Report suspected vulnerabilities through the [security guidance / 安全说明](SECURITY.md); keep meeting recordings, transcripts and personal data out of public issues.
+Original code, documentation, and icon artwork are licensed under [Apache-2.0](LICENSE) (see [NOTICE](NOTICE)). Bundled third-party packages and Qwen3-ASR weights retain their own licenses in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Contributions are welcome—see [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md) (please keep real meeting recordings and transcripts out of public issues).

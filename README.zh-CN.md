@@ -1,79 +1,94 @@
-# 本地逐字稿 · LocalVerbatim
-
-[English](README.md)
-
-面向 Apple Silicon Mac 的本地会议录音与中英文转写应用。
+<div align="center">
 
 <img src="Resources/Brand/AppIcon-preview.png" width="96" alt="LocalVerbatim 图标">
 
-分别录下麦克风和电脑声音，在本机转成逐字稿，保留完整录音，并在同一页面阅读逐字稿、记录笔记。
+# 本地逐字稿 · LocalVerbatim
 
-**[下载 Mac 预览版 DMG](https://github.com/JALin2000/LocalVerbatim/releases/download/v0.5.0-preview.1/LocalVerbatim-0.5.0-preview-mac-arm64.dmg)** · Apple Silicon · macOS 15+ · 约 117 MB。[发行说明与校验和](https://github.com/JALin2000/LocalVerbatim/releases/tag/v0.5.0-preview.1)。
+**面向 Apple Silicon Mac 的私密、离线会议录音与中英文转写应用。**
 
-**当前状态：** **LocalVerbatim／本地逐字稿** v0.5.0 预览版。安装包采用**临时签名，未经过 Apple 公证**。首次尝试打开后，可能需要到“系统设置 → 隐私与安全性 → 仍要打开”手动允许；受管理的 Mac 可能禁止此例外，详见[安装说明](docs/INSTALL.zh-CN.md)。全新 Mac 首装及更广泛的系统／硬件验证仍待完成。
+`Apple Silicon` · `macOS 15+` · `Qwen3-ASR-1.7B (MLX)` · `Apache-2.0`
 
-从 LocalScribe 升级会继续使用现有会议库、模型、设置和术语模板，历史数据目录与应用标识保持稳定。无需搬动或重命名录音，详见[升级说明](docs/INSTALL.zh-CN.md#升级备份与卸载)。
+**[下载 v0.5.0 预览版 DMG](https://github.com/JALin2000/LocalVerbatim/releases/download/v0.5.0-preview.1/LocalVerbatim-0.5.0-preview-mac-arm64.dmg)**（约 117 MB）· [发行说明与校验和](https://github.com/JALin2000/LocalVerbatim/releases/tag/v0.5.0-preview.1) · [English](README.md)
 
-## 功能
+</div>
 
-- 同时采集麦克风与系统音频，分别保存 WAV 音轨并标注来源。
-- 导入 MP3、M4A 或 WAV 录音，支持本地转写、回放和自动二次识别。
-- 使用 Qwen3-ASR-1.7B 与 MLX 本地识别，提供 BF16 和 8 位量化两版，面向英语、普通话及混合会议。
-- 录音期间分段更新逐字稿，停止后可自动进行二次识别。
-- 保留原始逐字稿；二次识别可停止、继续，也可更新术语后重新运行。此前的二次稿可切换查看和导出。
-- 常用术语模板；新会议沿用上一场实际录音的术语与背景。
-- 一键切换原文与减少语气词的显示结果；二次稿还会合并明显的中文口头重复，模型原文保留。
-- 会议笔记、时间戳回放、TXT/Markdown/SRT 导出，以及可从废纸篓恢复的会议删除。
-- 中英文界面、浅色与深色模式、全局快捷键、存储位置设置和双路收音自检。
-- 快捷键启动录音时可选择隐藏 Dock 图标，菜单栏入口始终保留。
+---
 
-## 运行要求
+LocalVerbatim 将你的麦克风与电脑播放的声音分别录制为本地音轨，通过 MLX 在本机完成语音识别，并将原始录音、逐字稿和会议笔记统一保存在离线工作区中。
 
-| 项目 | 当前支持范围 |
+## 核心特性
+
+- **双路采集与录音导入** — 无需会议机器人，即可把麦克风（“我”）和系统音频（“与会者”）分别保存为独立 WAV；也支持直接导入 `MP3`、`M4A`、`WAV` 音频文件转写与回放。
+- **完全本地 AI 识别** — 基于 Apple Silicon MLX 运行 [Qwen3-ASR-1.7B](https://huggingface.co/Qwen/Qwen3-ASR-1.7B)，支持英语、普通话及中英混合对话。提供 [BF16](https://huggingface.co/mlx-community/Qwen3-ASR-1.7B-bf16)（高精度，4.08 GB）与 [8 位量化](https://huggingface.co/mlx-community/Qwen3-ASR-1.7B-8bit)（低内存，2.47 GB）两个版本，版本与哈希固定在 [model-manifest.json](engine/model-manifest.json) 与 [model-manifest-8bit.json](engine/model-manifest-8bit.json) 中。
+- **实时初稿 + 二次识别** — 录音期间分段更新逐字稿，结束后可自动或手动结合完整录音与术语做二次识别；原始逐字稿永久保留，支持随时停止/继续、更新术语重跑及切换对比历次版本。
+- **术语提示与阅读清理** — 支持保存常用术语模板、自动沿用上一场录音的术语与背景；一键无损减少语气词（二次识别结果还会合并明显的中文口头重复），底层模型原文与时间戳始终不变。
+- **完整离线工作区** — 同屏记录笔记、点击时间戳同步回放、`TXT` / `Markdown` / `SRT` 导出、移入废纸篓的可恢复删除、中英文界面、浅色/深色外观，以及快捷键启动录音时可选隐藏 Dock 图标。
+
+## 快速开始
+
+1. **安装应用** — 下载 [v0.5.0 预览版 DMG](https://github.com/JALin2000/LocalVerbatim/releases/download/v0.5.0-preview.1/LocalVerbatim-0.5.0-preview-mac-arm64.dmg)（已内置 Python 与 MLX 运行时，无需安装 Homebrew 或 Xcode），将 **LocalVerbatim** 拖入 **Applications**。
+
+   > [!NOTE]
+   > v0.5.0 预览版使用临时签名，尚未经过 Apple 公证。首次打开时可能需要前往 **系统设置 → 隐私与安全性 → 仍要打开** 手动允许（受企业管理的 Mac 可能限制运行未公证应用）。详见[安装说明](docs/INSTALL.zh-CN.md)。
+
+2. **下载模型并授权** — 启动应用后选择界面语言，下载或导入模型（8 GB 及以下内存推荐 `8 位量化版`，8 GB 以上推荐 `BF16`），并授予**麦克风**与**屏幕与系统音频录制**权限。
+3. **自检并开始** — 在 **设置 → 录音 → 开始 10 秒收音测试** 中确认两路均有声音，即可通过主窗口、菜单栏或全局快捷键开始录音。
+
+## 全局快捷键
+
+| 操作 | 默认快捷键 |
 |---|---|
-| 电脑 | Apple Silicon Mac；暂不支持 Intel Mac 和 Windows |
-| 系统 | macOS 15 或更新；最低系统版本还需更广泛的实机验证 |
-| 内存 | 建议 16 GB；尚未验证 8 GB 配置 |
-| 模型下载 | 8 GB RAM 及以下推荐 8 位版（约 2.47 GB），超过 8 GB 推荐 BF16（约 4.08 GB） |
-| 磁盘 | 为应用和模型预留至少 6 GB，另留录音和下载工作空间 |
-| 网络 | 下载模型时需要；模型就绪后可离线录音与识别 |
-| 权限 | 麦克风、屏幕与系统音频录制 |
+| 开始录音 | `⌃⌥R`（`Control + Option + R`） |
+| 停止录音 | `⌃⌥S`（`Control + Option + S`） |
+| 显示主窗口 | `⌃⌥L`（`Control + Option + L`） |
 
-录音为 16 kHz、单声道、PCM16。两条完整音轨合计每小时约 230 MB，**另有**识别片段和导出文件，磁盘占用随会议时长增长。
+所有快捷键均可在 **设置 → 快捷键** 中自定义，也可开启**快捷键录音时隐藏 Dock 图标**（菜单栏入口始终保留）。
 
-每场会议使用“日期 · 会议名 [ID]”文件夹：顶层保留两条完整 WAV，导出逐字稿放在 `Transcripts/`，中间片段和识别记录放在隐藏的 `.localverbatim/`。备份时请保留**整个文件夹及隐藏文件**。升级时会自动整理旧目录，详见[安装说明](docs/INSTALL.zh-CN.md)。
+## 系统要求
 
-## 开始使用
+| 项目 | 说明 |
+|---|---|
+| **机型与系统** | Apple Silicon Mac，macOS 15 或更新版本 |
+| **内存** | 建议 16 GB（`8 位量化`：2.47 GB；`BF16`：4.08 GB；识别进程达到本机 RAM 90% 时自动停止并保留录音） |
+| **磁盘空间** | 为应用和模型预留至少 6 GB；双轨 16 kHz 单声道 PCM16 录音约 230 MB/小时 |
+| **网络** | 仅下载模型时需要联网，模型就绪后可完全离线运行 |
 
-下载 [Mac 预览版](https://github.com/JALin2000/LocalVerbatim/releases/download/v0.5.0-preview.1/LocalVerbatim-0.5.0-preview-mac-arm64.dmg)并按[安装说明](docs/INSTALL.zh-CN.md)操作。包内包含 Python 和识别依赖。首次启动时可选择界面语言，再下载或导入所选模型。另一版本也可在**设置 → 转写**下载。从源码构建请阅读[开发说明](docs/DEVELOPMENT.zh-CN.md)。
+## 文件组织
 
-使用独立安装包不需要安装 Python、Homebrew 或 Xcode。模型就绪后，运行**设置 → 录音 → 10 秒收音测试**；重要会议前，确认两路均收到音频。
+每场会议都保存在独立目录 `日期 · 会议名 [ID]/` 中：
 
-| 文档 | 简体中文 | English |
-|---|---|---|
-| 安装、权限、故障排查、升级与卸载 | [安装说明](docs/INSTALL.zh-CN.md) | [Installation](docs/INSTALL.md) |
-| 构建、测试和打包 | [开发说明](docs/DEVELOPMENT.zh-CN.md) | [Development](docs/DEVELOPMENT.md) |
-| 本地数据与联网行为 | [隐私说明](docs/PRIVACY.md) | [同一文档](docs/PRIVACY.md) |
+```text
+YYYY-MM-DD HH-MM · 会议名称 [ID]/
+├── microphone.wav          # 完整麦克风音轨
+├── system.wav              # 完整电脑声音音轨
+├── Transcripts/            # 自动导出的 TXT、Markdown 与 SRT
+└── .localverbatim/         # 元数据、笔记、分段音频与二次识别历史
+```
 
-默认全局快捷键：**Control + Option + R** 开始录音，**Control + Option + S** 停止录音，**Control + Option + L** 显示主窗口，均可在设置中修改。
+从旧名 **LocalScribe** 升级时会自动复用原有会议库、模型、设置和术语模板，无需手动迁移文件。
 
-## 模型与实际边界
+## 使用提示
 
-应用使用 [Qwen3-ASR-1.7B](https://huggingface.co/Qwen/Qwen3-ASR-1.7B) 的 [MLX BF16](https://huggingface.co/mlx-community/Qwen3-ASR-1.7B-bf16) 或 [MLX 8 位](https://huggingface.co/mlx-community/Qwen3-ASR-1.7B-8bit)权重。[BF16](engine/model-manifest.json) 和 [8 位](engine/model-manifest-8bit.json)模型清单固定了版本与文件哈希。同一份模型串行处理两个来源；长录音分窗口读取。
+- **区分音源而非声纹**：`我` 与 `与会者` 分别对应麦克风和系统音频两路音源，暂不按声纹区分多位远端发言人。
+- **建议佩戴耳机**：目前尚未内置声学回声消除，使用耳机可避免外放声音被麦克风二次收录。
+- **校对关键信息**：遇到严重循环重复时会自动从原音频重试，但专有名词、数字与中英切换仍建议对照回放确认。
+- **纯粹本地工具**：当前版本有意保持简洁离线，不包含云端同步、自动摘要、日历集成或自动更新。
 
-在 M4、16 GB 内存的短时本地测试中，BF16 的**识别进程物理内存**约为 5.2–5.4 GB。同一台 Mac 上，8 位版处理短英文、普通话及二次识别的测试峰值约为 **3.35 GB**。这不是整个系统的内存占用，也不保证其他设备得到相同结果。识别进程达到本机 RAM 的 90% 时，应用会停止转写并保留录音。8 GB 机器的阈值为 7.2 GB，系统和其他应用也占用这 8 GB 内存。可先用「预载并测试内存」做初步检查。
+## 源码构建与文档
 
-- 检测到严重循环重复时，会从原音频进行有限次数的本地重试，并保存异常原始输出；仍未通过则报告失败，不采用循环文字。这不能发现所有识别错误。
-- 人名、数字、专业词及语言切换仍可能识别错误，重要内容应对照录音校对。二次识别不保证每句话都更准确。
-- “我／与会者”表示音频来源，尚不能通过声纹区分多位远端与会者。
-- 时间戳是片段级而非逐字对齐；尚无声学回声消除，建议使用耳机以减少外放重复收音。
-- 尚未实现自动摘要、云端同步或日历集成。
-- 没有自动更新功能；正式签名发行和 Windows 支持属于后续工作。
+```sh
+git clone https://github.com/JALin2000/LocalVerbatim.git && cd LocalVerbatim
+bash setup.command
+open LocalVerbatim.app
+```
 
-## 许可证
+| 文档 | 链接 |
+|---|---|
+| 安装、权限、升级与卸载 | [docs/INSTALL.zh-CN.md](docs/INSTALL.zh-CN.md) · [English](docs/INSTALL.md) |
+| 构建、测试与打包 | [docs/DEVELOPMENT.zh-CN.md](docs/DEVELOPMENT.zh-CN.md) · [English](docs/DEVELOPMENT.md) |
+| 本地数据与联网说明 | [docs/PRIVACY.md](docs/PRIVACY.md) |
+| 版本更新记录 | [CHANGELOG.md](CHANGELOG.md) |
 
-本项目的原创代码、文档和原创图标采用 [Apache-2.0](LICENSE)，署名见 [NOTICE](NOTICE)。第三方依赖和模型保留各自许可，详见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。此源码目录不包含模型权重或 Python 运行时。
+## 许可证与参与贡献
 
-版本变化见[更新记录](CHANGELOG.md)，公开发行准备情况见[发布清单](docs/RELEASE_CHECKLIST.md)。
-
-报告问题或提交修改前，请阅读[参与贡献 / Contributing](CONTRIBUTING.md)。疑似漏洞请遵循[安全说明 / Security](SECURITY.md)；不要在公开 issue 中提交会议录音、逐字稿或个人数据。
+本项目原创代码、文档与图标采用 [Apache-2.0](LICENSE) 许可（署名见 [NOTICE](NOTICE)），第三方依赖及 Qwen3-ASR 权重保留各自许可（见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)）。欢迎参与贡献与反馈，请先阅读 [CONTRIBUTING.md](CONTRIBUTING.md) 与 [SECURITY.md](SECURITY.md)（切勿在公开 issue 中上传真实会议录音或逐字稿）。
